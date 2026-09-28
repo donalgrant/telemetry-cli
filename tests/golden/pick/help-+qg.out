@@ -15,9 +15,9 @@
 
   A numerical prefix to the group designates a repetition
   factor for the group.  For example:
-           20[ f +96f i -100f ]
+           20[ f +99f i -100f ]
   requests 20 pairs of floats and integers, where each
-  float is separated from the integer by 400 bytes, but
+  integer starts 400 bytes after its float, but
   the floats and the integers themselves are sequential.
   There must be no space between the prefix and the opening
   bracket.
