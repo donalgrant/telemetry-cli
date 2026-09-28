@@ -1,0 +1,892 @@
+#!/usr/bin/perl -w
+
+# while developing, include Msg module to support convenient diagnostics
+
+use Data::Dumper;
+use lib "/Users/imel/Desktop/Dropbox/dev/lib";
+use Util::Msg;
+
+msg_set_opt qw( CALLER );
+msg_output( *STDOUT );
+msg_hide_tags qw( SRC DATA REGEX NOTE MB );
+
+
+use strict;
+
+package BStream;
+
+use Data::Dumper;
+use lib "/Users/imel/Desktop/Dropbox/dev/lib";
+use Util::Msg;
+
+sub new {
+  my $class=shift;
+  my $fp=shift;
+  unless ($fp) { 
+    open($fp,"-") or die "BStream::new() and couldn't open STDIN for input:  $!";
+    print STDERR "Reading from STDIN\n";
+  }
+  my $size=shift() || 1024;  # size=0 not allowed!
+  my $self={};
+  $self->{size}=$size;
+  $self->{data}='';
+  $self->{fp}=$fp;
+  bless $self, $class;
+  $self->_add_bytes();
+  return $self;
+}
+
+# "private" function -- for use by BStream methods only
+# returns the number of bytes actually added
+sub _add_bytes {
+  my $self=shift;
+  my $offset=shift() || 0;
+  my $bytes=shift() // $self->size();
+  return read($self->{fp},substr($self->{data},$offset,$self->size()-$offset),$bytes);
+}
+
+# public accessors
+
+sub size   { my $self=shift; return $self->{size} }
+sub length { my $self=shift; return length($self->{data}) }
+sub full   { my $self=shift; return $self->size()<=$self->length() }
+
+# first argument is nbytes, second is offset
+# (opposite of substr)
+
+sub get {
+  my $self=shift;
+  my $n=shift() // $self->length();
+  return undef if $n>$self->length();
+  my $offset=shift() // 0;
+  return undef if $offset > $self->length();
+  # allow $n to be adjusted to length if we've reached EOF
+  $n=$self->length() - $offset if $n+$offset>$self->length();
+  return substr($self->{data},$offset,$n);
+}
+
+sub shift_bytes {
+  my $self=shift;
+  my $nbytes=shift() // $self->size();
+  my $length_orig=$self->length();
+  $nbytes= ($nbytes > $self->length()) ? $self->length() : $nbytes;
+  my $shifted_bytes=substr($self->{data},0,$nbytes);
+  $self->{data}=substr($self->{data},$nbytes);
+  my $n_to_add=$self->size()-($length_orig-$nbytes);
+  $self->_add_bytes($length_orig-$nbytes,$n_to_add) if $n_to_add>0;  # fill to size
+  return $shifted_bytes;
+}
+
+# the opposite of add_bytes -- add to the front
+
+sub unshift_bytes {
+  my $self=shift;
+  my $src=shift;
+  $self->{data}=$src.$self->{data};
+  return CORE::length($src);
+}
+
+package Match_Stream;
+use base qw( BStream );
+
+use Data::Dumper;
+use lib "/Users/imel/Desktop/Dropbox/dev/lib";
+use Util::Msg;
+
+sub str_find {
+  my $self=shift;
+  my $str=shift;
+  return (index($self->{data},$str), length($str));
+}
+
+sub reg_find {
+  my $self=shift;
+  my $reg=shift;
+  return (-1,0) unless $self->{data}=~/$reg/s;
+  return ($-[0],($+[0]-$-[0]));  # need both the offset and number of bytes matched
+}
+
+package Extract_Records;
+
+use Data::Dumper;
+use lib "/Users/imel/Desktop/Dropbox/dev/lib";
+use Util::Msg;
+
+# constructor is new( $fin, $fout, { opt1=>'opt1-value', opt2=>'opt2-value', ... } )
+# recognized options are:
+#   fill=>byte-value 0 by default
+#   pad =>0 | 1      0 by default; 0=discard incomplete recs; 1=pad incomplete records with fill byte
+#  regex=>0 | 1      1 by default; interpret match strings as regex's -- slower
+#  max_match_length=>nbytes; length($match_string) by default
+#            reclen=>nbytes; 0 by default, meaning extract all until next match
+#       buffer_size=>nbytes; by default, 2*(reclen+max_match_length) or 1024, whichever is greater
+#  xbeg => 0 | 1     0 by default; exclude start_match pattern from output record
+#  xend => 0 | 1     0 by default; exclude stop_match pattern from output record
+#  nmin => nbytes    reclen by default
+#  nmax => nbytes    reclen by default
+#   pre =>chars      '' by default; prepend string to beginning of each output record
+#  post =>chars      '' by default; append string to end of each output record
+#    sp => 0 | 1     0 by default; "start priority"; true if trigger new record on start_match
+#                                                    before stop_match is found.  Ditto for fixed reclen
+
+my %OPTION = (
+	      fill   => { def=>0,    set=>\&Extract_Records::set_fill   },
+	      pad    => { def=>0,    set=>\&Extract_Records::set_pad    },
+	      regex  => { def=>1,    set=>\&Extract_Records::set_regex  },
+	      mml    => { def=>0,    set=>\&Extract_Records::set_mml    },
+	      sp     => { def=>0,    set=>\&Extract_Records::set_sp     },
+	      xbeg   => { def=>0,    set=>\&Extract_Records::set_xbeg   },
+	      xend   => { def=>0,    set=>\&Extract_Records::set_xend   },
+	      pre    => { def=>'',   set=>\&Extract_Records::set_pre    },
+	      post   => { def=>'',   set=>\&Extract_Records::set_post   },
+	      reclen => { def=>0,    set=>\&Extract_Records::set_reclen },
+	      nmin   => { def=>0,    set=>\&Extract_Records::set_nmin   },
+	      nmax   => { def=>0,    set=>\&Extract_Records::set_nmax   },
+	      bufsiz => { def=>1024, set=>\&Extract_Records::set_bufsiz }
+	     );
+
+# global settings on package creation, for convenience
+
+sub change_default_fill   { $OPTION{fill}{def}   = shift }
+sub change_default_pad    { $OPTION{pad}{def}    = shift }
+sub change_default_xbeg   { $OPTION{xbeg}{def}   = shift }
+sub change_default_xend   { $OPTION{xend}{def}   = shift }
+sub change_default_nmin   { $OPTION{nmin}{def}   = shift }
+sub change_default_nmax   { $OPTION{nmax}{def}   = shift }
+sub change_default_mml    { $OPTION{mml}{def}    = shift }
+sub change_default_sp     { $OPTION{sp}{def}     = shift }
+sub change_default_bufsiz { $OPTION{bufsiz}{def} = shift }
+sub change_default_reclen { $OPTION{reclen}{def} = shift }
+sub change_default_pre    { $OPTION{pre}{def}    = shift }
+sub change_default_post   { $OPTION{post}{def}   = shift }
+
+sub new {
+  my $class=shift;
+  my $self={};
+  $self->{in}=shift;  # input file stream
+  unless ($self->{in}) { 
+    open($self->{in},"-") or die "Extract_Records::new() and couldn't open STDIN for input:  $!";
+    msg "Reading from STDIN";
+  }
+  $self->{out}=shift; # output file stream
+  unless ($self->{out}) { 
+    open($self->{out},">-") or die "Extract_Records::new() and couldn't open STDOUT for output:  $!";
+    msg "Writing to STDOUT";
+  }
+  bless($self,$class);
+  my $opt=shift;  # ref to hash of options
+  $self->set_default_options();
+  for (keys %OPTION) { 
+    $OPTION{$_}{set}->($self,$opt->{$_}) if defined $opt->{$_} 
+  }
+  return $self;
+}
+
+sub fill   { return $_[0]->{o}{fill}   }
+sub pad    { return $_[0]->{o}{pad}    }
+sub regex  { return $_[0]->{o}{regex}  }
+sub bufsiz { return $_[0]->{o}{bufsiz} }
+sub reclen { return $_[0]->{o}{reclen} }
+sub mml    { return $_[0]->{o}{mml}    }
+sub sp     { return $_[0]->{o}{sp}     }
+sub xbeg   { return $_[0]->{o}{xbeg}   }
+sub xend   { return $_[0]->{o}{xend}   }
+sub nmin   { return $_[0]->{o}{nmin}   }
+sub nmax   { return $_[0]->{o}{nmax}   }
+sub pre    { return $_[0]->{o}{pre}    }
+sub post   { return $_[0]->{o}{post}   }
+
+sub set_fill   { $_[0]->{o}{fill}   =$_[1] } # not necessarily single byte (?)
+sub set_sp     { $_[0]->{o}{sp}     =$_[1] } # simple T|F
+sub set_regex  { $_[0]->{o}{regex}  =$_[1] } # simple T|F
+sub set_xbeg   { $_[0]->{o}{xbeg}   =$_[1] } # simple T|F
+sub set_xend   { $_[0]->{o}{xend}   =$_[1] } # simple T|F
+sub set_bufsiz { $_[0]->{o}{bufsiz} =$_[1] } # should be number
+sub set_pre    { $_[0]->{o}{pre}    =$_[1] } # string
+sub set_post   { $_[0]->{o}{post}   =$_[1] } # string
+sub set_nmax   { $_[0]->{o}{nmax}   =$_[1] } # bytes
+
+sub set_pad {
+  my $self=shift;
+  $self->{o}{pad}=shift;
+  $self->{o}{nmin}=$self->reclen() if ( $self->reclen() && $self->pad() );
+}
+
+sub set_nmin { 
+  my $self=shift;
+  $self->{o}{nmin}=shift;
+  $self->{o}{pad}=1 if $self->nmin() && !$self->pad();  # pad if we have minimum reclen; circular problem...
+}
+
+sub set_reclen { 
+  my $self=shift; 
+  $self->{o}{reclen}=shift; 
+  $self->set_mml($OPTION{mml}{def}) unless defined $self->mml();
+  my $new_bufsiz=2*($self->reclen()+$self->mml());
+  $self->set_bufsiz($new_bufsiz) if $new_bufsiz>$self->bufsiz();
+  $self->set_nmax($self->reclen()) if $self->reclen();  # with fixed reclen, truncate to reclen
+  $self->set_nmin($self->reclen()) if $self->pad() && $self->reclen();  # if padding, then reclen!=0==>nmin
+}
+
+sub set_mml    { 
+  my $self=shift; 
+  $self->{o}{mml}=shift; 
+  $self->set_reclen($OPTION{reclen}{def}) unless defined $self->reclen();
+  my $new_bufsiz=2*($self->reclen()+$self->mml());
+  $self->set_bufsiz($new_bufsiz) if $new_bufsiz>$self->bufsiz();
+}   
+
+sub set_default_options {
+  my $self=shift;
+  for (keys %OPTION) { 
+    $OPTION{$_}{set}->($self,$OPTION{$_}{def}); 
+  }
+}
+
+# functions for internal single-record accumulator
+
+# could update dump_rec to have min and max reclen limits
+# (and fill if below min, while truncating to max)
+# this could be done for any type of extraction
+
+sub clear_rec  { $_[0]->{record}=''; $_[0]->{flag}=1 }
+sub length_rec { defined $_[0]->{record} ? CORE::length($_[0]->{record}) : 0 }
+sub add_rec    { $_[0]->{record}.=$_[1]  }
+
+sub trim_rec { 
+  my $self=shift;
+  $self->{record}=substr($self->{record},0,$self->nmax()) 
+    if $self->length_rec()>$self->nmax();
+}
+
+sub fill_rec {
+  my $self=shift;  
+  while ($self->length_rec()<$self->nmin()) { $self->add_rec($self->fill()) }
+}
+
+sub pop_rec { 
+  my $self=shift;
+  my $n=shift;
+  my $p=substr($self->{record},-$n); 
+  $self->{record}=substr($self->{record},0,-$n); 
+  return $p; 
+}
+
+sub dump_rec   { 
+  my $self=shift;
+  $self->fill_rec() if $self->nmin();
+  $self->trim_rec() if $self->nmax();
+  my $out=$self->pre().$self->{record}.$self->post();
+  print { $self->{out} } $out;
+}
+
+sub find_in_rec {
+  my $self=shift;
+  my $match=shift;
+  my $offset=shift() // 0;
+  if ($self->regex()) {
+    return (-1,0) unless substr($self->{record},$offset)=~/$match/s;
+    my $mb=$+[0]-$-[0];
+    msg "Matched bytes ($mb) is larger than mml parameter (".$self->mml().")", 'WARN' if $mb>$self->mml();
+    return ($offset+$-[0],($+[0]-$-[0]));  # need both the offset and number of bytes matched
+  } else {
+    return ($offset+index(substr($self->{record},$offset),$match), length($match));
+  }
+}
+
+# private methods, upon which are build the public ones
+# which do the actual extraction
+
+sub _discard_to_either {
+  my $self=shift;
+  my $match=shift;
+  my $sub=shift;
+  my $discard_shift=$self->{M}->size()-$self->mml();
+  my @r;
+  while ( @r=$sub->($self->{M},$match), ($r[0]<0) && ($self->{M}->length()) ) {
+    msg "Matched bytes ($r[1]) is larger than mml parameter (".$self->mml().")", 'WARN' if $r[1]>$self->mml();
+    $self->{M}->shift_bytes($discard_shift);  # get next buffer's worth, care about match across buffers
+  }
+  return undef if $r[0]<0;         # undef if no match
+  $self->{M}->shift_bytes($r[0]);  # put match at beginning of stream
+  return $r[1];                    # return number of bytes matching
+}
+
+sub _discard_to_match {
+  my $self=shift;
+  my $match=shift;
+  return $self->_discard_to_either($match, \&Match_Stream::reg_find) if $self->regex();
+  return $self->_discard_to_either($match, \&Match_Stream::str_find);
+}
+
+sub _extract_to_either {
+  my $self=shift;
+  my $match=shift;
+  my $sub=shift;
+  my $extract_shift=$self->{M}->size()-$self->mml();
+  my @r;
+  while ( @r=$sub->($self->{M},$match), ($r[0]<0) && ($self->{M}->length()) ) {
+    $self->add_rec($self->{M}->shift_bytes($extract_shift));  # next buffer's worth (care across buffers)
+  }
+  return undef if $r[0]<0;           # undef if no match
+  msg "Matched bytes ($r[1]) is larger than mml parameter (".$self->mml().")", 'WARN' if $r[1]>$self->mml();
+  $self->add_rec($self->{M}->shift_bytes($r[0]+$r[1]));    # move stream to after match
+  return $r[1];                      # return number of bytes matching
+}
+
+sub _extract_to_match {
+  my $self=shift;
+  my $match=shift;
+  return $self->_extract_to_either($match, \&Match_Stream::reg_find) if $self->regex();
+  return $self->_extract_to_either($match, \&Match_Stream::str_find);
+}
+
+sub _extract_nbytes {
+  my $self=shift;
+  my $n=shift;  # record length ; number of bytes left to get
+  my $l;
+  while ( $n > ($l=$self->{M}->length()) ) {
+    unless ($l) {  # out of data, either fill or return number of missing bytes
+      return $n unless $self->pad();
+      $self->fill_rec();
+      $self->trim_rec();
+      return 0;
+    }
+    $self->add_rec($self->{M}->shift_bytes());
+    $n-=$l;
+  }
+  # may be some left to extract, and should be enough length to do that
+  $self->add_rec($self->{M}->shift_bytes($n)) if $n>0;   # move past extracted bytes
+  return 0;
+}
+    
+sub _match_n {
+  my $self=shift;
+  my $match=shift;
+  my $reclen=shift; 
+  my $mml=shift() || length($match);
+  my $max_recs=shift() // -1;
+  $self->set_mml($mml) if $mml>$self->mml();
+  $self->set_reclen($reclen);
+  $self->{M}=new Match_Stream($self->{in},$self->bufsiz());
+  my $i=0;
+  while ( ( ($i<=$max_recs)||($max_recs<0) ) && ($self->{M}->length()>0) ) {
+    my $match_bytes=$self->_discard_to_match($match);
+    if (defined $match_bytes) { # found the next record begin marker
+      $self->{M}->shift_bytes($match_bytes) if $self->xbeg();  # skip begin marker
+      $self->clear_rec();       # start recording
+      my $mb=$self->_extract_nbytes($self->reclen());  # returns bytes missing in record 
+      if ($self->sp()) {  # make sure no start_match found in record beyond first marker (if not removed)
+	my $rec_offset=$self->xbeg() ? 0 : $match_bytes;
+	my @r = $self->find_in_rec($match,$rec_offset);
+	if ($r[0]>=$rec_offset) {  
+	  # found another start:  remove bytes from start to end of rec and put back on stream
+	  my $pop_bytes=$self->length_rec()-$r[0];
+	  my $remainder=$self->pop_rec($pop_bytes);
+	  $self->{M}->unshift_bytes($remainder);
+	  # if padding, then we have a record, otherwise dump it
+	  next unless $self->pad();
+	}
+      }
+      last if $mb && !$self->pad();  # incomplete record -- forget it unless padding records
+      $self->dump_rec();  # dump this record
+      $i++;               # another record dumped -- noted
+    } else { last }
+  }
+  return $i;
+}
+
+sub _match_match {
+  my $self=shift;
+  my $start_match=shift;
+  my $stop_match=shift() // $start_match;
+  my $mml=shift() || 
+    ( (length($start_match)<length($stop_match)) ? length($stop_match) : length($start_match) );
+  my $max_recs=shift() // -1;
+  $self->set_mml($mml) if $mml>$self->mml();
+  $self->{M}=new Match_Stream($self->{in},$self->bufsiz());
+  my $i=0;
+  while ( ( ($i<=$max_recs)||($max_recs<0) ) && ($self->{M}->length()>0) ) {
+    my $match_bytes=$self->_discard_to_match($start_match);  # find next record start marker
+    last unless defined $match_bytes;  # couldn't find another start-marker -- we're done
+    $self->clear_rec();
+    my $mb0=0;
+    if ($self->xbeg()) {  # don't include start marker in output record
+      $self->{M}->shift_bytes($match_bytes);
+    } else {
+      $mb0=$self->_extract_to_match($start_match);  # include start-marker in output stream and move
+    }
+    my $mb=$self->_extract_to_match($stop_match);
+    if ($self->sp()) {  # before going on, make sure we didn't trip over a start pattern
+      my @r=$self->find_in_rec($start_match,$mb0);
+      if ($r[0]>=$mb0) {  # we found a start match at offset $r[0]
+	my $pop_bytes=$self->length_rec()-$r[0];
+	my $remainder=$self->pop_rec($pop_bytes);
+	$self->{M}->unshift_bytes($remainder);
+	# no stop-marker, so just dump now
+	$self->dump_rec();
+	$i++;
+	next;
+      }
+    }
+    unless ($mb) {
+      $self->clear_rec(); # only dump complete records
+      return $i
+    }
+    $self->pop_rec($mb) if $self->xend();  # exclude matching bytes from stop marker if requested
+    $self->dump_rec();  # dump the extracted record
+    $i++;
+  }
+  return $i;
+} 
+
+# args are match_string, extracted record length (bytes), 
+#          max_matchlen (length(match) if undef), max_recs (unlimited if undef)
+
+sub str_n { $_[0]->set_regex(0); Extract_Records::_match_n(@_) }
+sub reg_n { $_[0]->set_regex(1); Extract_Records::_match_n(@_) }
+
+# args are start match, stop match, max_regex_matchlen (length(regex) if undef), max_recs
+  
+sub str_str { $_[0]->set_regex(0); return Extract_Records::_match_match(@_) }
+sub reg_reg { $_[0]->set_regex(1); return Extract_Records::_match_match(@_) }
+
+###################
+#
+# Begin Main Script
+#
+###################
+
+package main;
+
+use Data::Dumper;
+use Getopt::Long;
+use Pod::Usage;
+
+my %o=();
+GetOptions( \%o, 'v', 'x', 'z', 'mml=i', 'e=s', 'a', 'f=s', 'r', 'test', 'help',
+	    'min_reclen=i', 'max_reclen=i', 'append=s', 'prepend=s', 'nl');
+
+# initialize defaults on certain options
+
+for (qw( append )) { $o{$_} //= '' }
+
+pod2usage(-verbose=>2), exit if $o{help};
+tests(), exit if $o{test};
+
+my $file=$ARGV[0];  # first argument is filename
+open my $fp, "<$file" or die "Can't open $file for input";
+
+my $match_string=$ARGV[1];
+my $out_length = defined $ARGV[2] ? $ARGV[2] : -1;
+
+if ($out_length < 0) {
+  unless (defined $o{e}) {
+    # with no reclen and no stop marker, take records from start to start.
+    $o{e}=$ARGV[1];
+    $o{a} //= 1;
+  }
+}
+
+$o{append}.="\n" if $o{nl};
+
+$o{mml} //= length($match_string);
+
+my $E = new Extract_Records( $fp, *STDOUT,
+			     { xbeg=>$o{x}, xend=>$o{z}, mml=>$o{mml}, sp=>$o{a},
+			       fill=>$o{f}, regex=>$o{r}, nmin=>$o{min_reclen},
+			       nmax=>$o{max_reclen}, pre=>$o{prepend}, post=>$o{append} } );
+
+my $nr;
+
+if ($out_length < 0) {
+  $nr= $o{r} ? $E->reg_reg($match_string,$o{e}) : $E->str_str($match_string,$o{e});
+} else {
+  $nr= $o{r} ? $E->reg_n($match_string,$out_length) : $E->str_n($match_string,$out_length);
+}
+
+#
+# tests on packages used for recs.
+# Embed them here so we don't have
+# to have multiple files in a tool.
+#
+
+use Test::More;
+
+# better to write these in terms of $src substr's, which
+# could be passed as the second argument
+
+sub BStream_Class_tests {
+  my $B=shift;
+  isa_ok( $B, 'BStream' );
+  is( $B->length(), 5, "BStream length after create" );
+  is( $B->size(),   5, "BStream size after create" );
+  ok( $B->full(),      "BStream full after create" );
+  cmp_ok( $B->get(),    'eq', 'abcde', "BStream after create" );
+  cmp_ok( $B->get(1),   'eq', 'a',     "Single byte get" );
+  cmp_ok( $B->get(3,2), 'eq', 'cde',   "Three bytes offset" );
+  ok( !defined $B->get(6),   "Can't request more than BStream length" );
+  cmp_ok( $B->get(2,5), 'eq', '', "Request truncated to BStream length" );
+
+  my $r=$B->shift_bytes(1);
+  cmp_ok( $B->get(), 'eq', 'bcdef', "BStream after shifting one byte" );
+  cmp_ok( $r, 'eq', 'a', "One byte shifted out" );
+
+  $r=$B->shift_bytes(6);
+  cmp_ok( $B->get(), 'eq', 'ghijk', "Maximum shift is BStream size" );
+  cmp_ok( $r, 'eq', 'bcdef', "Bytes shifted out correctly" );
+
+  $r=$B->shift_bytes;
+  is( $B->length(), 2, "Length at end" );
+  cmp_ok( $r, 'eq', 'ghijk', "Shifted bytes" );
+  cmp_ok( $B->get(2), 'eq', 'lm', "Default shift is by length" );
+  ok( !defined $B->get($B->size()), "Cannot ask for full size with short length" );
+  ok( !defined $B->get(1,3),        "Can't request offset beyond BStream length" );
+
+  $B->unshift_bytes('xyz');
+  cmp_ok( $B->get(), 'eq', 'xyzlm', "Can unshift bytes to front of stream" );
+  $B->unshift_bytes('abcabcabcabc');
+  cmp_ok( $B->get(), 'eq', 'abcabcabcabcxyzlm', "Can unshift to expand buffer size" );
+  $r=$B->shift_bytes;
+  cmp_ok( $B->get(), 'eq',      'cabcabcxyzlm', "shift_bytes shifts by size, not length" );
+}
+
+sub Match_Stream_Class_tests {
+  my $M=shift;
+  isa_ok( $M, qw( Match_Stream ) );
+
+  is_deeply( [$M->str_find('b')],   [(1,1)],  "Find a string" );
+  is_deeply( [$M->str_find('cde')], [(2,3)],  "Find a multi-char string" );
+  is_deeply( [$M->str_find(':')],   [(-1,1)], "Result of string not found");
+  is_deeply( [$M->str_find('def')], [(-1,3)], "Partial match also not found");
+
+  is_deeply( [$M->reg_find('.')],   [(0,1)],  "Find regex:  any character" );
+  is_deeply( [$M->reg_find('..')],  [(0,2)],  "Find regex:  any two characters" );
+  is_deeply( [$M->reg_find('\d')],  [(-1,0)], "Find regex:  any single digit" );
+
+  is_deeply( [$M->reg_find('[bcd]+')], [(1,3)], "Find regex:  any of [bcd]+" );
+  is_deeply( [$M->reg_find('.{5}')], [(0,5)], "Any five characters" );
+  is_deeply( [$M->reg_find('.{6}')], [(-1,0)], "Any six characters" );
+}
+
+sub Fixed_Extract_Records_Test {
+  my $src=shift;
+  my $match=shift;
+  my $rl=shift;
+  my $ans=shift;
+  my $is_regex=shift() // 0;
+  my $tag="Extract $rl bytes using $match";
+  $tag.=" from $src" if length($src)<50;
+  my $out;
+  my ($fp, $fo);
+  open($fp, "<", \$src) or die "Failed to open variable-->$src<--as STDIN:  $!";
+  open($fo, ">", \$out) or die "Failed to open variable-->$out<--as STDOUT:  $!";
+  my $E=new Extract_Records($fp,$fo);
+  my $nr= $is_regex ? $E->reg_n($match,$rl) : $E->str_n($match,$rl);
+#  isa_ok( $E, qw( Extract_Records ) );
+  cmp_ok( $out, 'eq', $ans, $tag ) if $nr;
+  ok( (!defined $out) && (!defined $ans), $tag ) if $nr==0;
+  close($fp); close($fo);
+}
+
+sub Matcher_Extract_Records_Test {
+  my $src=shift;
+  my $start_match=shift;
+  my $stop_match=shift;
+  my $ans=shift;
+  my $is_regex=shift() // 0;
+  my $tag="Extract records from $start_match to $stop_match";
+  $tag.=" from $src" if length($src)<50;
+  my $out;
+  my ($fp, $fo);
+  open($fp, "<", \$src) or die "Failed to open variable-->$src<--as STDIN:  $!";
+  open($fo, ">", \$out) or die "Failed to open variable-->$out<--as STDOUT:  $!";
+  my $E=new Extract_Records($fp,$fo);
+  my $nr= $is_regex ? $E->reg_reg($start_match,$stop_match) : $E->str_str($start_match,$stop_match);
+  diag("after match, out=$out") if length($out)<80;
+#  isa_ok( $E, qw( Extract_Records ) );
+  cmp_ok( $out, 'eq', $ans, $tag ) if $nr;
+  ok( (!defined $out) && (!defined $ans), $tag ) if $nr==0;
+  close($fp); close($fo);
+}
+
+sub Extract_Records_Class_tests {
+
+  Fixed_Extract_Records_Test('abcdefabcdefgabcdefg','bc',3,'bcdbcdbcd');
+  Fixed_Extract_Records_Test('abcdezxabcde','zx',1,'z');  # carefully constructed to do cross-buf match
+  Fixed_Extract_Records_Test('abc123abc123def456def456','([\d]{2}|[abc]{2})',2,'ab12ab124545',1);
+  Fixed_Extract_Records_Test('abc123abc123def456def456','\d[abcdef]',3,'3ab3de6de',1);
+  Fixed_Extract_Records_Test('abc','.',10,undef);    # check failure to match
+  Fixed_Extract_Records_Test('abc','\d',10,undef,1);    # ditto using regex
+  Extract_Records::change_default_pad(1);
+  Extract_Records::change_default_fill('xyz');
+  Fixed_Extract_Records_Test('abc','.',10,'abcxyzxyzx',1);  # check pad/fill
+
+  Extract_Records::change_default_pad(0);
+  Extract_Records::change_default_fill(0);
+  Matcher_Extract_Records_Test('11aoeu23aounth77aoesunth','ao','e','aoeaounth77aoe');
+  Matcher_Extract_Records_Test('11aoeu23aounth77aoesunth','\d\d','\d','11aoeu2',1);
+
+  note("check minimum record length");
+  Extract_Records::change_default_fill('!@#$%^&*+=');
+  Extract_Records::change_default_nmin(10); 
+  Extract_Records::change_default_pad(1);
+  Matcher_Extract_Records_Test('11aoeu23aounth77aoesunth','ao','e','aoe!@#$%^&*+=aounth77aoe');
+  Extract_Records::change_default_nmax(10);
+  Matcher_Extract_Records_Test('11aoeu23aounth77aoesunth','\d\d','\d','11aoeu2!@#',1);
+  Extract_Records::change_default_fill(0);
+  Extract_Records::change_default_nmin(0);
+  Extract_Records::change_default_pad(0);
+  Extract_Records::change_default_nmax(0);
+
+  Extract_Records::change_default_xend(1);  # exclude end markers from output records
+  Matcher_Extract_Records_Test('11aoeu23aounth77aoesunth','ao','e','aoaounth77ao');
+  Matcher_Extract_Records_Test('11aoeu23aounth77aoesunth','\d\d','\d','11aoeu',1);
+
+  Extract_Records::change_default_xbeg(1);  # also exclude start markers from output records
+  Matcher_Extract_Records_Test('11aoeu23aounth77aoesunth','ao','e','unth77ao');
+  Matcher_Extract_Records_Test('11aoeu23aounth77aoesunth','\d\d','\d','aoeu',1);
+
+  Fixed_Extract_Records_Test('abcdezxabcde','zx',1,'a');  # carefully constructed to do cross-buf match
+  Fixed_Extract_Records_Test('abc123abc123def456def456','([\d]{2}|[abcde]{2})',2,'c1ab3d6d',1);
+
+  Extract_Records::change_default_pre('NR)');  # also exclude start markers from output records
+  Matcher_Extract_Records_Test('11aoeu23aounth77aoesunth','ao','e','NR)NR)unth77ao');
+  Matcher_Extract_Records_Test('11aoeu23aounth77aoesunth2','\d\d','\d','NR)aoeuNR)aoesunth',1);
+
+  Fixed_Extract_Records_Test('abcdezxabcde','zx',1,'NR)a');  # carefully constructed to do cross-buf match
+  Fixed_Extract_Records_Test('abc123abc123def456def456','([\d]{2}|[abcde]{2})',2,'NR)c1NR)abNR)3dNR)6d',1);
+  Extract_Records::change_default_pre('');
+
+  Extract_Records::change_default_post('<--');  # also exclude start markers from output records
+  Matcher_Extract_Records_Test('11aoeu23aounth77aoesunth','ao','e','<--unth77ao<--');
+  Matcher_Extract_Records_Test('11aoeu23aounth77aoesunth2','\d\d','\d','aoeu<--aoesunth<--',1);
+
+  Fixed_Extract_Records_Test('abcdezxabcde','zx',1,'a<--');  # carefully constructed to do cross-buf match
+  Fixed_Extract_Records_Test('abc123abc123def456def456','([\d]{2}|[abcde]{2})',2,
+			     'c1<--ab<--3d<--6d<--',1);
+  Extract_Records::change_default_post('');
+
+  note("Do a couple of multi-buffer tests");
+  my $l=join('',('a'..'z'))x1000;  # 26 thousand characters
+  my $src=$l.'123imel'.$l.'124david';
+  Fixed_Extract_Records_Test($src,'12',4,'3ime4dav');
+  Matcher_Extract_Records_Test($src,'\d+\D','a','mel',1);
+
+  note("nmax test");
+  $src.=$l;
+  Matcher_Extract_Records_Test($src,'\d+','\d+','imel'.$l,1);
+  Extract_Records::change_default_nmax(10);
+  Matcher_Extract_Records_Test($src,'\d+','\d+','imelabcdef',1);
+  Extract_Records::change_default_nmax(0);
+
+  note("start priority tests with fixed record length");
+  $src='abcde:abcd:abc:abcdefg:abc';
+  Extract_Records::change_default_xbeg(0);
+  Extract_Records::change_default_xend(0);
+  Extract_Records::change_default_pad(0);
+  Extract_Records::change_default_fill('x');
+  Extract_Records::change_default_sp(0);
+  Fixed_Extract_Records_Test($src,':',6,':abcd::abcde');
+  Fixed_Extract_Records_Test($src,'[:]',6,':abcd::abcde',1);
+  Extract_Records::change_default_pad(1);
+  Fixed_Extract_Records_Test($src,':',6,':abcd::abcde:abcxx');
+  Fixed_Extract_Records_Test($src,'[:]',6,':abcd::abcde:abcxx',1);
+  Extract_Records::change_default_sp(1); 
+  Fixed_Extract_Records_Test($src,':',6,':abcdx:abcxx:abcde:abcxx');
+  Fixed_Extract_Records_Test($src,'[:]',6,':abcdx:abcxx:abcde:abcxx',1);
+  Extract_Records::change_default_pad(0);
+  Fixed_Extract_Records_Test($src,':',6,':abcde');
+  Fixed_Extract_Records_Test($src,'[:]',6,':abcde',1);
+  Extract_Records::change_default_sp(0);
+  Extract_Records::change_default_pad(0);
+
+  note("start priority tests with match-to-match");
+  $src='abcde:abcd:abc:abcdefg:abc';
+  Extract_Records::change_default_xbeg(0);
+  Extract_Records::change_default_pad(0);
+  Extract_Records::change_default_fill('x');
+  Extract_Records::change_default_sp(0);
+  Matcher_Extract_Records_Test($src,':',':',':abcd::abcdefg:');
+  Matcher_Extract_Records_Test($src,'[:]','[:]',':abcd::abcdefg:',1);
+  Extract_Records::change_default_sp(1); 
+  Matcher_Extract_Records_Test($src,':',':',':abcd:abc:abcdefg');
+  Extract_Records::change_default_pad(1);
+  Extract_Records::change_default_nmin(7);
+  Matcher_Extract_Records_Test($src,':',':',':abcdxx:abcxxx:abcdefg');
+  Matcher_Extract_Records_Test($src,':','e',':abcdxx:abcxxx:abcdex');
+  Extract_Records::change_default_sp(0);
+  Extract_Records::change_default_pad(0);
+}
+
+sub tests {
+
+  my ($src, $out);
+  my ($fp, $fo);
+  note("Running BStream package tests");
+  can_ok( 'BStream', qw( new size length full get shift_bytes ) );
+  $src='abcdefghijklm';
+  open($fp, "<", \$src) or die "Failed to open variable-->$src<--as STDIN:  $!";
+  my $B=new BStream($fp,5);
+  BStream_Class_tests($B);
+  close($fp);  # all done with that data source
+
+  note("Running Match_Stream package tests");
+  isa_ok( 'Match_Stream', qw( BStream ) );
+  can_ok( 'Match_Stream', qw( new size length full get shift_bytes unshift_bytes str_find reg_find ) );
+  $src='abcdefghijklm';
+  open($fp, "<", \$src) or die "Failed to open variable-->$src<--as STDIN:  $!";
+  my $M=new Match_Stream($fp,5);
+  Match_Stream_Class_tests($M);
+  BStream_Class_tests($M);  # These should work on a Match_Stream object!
+  close($fp);
+
+  note("Running Extract_Records package tests");
+  can_ok( 'Extract_Records', 
+	  qw( new str_str str_n reg_reg reg_n change_default_pre change_default_post
+	      change_default_fill change_default_pad change_default_xbeg change_default_xend
+	      change_default_bufsiz change_default_mml change_default_reclen change_default_sp
+	      clear_rec dump_rec trim_rec add_rec length_rec pop_rec find_in_rec
+	      fill pad xbeg xend bufsiz mml reclen regex set_default_options sp pre post set_pre set_post
+	      set_fill set_pad set_xbeg set_xend set_bufsiz set_mml set_reclen set_regex set_sp
+	      _discard_to_match _discard_to_either _extract_to_match _extract_to_either 
+	      _extract_nbytes ) );
+  Extract_Records_Class_tests;
+  done_testing;
+}
+
+=head1 NAME
+
+recs - record extraction utility
+
+=head1 SYNOPSIS
+
+recs filename [ options ] match_start_match [ reclen_bytes ]
+
+cat filename | recs - [ options ] match_regex [ reclen_bytes ]
+
+=head1 DESCRIPTION
+
+recs extracts records from a data stream.  The arguments are:
+
+=over 4
+
+=item filename
+
+Filename from which to extract records.  If filaneme='-', then
+STDIN is used for input.
+
+=item record_start_match
+
+String to match for beginning of record.  By default, this is
+a simple string, but see '-r' option.
+
+=item reclen_bytes
+
+Number of bytes for each record.  If not specified, the
+records will be extracted from the record_start_match
+to the occurrence (but not including) the next record_start_match.
+
+=back
+
+=head1 OPTIONS
+
+=over 4
+
+=item -a
+
+start a new record at every match to beginning of record
+marker, even if the number of bytes for a record has
+not yet been read.  Missing bytes will be filled with
+the fill character.
+
+=item -f=string
+
+Fill character(s) for padded records.  If not specified,
+a null character is used.
+
+=item -v
+
+verbose mode:  display diagnostic information
+
+=item -x
+
+Exclude the bytes matching the beginning-of-record
+marker from the extracted records.  By default, they
+are included.
+
+=item -z
+
+Exclude the bytes matching the end-of-record marker
+from the extracted records.  By default, they are 
+included.
+
+=item -mml=maximum_match_length (bytes)
+
+maximum anticipated match string length.  This is needed
+to make sure that matches don't get missed by having
+the stream of bytes which would have matched be split
+across a buffer boundary.  A warning message is emitted
+if a match is ever found where the length of the match
+is greater than this parameter.  By default, the parameter
+is set to the length of the match string.  This is not
+a particularly good number for regex's.  (E.g., what is 
+the maximum match length for the regex '\d+'?)
+
+=item -r
+
+Interpret match strings as regexes, rather than
+simple strings.
+
+=item -e=string
+
+string to match for end of record
+
+=item -mml=n
+
+minimum number of bytes to assume for a regex match
+(algorithm really needs this help for regexes like
+'\d+':  there's no way to know how many digits might
+match, and we need to bound the match string so that 
+we can get a reasonable buffer size, and make sure
+that we match strings which go across buffer boundaries.
+
+=item -min_reclen=n
+
+minimum record length for variable record length
+extractions.  Records will be padded to this length
+using the fill string.  This can be used for 
+both fixed record length extractions, and also for
+pattern-based variable record length extractions.
+
+=item -max_reclen=n
+
+maximum record length for variable record length
+extractions.  For fixed record length extractions,
+the output records will be truncated to this length.
+For variable length extractions, the search for the
+termination pattern will cease after max_reclen bytes
+have been extracted.
+
+=item -append=string
+
+Add a string of characters to mark the end of each 
+output record.
+
+=item -prepend=string
+
+Prepend a string of characters to mark the beginning
+of each output record
+
+=item -nl
+
+append a newline to each record.  if the -append option
+is specified, a newline is appended to that string.
+
+=item -help
+
+show all available help
+
+=back
+
+=cut
