@@ -1,0 +1,256 @@
+#!/usr/bin/perl -w
+
+use strict;
+use Data::Dumper;
+use lib "/Users/imel/Desktop/Dropbox/dev/lib";
+use Util::Msg;
+
+# msg_set_opt qw( CALLER );
+msg_output( *STDOUT );
+
+# args must all be defined.  This function
+# returns an array of record lengths to test
+# for a given filesize, with specified minimum and
+# maximum number of bytes, as well as a "factor"
+# parameter, a multiple of which the record lengths
+# are required to be.
+
+sub get_lengths {
+  my $size=shift;
+  my $min=shift;
+  my $max=shift; 
+  my $fact=shift;
+  my $part=shift;
+  my @r;
+  for (my $i=$min; $i<=$max; $i++) {
+    unless ($part) { next if $size % $i }
+    push @r, $i unless $i % $fact;
+  }
+  return @r;
+}
+
+# this is the heart of the routine.  Probably should use
+# the Inline::C module to make it faster.
+# buffer must be at least twice the correlation length,
+# otherwise we can't do the calculation
+
+sub auto_corr {
+  my $b=shift;  # buffer data
+  my $a=shift;  # correlation length to calculate
+  my $l=length($b);
+  return 0 unless $l>=2*$a;
+  my $b0=substr($b,0,$l-$a);
+  my $ba=substr($b,$a,$l-$a);
+  my $r= ~("$b0" ^ "$ba");  # NXOR
+  # now need a convenient way to count 1 bits
+  # this is probably pretty slow...  :/
+  my $f=0;
+  my $i=0;
+  while ($i<$l-$a) { $f+=vec($r,$i++,1) }
+  return $f;
+}
+
+use Getopt::Long;
+use Pod::Usage;
+
+my %o=();
+GetOptions( \%o, 'v|verbose', 'h|help', 'f|full', 'q|quiet', 'part|partial',
+	    'skip|header=i', 'min=i', 'max=i', 'minrecs=i', 'maxbufs=i',
+	    'fact|factor|mult=i', 'only=s', 'limit=i', 'reduce=f');
+
+# initialize defaults on certain options
+
+for (qw( skip part ))            { $o{$_} //= 0 }
+for (qw( min fact reduce ))      { $o{$_} //= 1 }
+for (qw( minrecs ))              { $o{$_} //= 2 }
+
+pod2usage(-verbose=>2), exit if $o{h};
+
+my $file=$ARGV[0];  # first argument is filename
+
+my $filesize = -s $file // $o{max};  
+die "Must specify -max option when streaming from STDIN.  $0 -help for help."
+  unless defined $filesize;
+
+# enforce filesize >= 2 bytes here
+
+my $databytes=$filesize-$o{skip};
+
+$o{max} //= int($databytes/$o{minrecs});
+
+my @R = defined $o{only} ? split(',',$o{only}) 
+                         : get_lengths($databytes,$o{min},$o{max},$o{fact},$o{part});
+
+msg "Checking Record Lengths ".join(', ',@R)." bytes";
+
+open my $fp, "<$file" or die "Can't open $file for input";
+
+my $B;
+read($fp,$B,$o{skip}) if $o{skip};  # skip over the requested bytes
+
+my $bufsiz=2*$R[-1];  # set bufsiz to twice maximum record length
+my %F;     # hash of autocorrelation results for each entry in @R
+@F{@R}=0;  # initialize to zero for each entry
+my $nb;
+my $i=0;
+while ( ($nb=read($fp,$B,$bufsiz))==$bufsiz ) {
+  ++$i;
+  my $F0=auto_corr($B,0);  # should be able to simplify this to a direct number
+  foreach my $r (@R) { 
+    my $f=auto_corr($B,$r)/$F0;
+    $F{$r}+=$f;
+    msg "buf $i reclen $r corr $f accum-corr $F{$r}" if $o{v};
+  }
+  last if (defined $o{maxbufs}) and ($i>=$o{maxbufs});
+}
+
+for (values %F) { $_/= $i }  # normalize 
+
+# sort on correlation results, then throw all away except for the winner
+my @R_SORT = sort { $F{$b} <=> $F{$a} } keys %F;
+
+msg "Table of Sorted Correlations" if $o{v};
+for my $r (@R_SORT) { msg sprintf("%5.2f%% for reclen %d",$F{$r},$r) if $o{v} }
+
+msg $R_SORT[0], 'RESULT';
+msg 100.0*$F{$R_SORT[0]}, 'CORR' unless $o{q};
+msg "Based on $i buffers, each of length $bufsiz" unless $o{q};
+
+
+
+__END__
+
+=head1 NAME - recl
+
+Attempt to estimate the record length of a binary file
+
+=head1 SYNOPSIS 
+
+  recl filename [ options ]
+  cat filename | recl - max=bytes [ options ]
+
+=head1 DESCRIPTION
+
+recl performs an autocorrelation on the bytes in the file, at all possible record-lengths,
+possibly constrained by the options.  The minimum record length is a single byte, the
+maximum record length is one-half the filesize in bytes (rounded down).  The maximum
+record length being less than or equal to the filesize comes from needing to be able 
+to perform at least one auto-correlation calculation.  
+
+The options (see OPTIONS) can be used to bracket the possible record lengths, to specify
+that record lengths are an even multiple of some number of bytes, or even to limit the 
+record lengths to a list of possibilities.
+
+The auto-correlation function is:  f(R) = SUM byte(i)*byte(i+R), where the sum is
+taken over every byte in the file from i=0 to i=filesize-1-R.  (But see options
+which can change this range.)
+
+recl calculates the ratio f(R)/f(0) for each possible value of R, and reports
+the value of R corresponding to the maximum ratio.
+
+=head1 OPTIONS
+
+recl can take a long time to run to check every possible record length for a large file.
+Using the available options to provide additional information to limit the scope of 
+record lengths which need to be checked can greatly improve performance.
+
+=over 4
+
+=item -full
+
+Use the entire program to check for record lengths, even if 
+the -max option is specified to limit the record length to less 
+than the entire file length.
+
+=item -partial
+
+With this option set, recl will not assume that the file is
+made up of complete records.  This can greatly increase the
+number of record lengths which must be checked.
+
+=item -skip=bytes
+
+Start the autocorrelation calculation at the specified byte offset
+from the beginning of the file.  Useful in the case of binary
+data with unknown record length but a known (or at least,
+a known maximum) size header.  
+
+Unless the -partial option is set, recl will assume that the
+record size is an integer divisor of (filesize - skip).
+
+=item -min=bytes
+
+Minimum record length, in bytes.
+
+=item -max=bytes
+
+Maximum record length, in bytes.  This option must be specified
+when streaming the file via STDIN.
+
+=item -fact=bytes (also -mult=bytes)
+
+Record length is a multiple of the specified number of bytes.  
+I.e., if the file is know to consist of doubles, set -factor=8.
+
+=item -minrecs=N
+
+Mininum number of records that the file must contain.  This
+is equivalent to specifying a -max constraint.  If N is the
+minimum number of records, then the equivalent -max constraint
+is (filesize-skip)/N bytes, rounded down.  If the -max option
+is specified, its value takes precedence over the -minrecs
+option.
+
+=item -maxbufs=N
+
+Maximum number of buffers to read in the file.  By default,
+the entire file is used.  Setting this to a low number
+should speed of the calculation dramatically, if
+the -max parameter (or -minrecs parameter) is also set
+to a modest value.
+
+=item -only=comma_separated_list_of_byte_lengths
+
+Specify a comma-separated list of record lengths to check.  Useful
+when trying to decide between a finite number of possibilities.
+
+=item -limit=bytes
+
+Don't perform the autocorrelation over the entire filesize, but
+limit it to a sum over the specified number of bytes.
+
+=item -reduce=factor
+
+This has an effect similar to the -limit option, but instead of
+specifying the number of bytes to limit the autocorrelation sum,
+the sum is performed over the filesize reduced by the specified
+factor (rounded down).  The factor does not have to be an integer,
+but must be greater than or equal to one.
+
+=item -verbose
+
+Report the autocorrelation function values for every tested
+record length.
+
+=item -quiet
+
+No diagnostics other than the result.
+
+=item -help
+
+Display this help information.
+
+=back
+
+=head1 EXAMPLES
+
+=over 4
+
+=item recl filename
+
+=item recl filename
+
+=item recl filename
+
+=back
+
