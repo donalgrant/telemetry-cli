@@ -30,9 +30,9 @@ dev = [
     "tomli>=2; python_version < '3.11'",
 ]
 
-# Console scripts are added as each tool is ported:
-# [project.scripts]
-# pick = "telemetry_cli.pick.cli:main"
+# Console scripts are added as each tool is ported.
+[project.scripts]
+pick = "telemetry_cli.pick.cli:main"
 
 [project.urls]
 Repository = "https://github.com/donalgrant/telemetry-cli"

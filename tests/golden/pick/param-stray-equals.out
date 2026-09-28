@@ -1,0 +1,60 @@
+
+pick Usage:
+
+   pick filename recordLength -options parameters fields
+   cat datafile | pick recordLength -options parameters fields
+
+The filename must be the first command line argument if specified.
+The record length (bytes, or specify data type units) must be the 
+next command line argument.  See ?p for alternatives.
+
+Detailed Help available:
+       'pick ?p' for help on parameters
+       'pick ?r' for help on field requests
+       'pick ?f' for help on printFormatLists
+       'pick ?t' for help on data types
+       'pick ?m' for help on move requests
+       'pick ?o' for help on options
+       'pick ?g' for help on groupings and multiplers
+       'pick ?x' for some examples
+       'pick ?q' for help on symbol files
+       'pick ?v' for version and author
+       'pick ??' for all help available
+(Pipe the output to more, i.e., 'pick ?? | more' for readability.)
+  
+Or, view the embedded man page (POD) via:
+   
+   perldoc ../legacy/pick/pick
+
+
+
+The parameters are of the form:
+   key1 = val1 key2 = val2 ...
+
+The available parameter keywords are listed below.
+The value is a number of records for the start, stop,
+skip, nrecs, rec and every keys, a number of bytes
+or data type words (see data type help) for the head,
+length and size keys.  The file key takes an ascii filename.
+
+file:   alternative way to specify filename. 
+        (filename is a synonym for file)
+size:   alternative way to specify recordLength.
+        (length is a synonym)
+
+start:  First record to extract (zero offset), default 0
+stop:   Last record to extract, default is '-1', indicating EOF.
+skip:   Number of records to skip between each extract.
+        (default is zero; extract every record)
+head:   Number of bytes or data words to skip before
+        counting records.  E.g., head=256 ignores a
+        256-byte header, head=4z ignores a header of
+        four single-precision complexes.  (32 bytes)
+
+rec:    Extract a single record (same as start=stop=rec)
+nrecs:  Use instead of specifying both start and stop;
+        determines number of records to extract.  I.e,
+        start=0 nrecs=11 is the same as start=0, stop=10
+every:  Use instead of skip; every=10 gets every 10th record.
+        (i.e., same as skip=9)
+

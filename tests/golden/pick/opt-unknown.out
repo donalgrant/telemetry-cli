@@ -1,0 +1,49 @@
+
+pick Usage:
+
+   pick filename recordLength -options parameters fields
+   cat datafile | pick recordLength -options parameters fields
+
+The filename must be the first command line argument if specified.
+The record length (bytes, or specify data type units) must be the 
+next command line argument.  See ?p for alternatives.
+
+Detailed Help available:
+       'pick ?p' for help on parameters
+       'pick ?r' for help on field requests
+       'pick ?f' for help on printFormatLists
+       'pick ?t' for help on data types
+       'pick ?m' for help on move requests
+       'pick ?o' for help on options
+       'pick ?g' for help on groupings and multiplers
+       'pick ?x' for some examples
+       'pick ?q' for help on symbol files
+       'pick ?v' for version and author
+       'pick ??' for all help available
+(Pipe the output to more, i.e., 'pick ?? | more' for readability.)
+  
+Or, view the embedded man page (POD) via:
+   
+   perldoc ../legacy/pick/pick
+
+
+
+The options are of the form -opt1opt2... or -opt1 -opt2:
+
+l:  print a line number for every output line.
+n:  print a record number for every output line.
+m:  print the byte location in the file for every output line.
+r:  reverse the order of the bytes.
+u:  all output is in binary format only; ignore print requests
+b:  fast version of 'u' option:  no bit masking or byte reversal
+q:  quiet output; turn off diagnostic messages, which are sent to STDERR
+s:  suppress c/r after printing for each record
+
+For example,
+              'pick file.dat 20f -nlr ...'
+would print each line with the line number, then
+  the record number, followed by whatever data were
+  requested in the command line (represented by '...').
+  These data would be interpreted in reverse byte order
+  before printing.
+

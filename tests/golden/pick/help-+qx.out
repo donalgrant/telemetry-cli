@@ -1,0 +1,86 @@
+
+
+  Example Field Requests:
+
+  4d0+30 2z 5i
+
+  Extract, starting at byte 30 in the record, four
+  double-precision floats, print in floating point format,
+  two single-precision complex's, print real followed
+  by imaginary components for each, and five 4-byte
+  signed integers, printing in signed decimal format.
+
+  6[ f i ]
+
+  From the present position in the record,
+  extract a series of 6 4-byte float and
+  4-byte integer pairs, printing the
+  floats in floating point format and the
+  integers in signed decimal format.
+
+  Z20 +1280Z ZMP
+
+  Extract the twentieth double-precision complex
+  in the record, print in floating point format
+  (real <sp> imaginary), move forward 1280 double
+  precision complexes (1280*16 bytes) and extract
+  another double precision complex, printing the
+  magnitude followed by the phase in radians.
+
+  20[ f 3[ wx cb ] +1000 i:27d -1091 ]
+
+  Extract a 4-byte float (print in floating point),
+  3 unsigned short-signed char pairs, printing the
+  short in hex and the char in binary, move forward
+  1000 bytes, extract a four-byte signed integer,
+  printing only the 5 most significant bits
+  in decimal format, and move back 1091 bytes.
+  Repeat this operation 20 times for each record.
+
+  Note that for moves, the current position in the record
+  is the location after the most recent request.  For example,
+  in the above, the +1000 byte move is referenced from the
+  position after the third short/byte pair.
+
+  Complete Examples
+
+  pick file1.dat 256 20c100c rec=1
+
+  Prints twenty characters in ascii format starting
+  at byte 100 for the second (256-byte) record only
+  in file1.dat.
+
+  pick file2.dat 5120f 10f500 head=5i start=500
+
+  Prints in floating point format ten consecutive
+  single-precision floats starting at the 500'th
+  float in the record, for every record starting
+  with record number 500 (the 501'st 5120*4=20480 byte
+  record in file2.dat). The record count begins after a
+  5 integer (20 byte) header.
+
+  pick file3.dat 80 40[ cc +1 ] skip=1
+
+  Prints every other character in each record
+  (ascii format), skipping every other record.
+  (The first character in the file is printed.)
+
+  pick gold225-1.laux 128 +90 32b -b \
+     start=`pick gold225-1.laux 128 +88 w -n \
+     | awk '{ if ($2==0) { print $1 ; exit;}}'` \
+  | pick 4096 +439 50A
+
+  This command line actually launches three pick processes
+  in order to extract a field from an AIRSAR subcommutated
+  header.  The first 'pick' command extracts the subcommutated
+  header, starting with the record specified by the result
+  of the second pick command, which extracts the index field
+  from the header.  When the index field reaches zero, a new
+  subcommutated header begins.  So the output of the second
+  pick command is sent to awk to look for the record corresponding
+  to an index value of zero.  The output of the first pick command
+  is now a set of subcommutated headers (in their original binary
+  format) which is piped to the third pick command, which selects
+  the desired field:  50 Ascii characters starting at an offset
+  from the beginning of the record by 439 bytes.
+

@@ -1,8 +1,18 @@
+import os
 import shutil
 import subprocess
 from pathlib import Path
 
 import pytest
+from hypothesis import HealthCheck, settings
+
+# Profiles for the Hypothesis tests that compare against perl. "ci" is the
+# default; use HYPOTHESIS_PROFILE=deep (or --hypothesis-profile=deep) for a
+# longer search.
+_fuzz = {"deadline": None, "suppress_health_check": [HealthCheck.too_slow]}
+settings.register_profile("ci", max_examples=150, **_fuzz)
+settings.register_profile("deep", max_examples=5000, **_fuzz)
+settings.load_profile(os.environ.get("HYPOTHESIS_PROFILE", "ci"))
 
 HERE = Path(__file__).parent
 ROOT = HERE.parent

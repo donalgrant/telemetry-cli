@@ -1,0 +1,13 @@
+
+
+  A move request has the format:
+    (+|-)N'type'
+  where the '+' or '-' specifies the move direction,
+    N is the number of data words to move (bytes if no
+    'type' identifier is specified).  See below for 'type'
+    specifiers.
+  Examples:  +2 -237 +5z -3i
+    these move the current location in the record by
+    forward 2 bytes, back 237 bytes, forward 40 bytes
+    and back 12 bytes, respectively.
+

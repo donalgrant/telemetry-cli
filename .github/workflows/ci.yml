@@ -18,6 +18,6 @@ jobs:
       - run: pip install -e '.[dev]'
       - run: ruff check . && ruff format --check .
       # ubuntu-latest ships perl, so the oracle tests (-m oracle) run here too.
-      - run: pytest -q
+      - run: pytest -q --cov=telemetry_cli --cov-branch --cov-fail-under=95
       - name: Golden files match the legacy Perl tools
         run: python tools/make_golden.py --check

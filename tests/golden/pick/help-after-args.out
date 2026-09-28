@@ -1,0 +1,24 @@
+
+
+         The following data types are supported by pick:
+         (Sizes in bytes are listed in brackets.)
+
+         Integral Data Types:
+          'c' [1] signed char;     'b' [1] unsigned char
+          's' [2] signed short;    'w' [2] unsigned short
+          'i' [4] signed int;      'u' [4] unsigned int
+
+         whether or not an integral data type is signed only
+         really matters to the default output printformat.
+         The printformat used determines whether the data are
+         interpreted as signed or unsigned.
+
+          'S' [1] is a synonym for 'c', but uses
+                  the 'S' printFormat as default.
+          'A' [1] is a synonym for 'c', but uses
+                  the 'A' printFormat as default.
+
+         Floating Types:
+          'f' [4] single float;    'd' [8] double float
+          'z' [8] float complex;   'Z' [16] double complex
+
