@@ -255,6 +255,7 @@ SINGLE = {
     "frames.bin": frames,
     "lines.txt": lines,
     "big.bin": big,
+    "aaaa.txt": lambda: b"a" * 5000,
     "recs-testfile.txt": lambda: (HERE.parent.parent / "legacy/recs/testfile").read_bytes(),
 }
 

@@ -1,0 +1,5 @@
+#
+# A variable number of records: each random number below 0.5 doesn't count
+#
+random     # 0  # 1 # 'f' # rand(1.0)
+finished   # -1 # 1 # X   # --$::I if $P{random}{value}<0.5

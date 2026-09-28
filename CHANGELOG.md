@@ -86,6 +86,32 @@ Perl script's own `-test` suite, ported to pytest.
 Regexes (`-r`) are now Python's rather than Perl's. They agree on the kinds of
 patterns recs is used with.
 
+### tgen
+
+tgen is ported. Its command files are now Python, and `tgen --convert`
+translates Perl command files. The eight example command files from the
+original, and further test files covering the rest of the language, give the
+same output byte for byte as the Perl tgen did with the originals. That
+includes random output: both versions use Perl's random number generator
+(drand48), so a seeded run matches the Perl run with the same `srand` seed.
+Random tests generate thousands of Perl command files, convert them, and
+compare the two versions' output.
+
+**Changes**
+
+- **Command files are Python.** The layout is the same (five `#`-separated
+  fields, comments, continuation lines); the code in the fields is Python.
+  `$::I` is `I`, `$P{name}{value}` is `P.name.value`, and helpers give Perl's
+  `%`, bit operators and `.` where the behavior differs from Python's.
+- **`tgen --convert`** translates Perl command files, and marks lines it can't
+  translate with `# TODO(convert)`.
+- **Errors in a field stop tgen** with the file, line and field. The Perl
+  silently used the field's source text as its value, which usually packed as
+  0.
+- **`-seed=n`** (new) makes random output repeatable.
+- The file helpers open each file once, rather than once per frame.
+- A bad option is an error; the Perl warned and carried on.
+
 ### recl (not yet ported)
 
 - The autocorrelation counted only the first eighth of the bits in each

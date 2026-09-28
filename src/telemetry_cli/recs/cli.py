@@ -12,6 +12,7 @@ import os
 import sys
 from typing import BinaryIO, TextIO
 
+from .._cli import broken_pipe
 from .._getopt import OptionError, getoptions
 from .extract import Extractor, RecsError
 
@@ -173,7 +174,7 @@ def main(
     except RecsError as e:
         return error(str(e))
     except BrokenPipeError:
-        return 0
+        return broken_pipe(stdout)
     finally:
         if inp is not stdin:
             inp.close()

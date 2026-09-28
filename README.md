@@ -8,7 +8,8 @@ pipelines:
 - **recs** extracts records from a byte stream by their start and end markers
   ([manual](docs/recs.md)).
 - **recl** estimates the record length of a binary file (not yet ported).
-- **tgen** generates synthetic telemetry from a command file (not yet ported).
+- **tgen** generates synthetic telemetry from a command file
+  ([manual](docs/tgen.md)).
 
 They are Python ports of Perl tools written at JPL. The command lines are
 unchanged, and so is the output, apart from the fixes listed in the

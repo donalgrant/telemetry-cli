@@ -2755,6 +2755,14 @@
   "exit": 0,
   "stderr": []
  },
+ "repetitive-input": {
+  "exit": 0,
+  "stderr": []
+ },
+ "repetitive-input-between": {
+  "exit": 0,
+  "stderr": []
+ },
  "stdin-between": {
   "exit": 0,
   "stderr": []

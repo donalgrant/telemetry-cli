@@ -1,0 +1,37 @@
+#
+# Exercise the command-file language (for the golden tests)
+#
+; semicolon comment
+! bang comment
+$::n=3;                        # a constant
+$::name='tgen';
+$::o=0;
+
+sync     # 0            # 1                # 'N'      # 0x03915ed3
+count    # 4            # 1                # 'S'      # $::I
+# an item written over part of another: the later one wins
+overlap  # 5            # 1                # 'C'      # 0xAA
+triple   # 6            # 1                # 's3'     # [ $::I, -$::I, $::I*$::I ]
+text     # 12           # 1                # 'a6'     # $::name . '!'
+spaced   # 18           # 1                # 'A6'     # 'ab'
+zstr     # 24           # 1                # 'Z4'     # 'abcdef'
+power    # 28           # 1                # 'L'      # 2**$::n + ($::I<<2)
+half     # 32           # 1                # 'f'      # $::I/2.0
+double   # 36           # 1                # 'd'      # $::I*1.5 - 0.25
+floatoff # 44.7         # 1                # 'C'      # 7
+calc     # -1           # 1                # X        # $::I*10
+usecalc  # 45           # 1                # 'C'      # $P{calc}{value} + 1
+off_of   # $P{count}{offset}+42 # 1        # 'C'      # $P{count}{offset}
+odd      # 47           # $::I % 2         # 'C'      # 0xEE
+even     # 48           # ($::I % 2) == 0  # 'C'      # 0xDD
+masked   # 49           # 1                # 'C'      # ($::I & 3) | 0x40
+typed    # 50           # 1                # "C$::n"  # [ map { $_ * 2 } (1..$::n) ]
+contin   # 53           \
+         # 1            \
+         # 'n'          \
+         # 0x1234
+gap      # 60           # 1                # 'C'      # 0x55
+# $P{...} pasted the value in as text, so floats keep 15 significant digits
+third    # -1           # 1                # X        # 1/3
+use3     # 64           # 1                # 'd'      # $P{third}{value}
+direct   # 72           # 1                # 'd'      # 1/3
