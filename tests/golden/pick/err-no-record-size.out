@@ -24,5 +24,5 @@ Detailed Help available:
   
 Or, view the embedded man page (POD) via:
    
-   perldoc /Users/imel/gitdev/donalgrant/telemetry-cli/legacy/pick/pick
+   perldoc ../legacy/pick/pick
 

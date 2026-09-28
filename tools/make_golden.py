@@ -31,10 +31,12 @@ def run_perl(tool: str, case: Case) -> tuple[bytes, int, list[str]]:
     perl = shutil.which("perl")
     if not perl:
         sys.exit("perl is required to generate golden files")
-    script = ROOT / "legacy" / tool / tool
+    # A relative path, because pick's usage text prints $0 and the golden
+    # output must not depend on where the repo is checked out.
+    script = os.path.relpath(ROOT / "legacy" / tool / tool, TESTS)
     env = {**os.environ, **case.env}
     p = subprocess.run(
-        [perl, "-I", str(ROOT / "legacy"), str(script), *case.args],
+        [perl, "-I", "../legacy", script, *case.args],
         input=case.stdin_bytes(),
         capture_output=True,
         cwd=TESTS,
