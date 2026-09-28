@@ -33,6 +33,7 @@ class BStream:
         self.fp = fp
         self.size = size or 1024  # size=0 is not allowed
         self.data = b""
+        self.consumed = 0  # net bytes taken from the front (for spotting endless loops)
         self._add_bytes()
 
     def _add_bytes(self, offset: int = 0, nbytes: int | None = None) -> int:
@@ -65,6 +66,7 @@ class BStream:
         nbytes = min(nbytes, length)
         out = self.data[:nbytes]
         self.data = self.data[nbytes:]
+        self.consumed += len(out)
         to_add = self.size - (length - nbytes)
         if to_add > 0:
             self._add_bytes(length - nbytes, to_add)
@@ -72,6 +74,7 @@ class BStream:
 
     def unshift_bytes(self, src: bytes) -> int:
         self.data = src + self.data
+        self.consumed -= len(src)
         return len(src)
 
 
@@ -289,9 +292,6 @@ class Extractor:
             self.add_rec(self.M.shift_bytes(n))
         return 0
 
-    def _state(self):
-        return (len(self.M), self.M.data[:64], len(self.record))
-
     # --- the two kinds of extraction -------------------------------------------------
 
     def match_n(self, match: bytes, reclen: int, mml: int | None = None, max_recs=-1) -> int:
@@ -363,15 +363,14 @@ class Extractor:
             i += 1
         return i
 
-    def _progress(self, last, stuck):
-        state = self._state()
-        if state == last:
+    def _progress(self, most, stuck):
+        """Stop if many passes in a row consume no new input."""
+        if most is not None and self.M.consumed <= most:
             stuck += 1
             if stuck > self.MAX_STEPS_WITHOUT_PROGRESS:
                 raise RecsError("the markers match without consuming any input; stopping")
-        else:
-            stuck = 0
-        return state, stuck
+            return most, stuck
+        return self.M.consumed, 0
 
     # Perl-style entry points: str_* use plain strings, reg_* regexes
     def str_n(self, match, reclen, *a):

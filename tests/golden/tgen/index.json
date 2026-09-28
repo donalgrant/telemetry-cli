@@ -1,0 +1,421 @@
+{
+ "arb_data-fill": {
+  "exit": 0,
+  "stderr": []
+ },
+ "arb_data-from-250": {
+  "exit": 0,
+  "stderr": []
+ },
+ "arb_data-from-million": {
+  "exit": 0,
+  "stderr": []
+ },
+ "arb_data-one": {
+  "exit": 0,
+  "stderr": []
+ },
+ "arb_data-random-fill": {
+  "exit": 0,
+  "stderr": []
+ },
+ "arb_data-ten": {
+  "exit": 0,
+  "stderr": []
+ },
+ "arb_data-zero-means-one": {
+  "exit": 0,
+  "stderr": []
+ },
+ "calsweep-fill": {
+  "exit": 0,
+  "stderr": [
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack"
+  ]
+ },
+ "calsweep-from-250": {
+  "exit": 0,
+  "stderr": [
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack"
+  ]
+ },
+ "calsweep-from-million": {
+  "exit": 0,
+  "stderr": [
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack"
+  ]
+ },
+ "calsweep-one": {
+  "exit": 0,
+  "stderr": [
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack"
+  ]
+ },
+ "calsweep-random-fill": {
+  "exit": 0,
+  "stderr": []
+ },
+ "calsweep-ten": {
+  "exit": 0,
+  "stderr": [
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack"
+  ]
+ },
+ "calsweep-zero-means-one": {
+  "exit": 0,
+  "stderr": [
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack"
+  ]
+ },
+ "cond_fill-from-100": {
+  "exit": 0,
+  "stderr": []
+ },
+ "cond_fill-seed1": {
+  "exit": 0,
+  "stderr": []
+ },
+ "cond_fill-seed1-r": {
+  "exit": 0,
+  "stderr": []
+ },
+ "cond_fill-seed1996": {
+  "exit": 0,
+  "stderr": []
+ },
+ "cond_fill-seed1996-r": {
+  "exit": 0,
+  "stderr": []
+ },
+ "cond_fill-seed42": {
+  "exit": 0,
+  "stderr": []
+ },
+ "cond_fill-seed42-r": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-fill": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-from-250": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-from-million": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-one": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-random-fill": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-ten": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-zero-means-one": {
+  "exit": 0,
+  "stderr": []
+ },
+ "err-missing-file": {
+  "exit": 2,
+  "stderr": [
+   "Can't read fixtures/tgen/perl/no-such-file.tgen:  No such file or directory"
+  ]
+ },
+ "err-no-args": {
+  "exit": 2,
+  "stderr": [
+   "Usage:",
+   "    tgen [ options ] command_file [ nframes [ firstframe ] ] > telemetry.dat",
+   "    tgen -help"
+  ]
+ },
+ "features-fill": {
+  "exit": 0,
+  "stderr": []
+ },
+ "features-from-250": {
+  "exit": 0,
+  "stderr": [
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack"
+  ]
+ },
+ "features-from-million": {
+  "exit": 0,
+  "stderr": [
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack",
+   "Character in 'C' format wrapped in pack"
+  ]
+ },
+ "features-one": {
+  "exit": 0,
+  "stderr": []
+ },
+ "features-random-fill": {
+  "exit": 0,
+  "stderr": []
+ },
+ "features-ten": {
+  "exit": 0,
+  "stderr": []
+ },
+ "features-zero-means-one": {
+  "exit": 0,
+  "stderr": []
+ },
+ "files-fill": {
+  "exit": 0,
+  "stderr": []
+ },
+ "files-from-250": {
+  "exit": 0,
+  "stderr": []
+ },
+ "files-from-million": {
+  "exit": 0,
+  "stderr": []
+ },
+ "files-one": {
+  "exit": 0,
+  "stderr": []
+ },
+ "files-random-fill": {
+  "exit": 0,
+  "stderr": []
+ },
+ "files-ten": {
+  "exit": 0,
+  "stderr": []
+ },
+ "files-zero-means-one": {
+  "exit": 0,
+  "stderr": []
+ },
+ "notify-default": {
+  "exit": 0,
+  "stderr": [
+   "99/249",
+   "199/249"
+  ]
+ },
+ "notify-every-7": {
+  "exit": 0,
+  "stderr": [
+   "6/32",
+   "13/32",
+   "20/32",
+   "27/32"
+  ]
+ },
+ "notify-long-name": {
+  "exit": 0,
+  "stderr": [
+   "3/11",
+   "7/11",
+   "11/11"
+  ]
+ },
+ "null_data-fill": {
+  "exit": 0,
+  "stderr": []
+ },
+ "null_data-from-250": {
+  "exit": 0,
+  "stderr": []
+ },
+ "null_data-from-million": {
+  "exit": 0,
+  "stderr": []
+ },
+ "null_data-one": {
+  "exit": 0,
+  "stderr": []
+ },
+ "null_data-random-fill": {
+  "exit": 0,
+  "stderr": []
+ },
+ "null_data-ten": {
+  "exit": 0,
+  "stderr": []
+ },
+ "null_data-zero-means-one": {
+  "exit": 0,
+  "stderr": []
+ },
+ "option-random-fill-long": {
+  "exit": 0,
+  "stderr": []
+ },
+ "option-spellings": {
+  "exit": 0,
+  "stderr": []
+ },
+ "random_size-from-100": {
+  "exit": 0,
+  "stderr": []
+ },
+ "random_size-seed1": {
+  "exit": 0,
+  "stderr": []
+ },
+ "random_size-seed1-r": {
+  "exit": 0,
+  "stderr": []
+ },
+ "random_size-seed1996": {
+  "exit": 0,
+  "stderr": []
+ },
+ "random_size-seed1996-r": {
+  "exit": 0,
+  "stderr": []
+ },
+ "random_size-seed42": {
+  "exit": 0,
+  "stderr": []
+ },
+ "random_size-seed42-r": {
+  "exit": 0,
+  "stderr": []
+ },
+ "subcom-fill": {
+  "exit": 0,
+  "stderr": []
+ },
+ "subcom-from-250": {
+  "exit": 0,
+  "stderr": []
+ },
+ "subcom-from-million": {
+  "exit": 0,
+  "stderr": []
+ },
+ "subcom-one": {
+  "exit": 0,
+  "stderr": []
+ },
+ "subcom-random-fill": {
+  "exit": 0,
+  "stderr": []
+ },
+ "subcom-ten": {
+  "exit": 0,
+  "stderr": []
+ },
+ "subcom-zero-means-one": {
+  "exit": 0,
+  "stderr": []
+ },
+ "turing-from-100": {
+  "exit": 0,
+  "stderr": []
+ },
+ "turing-seed1": {
+  "exit": 0,
+  "stderr": []
+ },
+ "turing-seed1-r": {
+  "exit": 0,
+  "stderr": []
+ },
+ "turing-seed1996": {
+  "exit": 0,
+  "stderr": []
+ },
+ "turing-seed1996-r": {
+  "exit": 0,
+  "stderr": []
+ },
+ "turing-seed42": {
+  "exit": 0,
+  "stderr": []
+ },
+ "turing-seed42-r": {
+  "exit": 0,
+  "stderr": []
+ },
+ "valueV_value-from-100": {
+  "exit": 0,
+  "stderr": []
+ },
+ "valueV_value-seed1": {
+  "exit": 0,
+  "stderr": []
+ },
+ "valueV_value-seed1-r": {
+  "exit": 0,
+  "stderr": []
+ },
+ "valueV_value-seed1996": {
+  "exit": 0,
+  "stderr": []
+ },
+ "valueV_value-seed1996-r": {
+  "exit": 0,
+  "stderr": []
+ },
+ "valueV_value-seed42": {
+  "exit": 0,
+  "stderr": []
+ },
+ "valueV_value-seed42-r": {
+  "exit": 0,
+  "stderr": []
+ }
+}

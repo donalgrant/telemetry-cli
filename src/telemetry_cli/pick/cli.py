@@ -11,6 +11,7 @@ from __future__ import annotations
 import sys
 from typing import BinaryIO, TextIO
 
+from .._cli import broken_pipe
 from .commandline import UsageError, parse, resolve, wants_help
 from .fields import FieldError, parse_fields
 from .formats import FormatError, render
@@ -81,7 +82,7 @@ def main(
             print(f"(see 'pick --help {topics}')", file=stderr)
         return 1
     except BrokenPipeError:
-        return 0
+        return broken_pipe(stdout)
 
 
 def _help_argv(argv: list[str]) -> list[str]:

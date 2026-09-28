@@ -106,17 +106,43 @@ def oracle_command(tool: str, case: Case) -> tuple[str, list[str]]:
     return script, args
 
 
+def tgen_command(script: str, args: list[str]) -> list[str]:
+    """Perl arguments for a tgen case.
+
+    Cases name the Python command file (fixtures/tgen/NAME.tgen); the Perl runs
+    its original, fixtures/tgen/perl/NAME.tgen. The Python version's -seed=N
+    becomes srand(N) before the Perl script runs, since both use drand48.
+    """
+    seed, out = None, []
+    it = iter(args)
+    for a in it:
+        if a.startswith("-seed"):
+            seed = a.split("=", 1)[1] if "=" in a else next(it)
+            continue
+        if re.fullmatch(r"fixtures/tgen/[\w.-]+\.tgen", a):
+            a = a.replace("fixtures/tgen/", "fixtures/tgen/perl/")
+        out.append(a)
+    if seed is None:
+        return [script, *out]
+    return ["-e", "srand(shift @ARGV); do $0; die $@ if $@", seed, *out]
+
+
 def run_perl(tool: str, case: Case) -> tuple[bytes, int, list[str]]:
     perl = shutil.which("perl")
     if not perl:
         sys.exit("perl is required to generate golden files")
     script, args = oracle_command(tool, case)
+    argv = tgen_command(script, args) if tool == "tgen" else [script, *args]
+    env = {**os.environ, **case.env}
+    if tool == "tgen" and argv[0] == "-e":
+        # -e scripts see $0 as "-e"; the wrapper runs the script named by $0
+        argv = ["-e", f"$0 = '{script}'; " + argv[1], *argv[2:]]
     p = subprocess.run(
-        [perl, "-I", "../legacy", script, *args],
+        [perl, "-I", "../legacy", *argv],
         input=case.stdin_bytes(),
         capture_output=True,
         cwd=TESTS,
-        env={**os.environ, **case.env},
+        env=env,
         timeout=20,
         check=False,
     )

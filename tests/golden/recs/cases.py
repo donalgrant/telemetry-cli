@@ -118,6 +118,8 @@ add("warn-end-marker", ["fixtures/recs-testfile.txt", "-r", "-e", r"\d+", "[0-9]
 add("warn-a-fixed", ["fixtures/lines.txt", "-r", "-a", "-f", ".", r"\w+", "12"])
 add("warn-big-buffers", ["fixtures/big.bin", "-r", "-e", r"[a-f]+", r"@@REC\d+"])
 add("warn-a-between", ["fixtures/lines.txt", "-r", "-a", "-e", r"END\n+", r"BEGIN \d+"])
+add("repetitive-input", ["-", "-x", "a", "1"], stdin="fixtures/aaaa.txt")
+add("repetitive-input-between", ["-", "-nl", "aa"], stdin="fixtures/aaaa.txt")
 add("verbose-accepted", ["fixtures/lines.txt", "-v", "BEGIN", "8"])
 
 # --- errors -----------------------------------------------------------------------------

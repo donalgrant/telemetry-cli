@@ -1,8 +1,10 @@
 """Every ```console example in the docs and README runs and prints what it shows.
 
 A console block is a series of "$ command" lines, each followed by its
-expected output. The commands run with bash in a fresh temporary directory,
-with the package's commands on the PATH. Trailing spaces are ignored, since
+expected output. A block preceded by an HTML comment ``<!-- file: NAME -->``
+is written to the file NAME before the examples after it run. The commands
+run with bash in a fresh temporary directory, with the package's commands on
+the PATH. Trailing spaces are ignored, since
 pick's output lines end with spaces that don't survive in Markdown.
 """
 
@@ -18,13 +20,23 @@ import pytest
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS = [ROOT / "README.md", *sorted((ROOT / "docs").glob("*.md"))]
-BLOCK = re.compile(r"^```console\n(.*?)^```", re.MULTILINE | re.DOTALL)
+BLOCK = re.compile(
+    r"(?:<!-- file: (\S+) -->\n)?^```(console|\w*)\n(.*?)^```", re.MULTILINE | re.DOTALL
+)
 
 
 def blocks():
+    """(files to write, console block) for each console block, in order."""
     for doc in DOCS:
-        for n, m in enumerate(BLOCK.finditer(doc.read_text()), 1):
-            yield pytest.param(m.group(1), id=f"{doc.name}-{n}")
+        files: dict[str, str] = {}
+        n = 0
+        for m in BLOCK.finditer(doc.read_text()):
+            name, kind, body = m.groups()
+            if name:
+                files[name] = body
+            elif kind == "console":
+                n += 1
+                yield pytest.param(dict(files), body, id=f"{doc.name}-{n}")
 
 
 def steps(block: str):
@@ -44,8 +56,10 @@ def workdir(tmp_path_factory):
     return tmp_path_factory.mktemp("docs")
 
 
-@pytest.mark.parametrize("block", list(blocks()))
-def test_console_example(block, workdir):
+@pytest.mark.parametrize("files,block", list(blocks()))
+def test_console_example(files, block, workdir):
+    for name, text in files.items():
+        (workdir / name).write_text(text)
     env = {**os.environ, "PATH": f"{Path(sys.executable).parent}{os.pathsep}{os.environ['PATH']}"}
     env.pop("PICKPATH", None)
     for command, expected in steps(block):

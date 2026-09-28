@@ -1,0 +1,11 @@
+#
+# The file helpers: subcom_file, file_lookup and seek_file
+#
+ANT='fixtures/tgen/ant.dat'  # pairs of floats: angle, gain
+
+frame       # 0  # 1 # 'L'   # I
+raw         # 4  # 1 # 'a8'  # subcom_file(ANT, 8*I, 8)
+angle       # 12 # 1 # 'f'   # file_lookup(ANT, 8*I, 4, 'f')
+gain        # 16 # 1 # 'f'   # file_lookup(ANT, 8*I+4, 4, 'f')
+ant_offset  # 20 # 1 # 'L'   # seek_file(ANT, '8*O', 4, 'f', 'X>I/10.0')
+ant_count   # 24 # 1 # 'L'   # O
