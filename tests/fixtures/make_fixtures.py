@@ -179,6 +179,55 @@ def airmoc(order: str) -> bytes:
     )
 
 
+# --- recs fixtures ------------------------------------------------------------------
+
+SYNC = bytes.fromhex("03915ed3")
+
+
+def frames() -> bytes:
+    """Variable-length frames: sync, a length byte, payload. Some payloads hold
+    part of the sync pattern, or all of it, to trip up the matching."""
+    import random
+
+    rng = random.Random(1996)
+    out = b"junk!!!"
+    for n in range(60):
+        # no 0x01 bytes: the recs tests use 0x01 to see where padding goes
+        payload = bytes(rng.choice(range(2, 256)) for _ in range(rng.randrange(5, 120)))
+        if n % 7 == 3:
+            payload = payload[:3] + SYNC[:3] + payload[3:]
+        if n % 11 == 5:
+            payload = payload[:2] + SYNC + payload[2:]
+        out += SYNC + bytes([len(payload)]) + payload
+    return out + b"trailing"
+
+
+def lines() -> bytes:
+    """Text records between BEGIN and END markers, with some noise."""
+    parts = [b"preamble\n"]
+    for n in range(40):
+        parts.append(b"BEGIN %d\n" % n)
+        parts.append(b"value=%d\nname=rec%02d\n" % (n * n, n))
+        if n % 5 == 2:
+            parts.append(b"BEGIN nested?\n")
+        parts.append(b"END\n" if n % 9 != 4 else b"")
+        parts.append(b"noise %d\n" % (n % 3))
+    return b"".join(parts)
+
+
+def big() -> bytes:
+    """40 kB with a marker every ~3000 bytes, for records longer than a buffer."""
+    import random
+
+    rng = random.Random(2012)
+    out = b""
+    for n in range(13):
+        out += b"@@REC%02d" % n + bytes(
+            rng.randrange(97, 123) for _ in range(rng.randrange(2500, 3500))
+        )
+    return out
+
+
 # --- the list of files ----------------------------------------------------------
 
 PAIRED = {
@@ -203,6 +252,10 @@ SINGLE = {
     "header.bin": header,
     "counter.bin": counter,
     "empty.bin": lambda: b"",
+    "frames.bin": frames,
+    "lines.txt": lines,
+    "big.bin": big,
+    "recs-testfile.txt": lambda: (HERE.parent.parent / "legacy/recs/testfile").read_bytes(),
 }
 
 

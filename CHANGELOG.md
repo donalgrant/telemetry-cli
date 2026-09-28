@@ -61,10 +61,33 @@ byte for byte with the Perl original's.
   `subcom`, `hw`, `airmoc`, ...) are bundled. `sym=moc` finds them when the
   file isn't in the current directory or in `$PICKPATH`.
 
-### recs and recl (not yet ported)
+### recs
 
-- **recs:** warnings were printed to stdout, mixed into the extracted records.
-  They will go to stderr.
-- **recl:** the autocorrelation counted only the first eighth of the bits in
-  each buffer, so it usually guessed wrong. `-full`, `-limit` and `-reduce`
-  were accepted but ignored.
+recs is ported. It passes about 700 golden cases (every way of finding
+records, crossed with its options, on text, binary and 40 kB inputs) and the
+Perl script's own `-test` suite, ported to pytest.
+
+**Fixes**
+
+- **Padding** (`recs null fill`) uses null bytes by default, as documented.
+  The Perl padded records with the character `0`.
+- **Warnings go to stderr.** The Perl wrote them to stdout, in the middle of
+  the extracted records, with its own source line numbers.
+- **Command-line errors** (`recs options`, `recs arguments`) stop recs with a
+  message and a nonzero status. The Perl warned about a bad option and
+  carried on without it, and with a missing marker or a non-numeric length it
+  quietly wrote nothing.
+- **Endless loops are errors** (`recs endless loops`): padding with an empty
+  fill string, and markers that match without consuming anything (such as a
+  record length of 0 without `-x`), made the Perl run forever.
+- `-test` ran the Perl script's built-in tests; it now says they have moved
+  into the test suite.
+
+Regexes (`-r`) are now Python's rather than Perl's. They agree on the kinds of
+patterns recs is used with.
+
+### recl (not yet ported)
+
+- The autocorrelation counted only the first eighth of the bits in each
+  buffer, so it usually guessed wrong. `-full`, `-limit` and `-reduce` were
+  accepted but ignored.

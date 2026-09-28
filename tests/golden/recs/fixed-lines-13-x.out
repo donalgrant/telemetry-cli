@@ -1,0 +1,66 @@
+ 0
+value=0
+na 1
+value=1
+na 2
+value=4
+na nested?
+END
+ 3
+value=9
+na 4
+value=16
+n 5
+value=25
+n 6
+value=36
+n 7
+value=49
+n nested?
+END
+ 8
+value=64
+n 9
+value=81
+n 10
+value=100 11
+value=121 12
+value=144 nested?
+END
+ 13
+value=169 14
+value=196 15
+value=225 16
+value=256 17
+value=289 nested?
+END
+ 18
+value=324 19
+value=361 20
+value=400 21
+value=441 22
+value=484 nested?
+nois 23
+value=529 24
+value=576 25
+value=625 26
+value=676 27
+value=729 nested?
+END
+ 28
+value=784 29
+value=841 30
+value=900 31
+value=961 32
+value=102 nested?
+END
+ 33
+value=108 34
+value=115 35
+value=122 36
+value=129 37
+value=136 nested?
+END
+ 38
+value=144 39
+value=152

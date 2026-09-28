@@ -6,7 +6,7 @@ pipelines:
 - **pick** extracts fields from fixed-length binary records and prints them
   ([manual](docs/pick.md)).
 - **recs** extracts records from a byte stream by their start and end markers
-  (not yet ported).
+  ([manual](docs/recs.md)).
 - **recl** estimates the record length of a binary file (not yet ported).
 - **tgen** generates synthetic telemetry from a command file (not yet ported).
 

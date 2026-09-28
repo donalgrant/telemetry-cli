@@ -38,6 +38,10 @@ A case is a table with these keys:
               big-host case is the reference.
     perl_args arguments that make the Perl produce the intended output, e.g.
               "zRI" for the documented meaning of "zg".
+    perl_sub  optional [from, to], two hex byte strings: replace these bytes in
+              the Perl's output. With perl_args, this gives the intended
+              output: recs padding with "-f \x01", with 01 turned into 00,
+              is its documented null padding.
               If neither is given, <id>.out is maintained by hand.
 
 Commands run with tests/ as the working directory.
@@ -75,6 +79,7 @@ class Case:
     mirror: str | None = None
     perl_args: list[str] | None = None
     oracle: str | None = None
+    perl_sub: list[str] | None = None
 
     @property
     def runs_perl(self) -> bool:
@@ -122,8 +127,13 @@ def load_cases(tool: str) -> list[Case]:
 _PERL_AT = re.compile(r" at \S+ line \d+(?:, <\w+> (?:line|chunk) \d+)?\.$")
 
 
+# Perl -w warnings about its own code, not about the input
+_PERL_NOISE = re.compile(r"^(Use of uninitialized value|substr outside of string)")
+
+
 def normalize_stderr(text: str) -> list[str]:
-    return [_PERL_AT.sub("", line).rstrip() for line in text.splitlines() if line.strip()]
+    lines = [_PERL_AT.sub("", line).rstrip() for line in text.splitlines() if line.strip()]
+    return [line for line in lines if not _PERL_NOISE.match(line)]
 
 
 @dataclass

@@ -117,10 +117,24 @@ def run_perl(tool: str, case: Case) -> tuple[bytes, int, list[str]]:
         capture_output=True,
         cwd=TESTS,
         env={**os.environ, **case.env},
-        timeout=60,
+        timeout=20,
         check=False,
     )
-    return p.stdout, p.returncode, normalize_stderr(p.stderr.decode("latin-1"))
+    out, err = p.stdout, normalize_stderr(p.stderr.decode("latin-1"))
+    if tool == "recs":
+        # recs printed its warnings (via Util::Msg, with caller info) into
+        # stdout, in the middle of the records; they belong on stderr.
+        warnings = [m.decode() for m in _RECS_WARN.findall(out)]
+        out = _RECS_WARN.sub(b"", out)
+        err += warnings
+    if case.perl_sub:
+        out = out.replace(bytes.fromhex(case.perl_sub[0]), bytes.fromhex(case.perl_sub[1]))
+    return out, p.returncode, err
+
+
+_RECS_WARN = re.compile(
+    rb"WARN \d{5}_\S+ (Matched bytes \(\d+\) is larger than mml parameter \(\d+\))\n"
+)
 
 
 def python_output(tool: str, case: Case) -> tuple[bytes, int]:

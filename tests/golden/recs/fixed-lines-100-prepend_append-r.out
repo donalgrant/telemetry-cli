@@ -1,0 +1,143 @@
+<<BEGIN 0
+value=0
+name=rec00
+END
+noise 0
+BEGIN 1
+value=1
+name=rec01
+END
+noise 1
+BEGIN 2
+value=4
+name=r>><<BEGIN 3
+value=9
+name=rec03
+END
+noise 0
+BEGIN 4
+value=16
+name=rec04
+noise 1
+BEGIN 5
+value=25
+name=rec>><<BEGIN 6
+value=36
+name=rec06
+END
+noise 0
+BEGIN 7
+value=49
+name=rec07
+BEGIN nested?
+END
+noise 1
+BEGIN >><<BEGIN 9
+value=81
+name=rec09
+END
+noise 0
+BEGIN 10
+value=100
+name=rec10
+END
+noise 1
+BEGIN 11
+value=121>><<BEGIN 12
+value=144
+name=rec12
+BEGIN nested?
+END
+noise 0
+BEGIN 13
+value=169
+name=rec13
+noise 1
+BEGIN >><<BEGIN 15
+value=225
+name=rec15
+END
+noise 0
+BEGIN 16
+value=256
+name=rec16
+END
+noise 1
+BEGIN 17
+value=2>><<BEGIN 18
+value=324
+name=rec18
+END
+noise 0
+BEGIN 19
+value=361
+name=rec19
+END
+noise 1
+BEGIN 20
+value=4>><<BEGIN 21
+value=441
+name=rec21
+END
+noise 0
+BEGIN 22
+value=484
+name=rec22
+BEGIN nested?
+noise 1
+BEGIN >><<BEGIN 24
+value=576
+name=rec24
+END
+noise 0
+BEGIN 25
+value=625
+name=rec25
+END
+noise 1
+BEGIN 26
+value=6>><<BEGIN 27
+value=729
+name=rec27
+BEGIN nested?
+END
+noise 0
+BEGIN 28
+value=784
+name=rec28
+END
+noise 1
+BE>><<BEGIN 30
+value=900
+name=rec30
+END
+noise 0
+BEGIN 31
+value=961
+name=rec31
+noise 1
+BEGIN 32
+value=1024
+>><<BEGIN 33
+value=1089
+name=rec33
+END
+noise 0
+BEGIN 34
+value=1156
+name=rec34
+END
+noise 1
+BEGIN 35
+value>><<BEGIN 36
+value=1296
+name=rec36
+END
+noise 0
+BEGIN 37
+value=1369
+name=rec37
+BEGIN nested?
+END
+noise 1
+>>

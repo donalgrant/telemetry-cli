@@ -1,0 +1,95 @@
+BEGIN 0
+value=0
+nameBEGIN 1
+value=1
+nameBEGIN 2
+value=4
+nameBEGIN nested?
+END
+noBEGIN 3
+value=9
+nameBEGIN 4
+value=16
+namBEGIN 5
+value=25
+namBEGIN 6
+value=36
+namBEGIN 7
+value=49
+namBEGIN nested?
+END
+noBEGIN 8
+value=64
+namBEGIN 9
+value=81
+namBEGIN 10
+value=100
+nBEGIN 11
+value=121
+nBEGIN 12
+value=144
+nBEGIN nested?
+END
+noBEGIN 13
+value=169
+nBEGIN 14
+value=196
+nBEGIN 15
+value=225
+nBEGIN 16
+value=256
+nBEGIN 17
+value=289
+nBEGIN nested?
+END
+noBEGIN 18
+value=324
+nBEGIN 19
+value=361
+nBEGIN 20
+value=400
+nBEGIN 21
+value=441
+nBEGIN 22
+value=484
+nBEGIN nested?
+noise BEGIN 23
+value=529
+nBEGIN 24
+value=576
+nBEGIN 25
+value=625
+nBEGIN 26
+value=676
+nBEGIN 27
+value=729
+nBEGIN nested?
+END
+noBEGIN 28
+value=784
+nBEGIN 29
+value=841
+nBEGIN 30
+value=900
+nBEGIN 31
+value=961
+nBEGIN 32
+value=1024
+BEGIN nested?
+END
+noBEGIN 33
+value=1089
+BEGIN 34
+value=1156
+BEGIN 35
+value=1225
+BEGIN 36
+value=1296
+BEGIN 37
+value=1369
+BEGIN nested?
+END
+noBEGIN 38
+value=1444
+BEGIN 39
+value=1521

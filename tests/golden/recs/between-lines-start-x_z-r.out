@@ -1,0 +1,199 @@
+
+value=0
+name=rec00
+END
+noise 0
+
+value=1
+name=rec01
+END
+noise 1
+
+value=4
+name=rec02
+BEGIN nested?
+END
+noise 2
+
+value=9
+name=rec03
+END
+noise 0
+
+value=16
+name=rec04
+noise 1
+
+value=25
+name=rec05
+END
+noise 2
+
+value=36
+name=rec06
+END
+noise 0
+
+value=49
+name=rec07
+BEGIN nested?
+END
+noise 1
+
+value=64
+name=rec08
+END
+noise 2
+
+value=81
+name=rec09
+END
+noise 0
+
+value=100
+name=rec10
+END
+noise 1
+
+value=121
+name=rec11
+END
+noise 2
+
+value=144
+name=rec12
+BEGIN nested?
+END
+noise 0
+
+value=169
+name=rec13
+noise 1
+
+value=196
+name=rec14
+END
+noise 2
+
+value=225
+name=rec15
+END
+noise 0
+
+value=256
+name=rec16
+END
+noise 1
+
+value=289
+name=rec17
+BEGIN nested?
+END
+noise 2
+
+value=324
+name=rec18
+END
+noise 0
+
+value=361
+name=rec19
+END
+noise 1
+
+value=400
+name=rec20
+END
+noise 2
+
+value=441
+name=rec21
+END
+noise 0
+
+value=484
+name=rec22
+BEGIN nested?
+noise 1
+
+value=529
+name=rec23
+END
+noise 2
+
+value=576
+name=rec24
+END
+noise 0
+
+value=625
+name=rec25
+END
+noise 1
+
+value=676
+name=rec26
+END
+noise 2
+
+value=729
+name=rec27
+BEGIN nested?
+END
+noise 0
+
+value=784
+name=rec28
+END
+noise 1
+
+value=841
+name=rec29
+END
+noise 2
+
+value=900
+name=rec30
+END
+noise 0
+
+value=961
+name=rec31
+noise 1
+
+value=1024
+name=rec32
+BEGIN nested?
+END
+noise 2
+
+value=1089
+name=rec33
+END
+noise 0
+
+value=1156
+name=rec34
+END
+noise 1
+
+value=1225
+name=rec35
+END
+noise 2
+
+value=1296
+name=rec36
+END
+noise 0
+
+value=1369
+name=rec37
+BEGIN nested?
+END
+noise 1
+
+value=1444
+name=rec38
+END
+noise 2
