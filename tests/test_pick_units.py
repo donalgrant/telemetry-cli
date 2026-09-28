@@ -157,6 +157,38 @@ def test_positions_follow_moves_and_offsets():
     ]
 
 
+@pytest.mark.parametrize(
+    "request_,pos",
+    [
+        ("u0", 0),  # the first unsigned int
+        ("u1", 4),  # the second
+        ("w5", 10),  # the sixth unsigned short
+        ("b5", 5),  # the sixth unsigned char
+        ("z60-2", 478),  # the 61st float complex, moved back 2 bytes
+        ("z0+478", 478),
+        ("Z20", 320),  # the 21st double complex
+        ("f500", 2000),  # the 501st float
+        ("4d0+30", 30),
+        ("i0+57", 57),
+    ],
+)
+def test_offsets_count_from_zero(request_, pos):
+    """The positions in the documentation's examples: items count from 0."""
+    assert parse_fields(request_, 30000)[0].pos == pos
+
+
+def test_documented_group_pairs_each_float_with_the_int_400_bytes_on():
+    fields = parse_fields("3[ f +99f i -100f ]", 800)
+    assert [(f.t, f.pos) for f in fields] == [
+        ("f", 0), ("i", 400), ("f", 4), ("i", 404), ("f", 8), ("i", 408)
+    ]  # fmt: skip
+
+
+def test_the_original_group_example_was_off_by_three_floats():
+    fields = parse_fields("2[ f +96f i -100f ]", 800)
+    assert [f.pos for f in fields] == [0, 388, -8, 380]
+
+
 def test_count_zero_means_one_but_double_zero_is_zero():
     assert parse_fields("0i", 8)[0].m == 1
     assert parse_fields("00i", 8)[0].m == 0

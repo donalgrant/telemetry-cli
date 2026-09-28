@@ -36,7 +36,7 @@ Offset:  The 'Offset' has the form:
          included as part of the byteOffset.
          For example, the field
                      z60-2
-         selects the 60th single-precision complex item,
+         selects the 61st single-precision complex item (z0 is the first),
          offset towards the beginning of the record by
          two bytes.  A common convenient way to specify
          an absolute byte location within a record is to
@@ -65,7 +65,7 @@ nBits:  (Not available for data types with more than 4 bytes.)
         For example, the field
                         w5:1:7
         selects the second through eighth bits (1-7)
-        of the fifth unsigned short in the record.
+        of the sixth unsigned short in the record (w0 is the first).
 
 printFormatList:  Zero or more print formats used to
                   specify the format of the output for

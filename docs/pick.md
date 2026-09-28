@@ -120,13 +120,15 @@ written without spaces, for example `4d0+30`, `i:7`, `w5:1:7bdx` or `zMP`.
 - **type** is the data type, below.
 - **Offset** is `dataOffset` or `dataOffset+byteOffset` (or `-byteOffset`).
   `dataOffset` counts items of this type from the start of the record, and
-  `byteOffset` adds bytes to that. `z60-2` is the 60th single-precision complex
-  number, moved two bytes toward the start of the record; `z0+478` is the
-  complex number at byte 478. Without an offset, the request reads the items
-  after the previous request.
+  `byteOffset` adds bytes to that. Like all counting in pick, both count from
+  0: `u0` is the first unsigned int, and `u1` the second, starting at byte 4.
+  `z60-2` is the 61st single-precision complex number, moved two bytes toward
+  the start of the record; `z0+478` is the complex number that starts at byte
+  478. Without an offset, the request reads the items after the previous
+  request.
 - **bitOffset** and **nBits** select bits, for types of 4 bytes or less. Bit 0
   is the least significant. `i:7` uses bits 7 to 31 of an int, and `w5:1:7`
-  bits 1 to 7 of the sixth unsigned short.
+  bits 1 to 7 of the sixth unsigned short (`w0` being the first).
 - **printFormats** are zero or more print formats, below. Each is printed in
   turn: `bdx` prints the value in binary, then decimal, then hex.
 
@@ -160,9 +162,29 @@ $ pick demo.bin 8 -q order=big '2[ w ]' +2 2S
 0 3 !?
 ```
 
-`20[ f +96f i -100f ]` reads 20 pairs of a float and an int, where each int is
-400 bytes after its float. Groups can be nested. There must be no space
-between the repeat count and the bracket.
+Groups can be nested. There must be no space between the repeat count and
+the bracket.
+
+A group's moves are relative to where its last request left off, which makes
+the arithmetic easy to get wrong. Take records of 100 floats followed by 100
+ints (here made with [tgen](tgen.md)), and read each float with the int 400
+bytes after it:
+
+<!-- file: pairs.tgen -->
+```text
+floats # 0   # 1 # 'f>100' # [float(k) for k in range(100)]
+ints   # 400 # 1 # 'l>100' # [1000 + k for k in range(100)]
+```
+
+```console
+$ tgen -q pairs.tgen | pick 800 -q order=big '3[ f +99f i -100f ]'
+0 1000 1 1001 2 1002
+```
+
+After `f`, the position is 4 bytes in; `+99f` moves on 396 bytes to byte 400,
+where `i` reads the int; `-100f` moves back 400 bytes, to byte 4, where the
+next float starts. (The original documentation gave this example as
+`20[ f +96f i -100f ]`, which is off by three floats.)
 
 ## Data types
 
@@ -289,14 +311,15 @@ pickMocomp run.moc velocities skip=100 | xmgr -nxy -source stdin &
 pick file1.dat 256 20c100c rec=1
 ```
 
-Prints twenty characters starting at byte 100 of the second 256-byte record.
+Prints twenty characters starting at byte 100 (the 101st byte) of the second
+256-byte record (`rec=1`).
 
 ```text
 pick file2.dat 5120f 10f500 head=5i start=500
 ```
 
-Prints ten floats starting at the 500th float of each 20480-byte record, from
-record 500 on, after a 20-byte header.
+Prints ten floats starting at the 501st float (`f500`) of each 20480-byte
+record, from record 500 (the 501st record) on, after a 20-byte header.
 
 ```text
 pick file3.dat 80 40[ cc +1 ] skip=1

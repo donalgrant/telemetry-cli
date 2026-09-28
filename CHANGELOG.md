@@ -48,6 +48,13 @@ byte for byte with the Perl original's.
     variables) and its line continuations.
   - The version text is updated, and the pointer to `perldoc` is replaced
     by a link to the manual.
+  - Several examples miscounted items, which count from 0: `z60-2` is the
+    61st complex number, not the 60th; `w5` and `b5` are the sixth short and
+    char, not the fifth; `Z20` is the 21st double complex; `f500` is the
+    501st float.
+  - The group example `20[ f +96f i -100f ]` was off by three floats: it
+    doesn't pair each float with the int 400 bytes on. That's
+    `20[ f +99f i -100f ]`.
 - **`U` output of bit fields** writes the masked value's bytes. The Perl wrote
   the wrong end of them.
 
