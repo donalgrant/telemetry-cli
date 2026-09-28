@@ -1,0 +1,88 @@
+ 
+pick Usage:
+
+   pick filename recordLength -options parameters fields
+   cat datafile | pick recordLength -options parameters fields
+
+The filename must be the first command line argument if specified.
+The record length (bytes, or specify data type units) must be the 
+next command line argument.  See ?p for alternatives.
+
+Detailed Help available:
+       'pick ?p' for help on parameters
+       'pick ?r' for help on field requests
+       'pick ?f' for help on printFormatLists
+       'pick ?t' for help on data types
+       'pick ?m' for help on move requests
+       'pick ?o' for help on options
+       'pick ?g' for help on groupings and multiplers
+       'pick ?x' for some examples
+       'pick ?q' for help on symbol files
+       'pick ?v' for version and author
+       'pick ??' for all help available
+(Pipe the output to more, i.e., 'pick ?? | more' for readability.)
+  
+Or, view the embedded man page (POD) via:
+   
+   perldoc ../legacy/pick/pick
+
+
+  
+  printFormatList:  The printing formats available are:
+  
+          Available to all Data Types:
+          'x' hex               'x' octal
+          'b' binary            'c' ascii
+
+          'S' ascii, with no space between items.
+          'A' ascii, won't print non-printing characters.
+  
+          'U' unformatted (binary bytes) output
+
+          Available to Integral Data Types Only:
+          'd' decimal           'u' unsigned decimal
+  
+          Available to Floating Data Types Only:
+          'g' floating  (For complex types, equivalent to RI format.)
+          'G' same as 'g', but with lots of digits.
+          'D' degrees; assumes the data value is in
+              radians, and performs the conversion to
+              output degrees.
+  
+          Available to Complex Data Types Only:
+          'R' real component    'I' imaginary component
+          'M' magnitude         'P' phase in radians
+                                'D' phase in degrees
+  
+          Non-data print formats for all types:
+          'n' insert CR/LF      's' insert <sp>
+
+          A 'printFormatList' is composed of zero or more
+          printing formats.  If none is specified, the
+          defaults will be used:
+             Data Type       Default Printformat
+                A                    A
+                S                    S
+                c                    c
+                b                    x
+                s                    d
+                w                    u
+                i                    d
+                u                    u
+                f                    g
+                d                    g
+                z                    RI
+                Z                    RI
+
+          For example:
+              f wb zMPn i0+57osss Z b5:1:7bdx
+          Prints a single precision floating point in 'g'
+          format, an unsigned short in binary, a single-
+          precision complex's magnitude and phase followed
+          by a newline, the integer at byte offset 57 in
+          octal followed by three extra spaces, a
+          double-precision complex's real and imaginary
+          component, and bits 1-7 of the fifth unsigned
+          char interpreted first as binary, then decimal
+          and finally hexadecimal.
+  

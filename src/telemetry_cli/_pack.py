@@ -30,6 +30,8 @@ import re
 import struct
 import sys
 
+from ._perl import numify as _to_number
+
 # letter -> (struct code, size in bytes, signed?)  for the integer letters
 _INTS = {
     "c": ("b", 1, True),
@@ -80,25 +82,6 @@ def parse(template: str) -> list[tuple[str, str, int | None]]:
         items.append((letter, order, n))
         pos = m.end()
     return items
-
-
-def _to_number(v) -> float:
-    """Perl's numeric value of v: leading number of a string, else 0."""
-    if isinstance(v, bool):
-        return int(v)
-    if isinstance(v, (int, float)):
-        return v
-    if isinstance(v, (bytes, bytearray)):
-        v = bytes(v).decode("latin-1")
-    m = re.match(
-        r"\s*([+-]?(?:\d+\.?\d*(?:[eE][+-]?\d+)?|\.\d+(?:[eE][+-]?\d+)?|0[xX][0-9a-fA-F]+))", str(v)
-    )
-    if not m:
-        return 0
-    text = m.group(1)
-    if text.lower().startswith(("0x", "+0x", "-0x")):
-        return 0  # Perl numifies "0x1f" as 0
-    return float(text) if any(c in text for c in ".eE") else int(text)
 
 
 def _to_int(v, size: int, signed: bool) -> int:

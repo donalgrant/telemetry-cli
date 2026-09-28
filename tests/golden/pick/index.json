@@ -1,9 +1,7476 @@
 {
+ "ascii-+a-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+a-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+a-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+a-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+a-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+a-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+a-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+a-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+a-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+a-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+s-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+s-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+s-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+s-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+s-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+s-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+s-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+s-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+s-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-+s-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-b-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-b-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-b-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-b-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-b-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-b-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-b-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-b-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-b-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-b-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-bytes-all-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-bytes-all-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-bytes-all-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-c-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-c-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-c-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-c-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-c-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-c-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-c-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-c-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-c-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-c-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-every-other": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-pod-80c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "ascii-pod-80c-error": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-bits-b_0-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0_8-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0_8-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0_8-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_0_8-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3_5-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3_5-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3_5-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3_5-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3_5-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_3_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_7-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_7-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_7-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_7-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_7-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_7_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_7_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_7_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_7_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_7_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_7_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_7_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_7_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_7_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_7_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-b_7_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0_8-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0_8-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0_8-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_0_8-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3_5-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3_5-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3_5-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3_5-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3_5-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_3_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_7-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_7-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_7-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_7-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_7-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_7_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_7_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_7_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_7_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_7_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_7_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_7_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_7_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_7_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_7_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-c_7_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-d_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-d_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-d_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-f_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-f_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-f_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-f_4_8-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-f_4_8-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-f_4_8-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0_32-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0_32-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0_32-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0_32-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_0_32-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16_16-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16_16-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16_16-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16_16-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16_16-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_16_32-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_31-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_31-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_31-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_31-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_31-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_31_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_31_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_31_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_31_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_31_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_31_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_31_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_31_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_31_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_31_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_31_32-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3_29-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3_29-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3_29-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3_29-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3_29-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-i_3_32-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-i_0_8-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-i_0_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-i_0_8-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-i_28-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-i_28-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-i_28-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-i_3_5-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-i_3_5-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-i_3_5-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-s_0_8-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-s_0_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-s_0_8-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-s_12-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-s_12-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-s_12-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-s_3_5-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-s_3_5-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-s_3_5-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-u_0_8-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-u_0_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-u_0_8-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-u_28-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-u_28-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-u_28-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-u_3_5-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-u_3_5-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-u_3_5-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-w_0_8-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-w_0_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-w_0_8-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-w_12-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-w_12-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-w_12-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-w_3_5-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-w_3_5-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-r-w_3_5-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0_16-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0_16-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0_16-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0_16-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0_16-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_0_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_15-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_15-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_15-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_15-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_15-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_15_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_15_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_15_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_15_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_15_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_15_16-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_15_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_15_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_15_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_15_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_15_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3_13-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3_13-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3_13-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3_13-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3_13-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3_16-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_3_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8_16-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8_8-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8_8-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8_8-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-s_8_8-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0_32-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0_32-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0_32-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0_32-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_0_32-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16_16-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16_16-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16_16-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16_16-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16_16-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_16_32-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_31-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_31-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_31-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_31-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_31-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_31_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_31_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_31_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_31_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_31_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_31_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_31_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_31_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_31_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_31_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_31_32-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3_29-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3_29-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3_29-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3_29-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3_29-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-u_3_32-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0_16-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0_16-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0_16-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0_16-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0_16-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_0_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_15-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_15-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_15-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_15-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_15-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_15_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_15_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_15_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_15_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_15_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_15_16-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_15_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_15_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_15_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_15_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_15_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3_13-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3_13-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3_13-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3_13-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3_13-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3_16-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_3_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8_16-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8_8-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8_8-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8_8-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-w_8_8-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-z_2_5-b": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: b"
+  ]
+ },
+ "be-bits-z_2_5-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-bits-z_2_5-x": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: x"
+  ]
+ },
+ "be-group-back-and-forth": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-group-empty": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-group-escaped": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-group-escaped-repeat": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-group-formats-inside": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-group-group-then-field": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-group-nested": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-group-nested-inner-repeat": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-group-nested-three": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-group-one-token": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-group-prefix-with-space": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-group-repeat": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-group-repeat-one": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-group-repeat-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-group-repeat-zero": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-group-simple": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-group-simple-tight": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-group-two-groups": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-group-with-moves": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-move-back-before-start": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-move-back-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-move-back-typed": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-move-complex-units": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-move-forward-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-move-forward-short": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-move-forward-typed": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-move-many": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-move-minus-zero": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-move-move-only": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-move-move-past-end-no-read": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-move-past-end": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-move-space-after": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-move-space-idiom": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-move-space-idiom-at-start": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-move-to-end": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-move-zero-move": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-+z-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-+z-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-+z-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-+z-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-+z-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-+z-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-+z-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-+z-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-+z-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-+z-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-+z-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-+z-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-+z-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-+z-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-+z-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-b-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-b-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-b-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-b-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-b-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-b-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-b-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-b-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-b-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-b-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-b-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-b-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-b-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-b-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-b-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-c-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-c-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-c-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-c-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-c-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-c-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-c-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-c-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-c-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-c-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-c-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-c-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-c-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-c-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-c-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-d-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-d-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-d-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-d-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-d-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-d-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-d-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-d-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-d-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-d-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-d-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-d-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-d-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-d-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-d-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-f-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-f-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-f-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-f-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-f-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-f-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-f-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-f-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-f-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-f-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-f-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-f-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-f-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-f-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-f-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-i-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-i-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-i-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-i-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-i-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-i-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-i-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-i-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-i-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-i-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-i-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-i-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-i-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-i-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-i-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-s-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-s-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-s-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-s-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-s-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-s-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-s-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-s-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-s-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-s-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-s-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-s-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-s-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-s-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-s-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-u-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-u-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-u-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-u-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-u-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-u-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-u-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-u-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-u-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-u-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-u-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-u-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-u-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-u-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-u-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-w-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-w-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-w-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-w-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-w-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-w-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-w-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-w-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-w-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-w-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-w-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-w-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-w-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-w-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-w-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-z-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-z-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-z-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-z-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-z-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-z-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-z-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-z-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-z-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-z-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-z-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-offset-z-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-z-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-z-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-offset-z-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "be-pod-20-groups": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-pod-4d-2z-5i": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-pod-6-f-i": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-pod-format-list": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: n"
+  ]
+ },
+ "be-r-d-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-d-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-r-d-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-d-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-d-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-d-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-d-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-d-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-f-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-f-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-r-f-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-f-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-f-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-f-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-f-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-f-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-i-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-i-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-r-i-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-i-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-i-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-i-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-i-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-i-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-s-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-s-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-r-s-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-s-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-s-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-s-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-s-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-s-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-u-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-u-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-r-u-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-u-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-u-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-u-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-u-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-u-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-w-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-w-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-r-w-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-w-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-w-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-w-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-w-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-r-w-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-airmoc-0": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-airmoc-1": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-aux-0": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-aux-1": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-aux-2": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-aux-3": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-aux-4": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-aux-5": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-case-exact": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-case-other": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-corr-0": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-corr-1": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-corr-2": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-edge": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-edge-head": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-hw-0": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-hw-1": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-mixed-fields": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-moc-0": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-moc-1": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-moc-2": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-moc-3": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-moc-4": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-moc-5": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-moc-6": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-moc-every": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-moc-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-moc-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-path": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-size-override": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-subcom-0": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-subcom-1": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-subcom-2": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-subcom-3": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-subcom-4": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-sym+file": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-sym-sym+table": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+a-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+a-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+a-+g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+a-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "be-type-+a-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-+a-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-+a-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "be-type-+a-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "be-type-+a-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+a-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+a-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+a-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+a-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+a-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+a-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+a-multi": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+a-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+a-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+a-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+a-spacers": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+a-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+a-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+s-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+s-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+s-+g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+s-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "be-type-+s-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-+s-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-+s-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "be-type-+s-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "be-type-+s-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+s-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+s-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+s-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+s-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+s-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+s-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+s-multi": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+s-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+s-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+s-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+s-spacers": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+s-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+s-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+z-+a": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: A"
+  ]
+ },
+ "be-type-+z-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+z-+g": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: G"
+  ]
+ },
+ "be-type-+z-+i": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+z-+m": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+z-+m+p": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+z-+p": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+z-+r": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+z-+s": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: S"
+  ]
+ },
+ "be-type-+z-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+z-b": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: b"
+  ]
+ },
+ "be-type-+z-c": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: c"
+  ]
+ },
+ "be-type-+z-d": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: d"
+  ]
+ },
+ "be-type-+z-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+z-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-+z-multi": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: d"
+  ]
+ },
+ "be-type-+z-n": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: n"
+  ]
+ },
+ "be-type-+z-o": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: o"
+  ]
+ },
+ "be-type-+z-s": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: s"
+  ]
+ },
+ "be-type-+z-spacers": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: s"
+  ]
+ },
+ "be-type-+z-u": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: u"
+  ]
+ },
+ "be-type-+z-x": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: x"
+  ]
+ },
+ "be-type-b-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-b-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-b-+g": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->G<--"
+  ]
+ },
+ "be-type-b-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "be-type-b-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-b-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-b-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "be-type-b-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "be-type-b-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-b-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-b-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-b-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-b-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-b-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-b-g": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->g<--"
+  ]
+ },
+ "be-type-b-multi": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-b-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-b-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-b-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-b-spacers": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->g<--"
+  ]
+ },
+ "be-type-b-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-b-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-c-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-c-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-c-+g": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->G<--"
+  ]
+ },
+ "be-type-c-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "be-type-c-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-c-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-c-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "be-type-c-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "be-type-c-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-c-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-c-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-c-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-c-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-c-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-c-g": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->g<--"
+  ]
+ },
+ "be-type-c-multi": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-c-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-c-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-c-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-c-spacers": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->g<--"
+  ]
+ },
+ "be-type-c-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-c-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-d-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-d-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-d-+g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-d-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "be-type-d-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-d-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-d-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "be-type-d-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "be-type-d-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-d-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-d-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-d-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-d-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-d-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-d-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-d-multi": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-d-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-d-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-d-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-d-spacers": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-d-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-d-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-f-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-f-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-f-+g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-f-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "be-type-f-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-f-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-f-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "be-type-f-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "be-type-f-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-f-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-f-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-f-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-f-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-f-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-f-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-f-multi": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-f-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-f-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-f-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-f-spacers": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-f-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-f-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-i-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-i-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-i-+g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-i-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "be-type-i-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-i-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-i-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "be-type-i-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "be-type-i-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-i-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-i-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-i-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-i-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-i-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-i-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-i-multi": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-i-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-i-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-i-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-i-spacers": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-i-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-i-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-s-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-s-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-s-+g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-s-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "be-type-s-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-s-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-s-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "be-type-s-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "be-type-s-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-s-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-s-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-s-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-s-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-s-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-s-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-s-multi": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-s-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-s-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-s-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-s-spacers": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-s-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-s-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-u-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-u-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-u-+g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-u-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "be-type-u-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-u-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-u-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "be-type-u-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "be-type-u-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-u-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-u-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-u-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-u-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-u-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-u-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-u-multi": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-u-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-u-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-u-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-u-spacers": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-u-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-u-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-w-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-w-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-w-+g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-w-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "be-type-w-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-w-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "be-type-w-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "be-type-w-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "be-type-w-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-w-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-w-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-w-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-w-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-w-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-w-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-w-multi": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-w-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-w-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-w-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-w-spacers": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-w-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-w-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-z-+a": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: A"
+  ]
+ },
+ "be-type-z-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-z-+g": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: G"
+  ]
+ },
+ "be-type-z-+i": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-z-+m": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-z-+m+p": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-z-+p": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-z-+r": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-z-+s": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: S"
+  ]
+ },
+ "be-type-z-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-z-b": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: b"
+  ]
+ },
+ "be-type-z-c": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: c"
+  ]
+ },
+ "be-type-z-d": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: d"
+  ]
+ },
+ "be-type-z-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-z-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "be-type-z-multi": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: d"
+  ]
+ },
+ "be-type-z-n": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: n"
+  ]
+ },
+ "be-type-z-o": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: o"
+  ]
+ },
+ "be-type-z-s": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: s"
+  ]
+ },
+ "be-type-z-spacers": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: s"
+  ]
+ },
+ "be-type-z-u": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: u"
+  ]
+ },
+ "be-type-z-x": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: x"
+  ]
+ },
+ "counter-pod": {
+  "exit": 0,
+  "stderr": []
+ },
+ "empty-file": {
+  "exit": 0,
+  "stderr": []
+ },
+ "empty-stdin": {
+  "exit": 0,
+  "stderr": []
+ },
+ "empty-stdin-head": {
+  "exit": 255,
+  "stderr": [
+   "End of file while seeking past header"
+  ]
+ },
+ "err-bad-bits": {
+  "exit": 0,
+  "stderr": []
+ },
+ "err-bad-format-byte": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->g<--"
+  ]
+ },
+ "err-bad-format-complex": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: x"
+  ]
+ },
+ "err-bad-format-complex-+g": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: G"
+  ]
+ },
+ "err-bad-format-float": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "err-bad-format-int": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "err-beyond-record": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "err-garbage-field": {
+  "exit": 0,
+  "stderr": []
+ },
  "err-no-record-size": {
   "exit": 255,
   "stderr": [
    "Can't find record size; looking at"
   ]
+ },
+ "err-size-zero-param": {
+  "exit": 255,
+  "stderr": [
+   "Can't find record size; looking at"
+  ]
+ },
+ "err-unknown-type": {
+  "exit": 0,
+  "stderr": []
+ },
+ "file-missing": {
+  "exit": 2,
+  "stderr": [
+   "Can't find record size; looking at fixtures/no-such-file"
+  ]
+ },
+ "file-not-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "file-param": {
+  "exit": 0,
+  "stderr": []
+ },
+ "file-param-dash": {
+  "exit": 0,
+  "stderr": []
+ },
+ "file-param-filename": {
+  "exit": 0,
+  "stderr": []
+ },
+ "header-as-record": {
+  "exit": 0,
+  "stderr": []
+ },
+ "header-m": {
+  "exit": 0,
+  "stderr": []
+ },
+ "header-m-stdin": {
+  "exit": 0,
+  "stderr": []
+ },
+ "header-partial-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "header-records": {
+  "exit": 0,
+  "stderr": []
+ },
+ "header-records-stdin": {
+  "exit": 0,
+  "stderr": []
+ },
+ "header-too-long": {
+  "exit": 0,
+  "stderr": []
+ },
+ "header-too-long-stdin": {
+  "exit": 0,
+  "stderr": []
+ },
+ "help-+q": {
+  "exit": 0,
+  "stderr": []
+ },
+ "help-+q+q": {
+  "exit": 0,
+  "stderr": []
+ },
+ "help-+qf": {
+  "exit": 0,
+  "stderr": []
+ },
+ "help-+qg": {
+  "exit": 0,
+  "stderr": []
+ },
+ "help-+qm": {
+  "exit": 0,
+  "stderr": []
+ },
+ "help-+qo": {
+  "exit": 0,
+  "stderr": []
+ },
+ "help-+qp": {
+  "exit": 0,
+  "stderr": []
+ },
+ "help-+qq": {
+  "exit": 0,
+  "stderr": []
+ },
+ "help-+qr": {
+  "exit": 0,
+  "stderr": []
+ },
+ "help-+qt": {
+  "exit": 0,
+  "stderr": []
+ },
+ "help-+qv": {
+  "exit": 0,
+  "stderr": []
+ },
+ "help-+qx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "help-after-args": {
+  "exit": 0,
+  "stderr": []
+ },
+ "help-help": {
+  "exit": 0,
+  "stderr": []
+ },
+ "help-none": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0_8-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0_8-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0_8-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_0_8-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3_5-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3_5-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3_5-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3_5-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3_5-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_3_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_7-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_7-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_7-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_7-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_7-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_7_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_7_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_7_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_7_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_7_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_7_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_7_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_7_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_7_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_7_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-b_7_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0_8-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0_8-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0_8-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_0_8-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3_5-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3_5-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3_5-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3_5-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3_5-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_3_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_7-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_7-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_7-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_7-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_7-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_7_1-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_7_1-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_7_1-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_7_1-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_7_1-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_7_3-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_7_3-bdx": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_7_3-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_7_3-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_7_3-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-bits-c_7_8-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-group-back-and-forth": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-group-empty": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-group-escaped": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-group-escaped-repeat": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-group-group-then-field": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-group-nested": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-group-nested-inner-repeat": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-group-nested-three": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-group-one-token": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-group-prefix-with-space": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-group-repeat": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-group-repeat-one": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-group-repeat-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-group-repeat-zero": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-group-simple": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-group-simple-tight": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-group-two-groups": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-group-with-moves": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-move-back-before-start": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-move-back-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-move-back-typed": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-move-complex-units": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-move-forward-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-move-forward-short": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-move-forward-typed": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-move-many": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-move-minus-zero": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-move-move-only": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-move-move-past-end-no-read": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-move-past-end": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-move-space-after": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-move-space-idiom": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-move-space-idiom-at-start": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-move-to-end": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-move-zero-move": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-+z-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-+z-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-+z-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-+z-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-+z-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-+z-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-+z-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-+z-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-+z-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-+z-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-+z-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-+z-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-+z-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-+z-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-+z-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-b-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-b-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-b-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-b-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-b-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-b-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-b-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-b-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-b-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-b-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-b-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-b-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-b-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-b-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-b-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-c-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-c-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-c-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-c-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-c-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-c-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-c-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-c-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-c-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-c-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-c-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-c-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-c-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-c-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-c-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-d-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-d-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-d-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-d-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-d-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-d-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-d-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-d-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-d-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-d-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-d-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-d-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-d-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-d-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-d-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-f-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-f-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-f-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-f-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-f-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-f-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-f-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-f-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-f-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-f-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-f-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-f-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-f-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-f-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-f-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-i-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-i-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-i-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-i-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-i-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-i-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-i-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-i-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-i-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-i-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-i-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-i-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-i-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-i-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-i-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-s-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-s-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-s-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-s-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-s-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-s-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-s-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-s-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-s-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-s-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-s-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-s-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-s-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-s-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-s-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-u-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-u-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-u-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-u-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-u-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-u-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-u-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-u-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-u-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-u-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-u-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-u-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-u-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-u-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-u-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-w-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-w-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-w-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-w-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-w-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-w-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-w-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-w-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-w-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-w-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-w-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-w-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-w-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-w-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-w-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-z-absolute-then-next": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-z-beyond": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-z-count-all": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-z-count-at": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-z-count-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-z-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-z-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-z-last-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-z-minus-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-z-negative": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-z-past-last-byte": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-offset-z-plus-byte": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-z-second": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-z-sequential": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-offset-z-sequential-too-many": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "le-pod-20-groups": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-pod-6-f-i": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-d-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-d-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-r-d-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-d-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-d-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-d-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-f-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-f-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-r-f-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-f-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-f-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-f-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-i-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-i-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-r-i-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-i-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-i-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-i-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-s-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-s-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-r-s-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-s-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-s-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-s-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-u-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-u-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-r-u-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-u-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-u-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-u-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-w-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-w-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-r-w-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-w-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-w-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-r-w-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-airmoc-0": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-airmoc-1": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-aux-0": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-aux-1": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-aux-2": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-aux-3": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-aux-4": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-aux-5": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-case-exact": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-case-other": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-corr-0": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-corr-1": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-corr-2": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-edge": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-edge-head": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-hw-0": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-hw-1": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-mixed-fields": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-moc-0": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-moc-1": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-moc-2": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-moc-3": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-moc-4": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-moc-5": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-moc-6": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-moc-every": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-moc-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-moc-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-path": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-size-override": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-subcom-0": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-subcom-1": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-subcom-2": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-subcom-3": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-subcom-4": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-sym+file": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-sym-sym+table": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+a-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+a-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+a-+g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+a-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "le-type-+a-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-+a-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-+a-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "le-type-+a-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "le-type-+a-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+a-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+a-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+a-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+a-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+a-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+a-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+a-multi": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+a-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+a-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+a-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+a-spacers": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+a-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+a-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+s-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+s-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+s-+g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+s-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "le-type-+s-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-+s-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-+s-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "le-type-+s-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "le-type-+s-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+s-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+s-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+s-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+s-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+s-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+s-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+s-multi": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+s-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+s-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+s-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+s-spacers": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+s-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+s-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+z-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+z-+g": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: G"
+  ]
+ },
+ "le-type-+z-+i": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+z-+m": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+z-+m+p": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+z-+p": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+z-+r": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+z-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+z-d": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: d"
+  ]
+ },
+ "le-type-+z-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-+z-n": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: n"
+  ]
+ },
+ "le-type-+z-s": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: s"
+  ]
+ },
+ "le-type-+z-u": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: u"
+  ]
+ },
+ "le-type-b-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-b-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-b-+g": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->G<--"
+  ]
+ },
+ "le-type-b-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "le-type-b-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-b-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-b-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "le-type-b-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "le-type-b-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-b-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-b-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-b-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-b-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-b-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-b-g": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->g<--"
+  ]
+ },
+ "le-type-b-multi": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-b-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-b-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-b-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-b-spacers": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->g<--"
+  ]
+ },
+ "le-type-b-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-b-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-c-+a": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-c-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-c-+g": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->G<--"
+  ]
+ },
+ "le-type-c-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "le-type-c-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-c-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-c-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "le-type-c-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "le-type-c-+s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-c-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-c-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-c-c": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-c-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-c-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-c-g": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->g<--"
+  ]
+ },
+ "le-type-c-multi": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-c-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-c-o": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-c-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-c-spacers": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->g<--"
+  ]
+ },
+ "le-type-c-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-c-x": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-d-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-d-+g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-d-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "le-type-d-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-d-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-d-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "le-type-d-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "le-type-d-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-d-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-d-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-d-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-d-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-d-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-d-spacers": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-d-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-f-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-f-+g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-f-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "le-type-f-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-f-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-f-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "le-type-f-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "le-type-f-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-f-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-f-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-f-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-f-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-f-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-f-spacers": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-f-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-i-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-i-+g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-i-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "le-type-i-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-i-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-i-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "le-type-i-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "le-type-i-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-i-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-i-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-i-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-i-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-i-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-i-spacers": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-i-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-s-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-s-+g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-s-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "le-type-s-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-s-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-s-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "le-type-s-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "le-type-s-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-s-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-s-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-s-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-s-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-s-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-s-spacers": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-s-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-u-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-u-+g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-u-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "le-type-u-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-u-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-u-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "le-type-u-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "le-type-u-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-u-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-u-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-u-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-u-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-u-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-u-spacers": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-u-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-w-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-w-+g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-w-+i": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->I<--"
+  ]
+ },
+ "le-type-w-+m": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-w-+m+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->M<--"
+  ]
+ },
+ "le-type-w-+p": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->P<--"
+  ]
+ },
+ "le-type-w-+r": {
+  "exit": 255,
+  "stderr": [
+   "unrecognized print format-->R<--"
+  ]
+ },
+ "le-type-w-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-w-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-w-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-w-g": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-w-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-w-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-w-spacers": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-w-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-z-+d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-z-+g": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: G"
+  ]
+ },
+ "le-type-z-+i": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-z-+m": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-z-+m+p": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-z-+p": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-z-+r": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-z-+u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-z-d": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: d"
+  ]
+ },
+ "le-type-z-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "le-type-z-n": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: n"
+  ]
+ },
+ "le-type-z-s": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: s"
+  ]
+ },
+ "le-type-z-u": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized print format for complex type: u"
+  ]
+ },
+ "opt-after-fields": {
+  "exit": 0,
+  "stderr": []
+ },
+ "opt-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "opt-first-word": {
+  "exit": 2,
+  "stderr": [
+   "Reading from stdin",
+   "Can't find record size; looking at -q"
+  ]
+ },
+ "opt-l": {
+  "exit": 0,
+  "stderr": []
+ },
+ "opt-lr": {
+  "exit": 0,
+  "stderr": []
+ },
+ "opt-m": {
+  "exit": 0,
+  "stderr": []
+ },
+ "opt-move-like-option": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized option-->z<--"
+  ]
+ },
+ "opt-move-typed": {
+  "exit": 0,
+  "stderr": []
+ },
+ "opt-n": {
+  "exit": 0,
+  "stderr": []
+ },
+ "opt-nlm": {
+  "exit": 0,
+  "stderr": []
+ },
+ "opt-not-quiet": {
+  "exit": 0,
+  "stderr": []
+ },
+ "opt-r": {
+  "exit": 0,
+  "stderr": []
+ },
+ "opt-repeated": {
+  "exit": 0,
+  "stderr": []
+ },
+ "opt-s": {
+  "exit": 0,
+  "stderr": []
+ },
+ "opt-separate": {
+  "exit": 0,
+  "stderr": []
+ },
+ "opt-u": {
+  "exit": 0,
+  "stderr": []
+ },
+ "opt-ub": {
+  "exit": 0,
+  "stderr": []
+ },
+ "opt-unknown": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized option-->z<--"
+  ]
+ },
+ "opt-unknown-mixed": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized option-->z<--"
+  ]
+ },
+ "opt-uppercase": {
+  "exit": 255,
+  "stderr": [
+   "Unrecognized option-->N<--"
+  ]
+ },
+ "param-before-fields": {
+  "exit": 255,
+  "stderr": [
+   "Can't find record size; looking at"
+  ]
+ },
+ "param-every": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-every-and-skip": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-every-one": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-head": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-head-start": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-head-typed": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-header-synonym": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-mixed-case": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-none": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-nrecs": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-rec": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-rec-beyond": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-rec-first": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-rec-last": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-repeated": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-skip": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-skip-start": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-skip-stop": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-space-after": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-space-before": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-spaces": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-start": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-start-after-stop": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-start-beyond": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-start-nrecs": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-start-stop": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-stop": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-stop-beyond": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-stop-nrecs": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-stop-nrecs-before-zero": {
+  "exit": 0,
+  "stderr": []
+ },
+ "param-stray-equals": {
+  "exit": 255,
+  "stderr": [
+   "Unexpected '=' in command line after parsing parms:",
+   "     fixtures/seq.bin 8  u w ="
+  ]
+ },
+ "param-unknown": {
+  "exit": 255,
+  "stderr": [
+   "Unexpected '=' in command line after parsing parms:",
+   "     fixtures/seq.bin 8  u w foo=3"
+  ]
+ },
+ "param-uppercase": {
+  "exit": 0,
+  "stderr": []
  },
  "pod-tgen-counter": {
   "exit": 0,
@@ -12,5 +7479,107 @@
  "pod-tgen-counter-stdin": {
   "exit": 0,
   "stderr": []
+ },
+ "size-bytes": {
+  "exit": 0,
+  "stderr": []
+ },
+ "size-larger": {
+  "exit": 0,
+  "stderr": []
+ },
+ "size-missing": {
+  "exit": 255,
+  "stderr": [
+   "Can't find record size; looking at"
+  ]
+ },
+ "size-param-length": {
+  "exit": 0,
+  "stderr": []
+ },
+ "size-param-size": {
+  "exit": 0,
+  "stderr": []
+ },
+ "size-param-typed": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "size-smaller": {
+  "exit": 0,
+  "stderr": []
+ },
+ "size-typed-b": {
+  "exit": 0,
+  "stderr": []
+ },
+ "size-typed-d": {
+  "exit": 0,
+  "stderr": []
+ },
+ "size-typed-i": {
+  "exit": 0,
+  "stderr": []
+ },
+ "size-typed-z": {
+  "exit": 0,
+  "stderr": []
+ },
+ "size-zero": {
+  "exit": 255,
+  "stderr": [
+   "data requested beyond record length"
+  ]
+ },
+ "stdin": {
+  "exit": 0,
+  "stderr": []
+ },
+ "stdin-binary": {
+  "exit": 0,
+  "stderr": []
+ },
+ "stdin-every": {
+  "exit": 0,
+  "stderr": []
+ },
+ "stdin-head": {
+  "exit": 0,
+  "stderr": []
+ },
+ "stdin-not-quiet": {
+  "exit": 0,
+  "stderr": [
+   "Reading from stdin"
+  ]
+ },
+ "stdin-rec": {
+  "exit": 0,
+  "stderr": []
+ },
+ "stdin-skip": {
+  "exit": 0,
+  "stderr": []
+ },
+ "stdin-start": {
+  "exit": 0,
+  "stderr": []
+ },
+ "stdin-stop": {
+  "exit": 0,
+  "stderr": []
+ },
+ "sym-list": {
+  "exit": 0,
+  "stderr": []
+ },
+ "sym-missing": {
+  "exit": 2,
+  "stderr": [
+   "Couldn't find symbol table-->fixtures/sym/no-such-table<--"
+  ]
  }
 }

@@ -9,14 +9,36 @@ Each tool has a directory ``tests/golden/<tool>/`` holding
 
 A case is a table with these keys:
 
-    id     unique name, used for the .out file
+    id     unique name, used for the .out file. Ids must differ other than in
+           case (macOS disks ignore case); generated ids write an uppercase
+           letter X as "+x".
     args   argument list (paths are relative to tests/)
     stdin  optional path of a file to feed on stdin (relative to tests/)
     env    optional extra environment variables
-    fix    optional: the Python version deliberately differs from the Perl here.
-           The value names the CHANGELOG entry. make_golden.py never overwrites
-           the .out and index entry of a fix case; they are maintained by hand.
     note   optional free text
+    host   "little" (default) or "big": the byte order of the machine the case
+           emulates. Big-host cases run a copy of the Perl patched to read data
+           as big-endian (see tools/make_golden.py). That is how pick behaved on
+           the Sun and SGI machines it was written for, and it is the reference
+           for pick's intended behavior. The Python side runs with the same host
+           order.
+    error  optional: the Python version must fail, with this text in stderr.
+           Needed only where the Perl reported an error but exited 0. When the
+           Perl exits nonzero, the case is an error case automatically.
+    oracle optional, "big-host-r": get the expected output of this little-host
+           case by running the big-host Perl with -r switched on (or off).
+           That reads every item as little-endian, one item at a time: the
+           intended behavior. Use it where a little-endian file has no
+           big-endian twin to mirror (e.g. items that overlap other items).
+           Not valid for complex types (whose -r was wrong) or the U format.
+    fix    optional: the Python version deliberately differs from the Perl here.
+           The value names the CHANGELOG entry. A fix case also needs one of:
+    mirror    the id of another case whose Python output this case must equal
+              (no Perl run). Used where the little-endian Perl is wrong and the
+              big-host case is the reference.
+    perl_args arguments that make the Perl produce the intended output, e.g.
+              "zRI" for the documented meaning of "zg".
+              If neither is given, <id>.out is maintained by hand.
 
 Commands run with tests/ as the working directory.
 """
@@ -48,6 +70,15 @@ class Case:
     env: dict[str, str] = field(default_factory=dict)
     fix: str | None = None
     note: str | None = None
+    host: str = "little"
+    error: str | None = None
+    mirror: str | None = None
+    perl_args: list[str] | None = None
+    oracle: str | None = None
+
+    @property
+    def runs_perl(self) -> bool:
+        return not self.mirror and not (self.fix and self.perl_args is None and not self.oracle)
 
     def stdin_bytes(self) -> bytes:
         return (TESTS / self.stdin).read_bytes() if self.stdin else b""
@@ -70,9 +101,19 @@ def load_cases(tool: str) -> list[Case]:
     for c in cases:
         if not _ID.match(c.id):
             raise ValueError(f"{tool}: bad case id {c.id!r}")
-        if c.id in seen:
-            raise ValueError(f"{tool}: duplicate case id {c.id!r}")
-        seen.add(c.id)
+        if c.id.lower() in seen:  # .out files must not clash on case-insensitive disks
+            raise ValueError(f"{tool}: duplicate case id {c.id!r} (ignoring case)")
+        if c.host not in ("little", "big"):
+            raise ValueError(f"{tool}/{c.id}: host must be 'little' or 'big'")
+        if c.oracle not in (None, "big-host-r") or (c.oracle and c.host != "little"):
+            raise ValueError(f"{tool}/{c.id}: oracle 'big-host-r' is for little-host cases")
+        if (c.mirror or c.perl_args is not None or c.oracle) and not c.fix:
+            raise ValueError(f"{tool}/{c.id}: mirror, perl_args and oracle need a fix entry")
+        seen.add(c.id.lower())
+    ids = {c.id for c in cases}
+    for c in cases:
+        if c.mirror and c.mirror not in ids:
+            raise ValueError(f"{tool}/{c.id}: mirror {c.mirror!r} is not a case")
     return cases
 
 

@@ -1,0 +1,13 @@
+; Edge cases for pick symbol tables (used with the moc fixtures)
+;
+size = 21d   ; reserved: the record length
+head = 8     ; reserved: skip 8 bytes before counting records
+
+a  = d0
+ab = d1      ; "a" is a prefix of "ab": symbols match whole words only
+A  = d2      ; differs from "a" only in case
+both = a ab  ; recursive definitions
+twice = both both
+i = d3       ; named like a data type
+empty =
+   ; a comment after spaces

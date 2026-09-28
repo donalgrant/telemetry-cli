@@ -1,0 +1,16 @@
+nul nul nul nul nul nul nul nul soh soh soh soh soh soh soh soh 
+stx stx stx stx stx stx stx stx etx etx etx etx etx etx etx etx 
+eot eot eot eot eot eot eot eot enq enq enq enq enq enq enq enq 
+ack ack ack ack ack ack ack ack bel bel bel bel bel bel bel bel 
+bs bs bs bs bs bs bs bs ht ht ht ht ht ht ht ht 
+nl nl nl nl nl nl nl nl vt vt vt vt vt vt vt vt 
+np np np np np np np np cr cr cr cr cr cr cr cr 
+so so so so so so so so si si si si si si si si 
+dle dle dle dle dle dle dle dle dc1 dc1 dc1 dc1 dc1 dc1 dc1 dc1 
+dc2 dc2 dc2 dc2 dc2 dc2 dc2 dc2 dc3 dc3 dc3 dc3 dc3 dc3 dc3 dc3 
+dc4 dc4 dc4 dc4 dc4 dc4 dc4 dc4 nak nak nak nak nak nak nak nak 
+syn syn syn syn syn syn syn syn etb etb etb etb etb etb etb etb 
+can can can can can can can can em em em em em em em em 
+sub sub sub sub sub sub sub sub esc esc esc esc esc esc esc esc 
+fs fs fs fs fs fs fs fs gs gs gs gs gs gs gs gs 
+rs rs rs rs rs rs rs rs us us us us us us us us 

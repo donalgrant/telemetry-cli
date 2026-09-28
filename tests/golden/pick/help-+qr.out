@@ -1,0 +1,74 @@
+
+
+There are two kinds of field requests: moves and prints.
+  A print request will also move the current location in
+  the record.  A move request generates no output.
+
+Type 'pick ?m' for help on move requests.
+
+A print request has the format:
+
+N'type'Offset:bitOffset:nBits'printFormatList'
+
+and must be separated by spaces from every other
+command line argument.  The components are defined as:
+
+N: Number of sequential fields of this data type
+   to extract and print.  N is optional, with a
+   default value of 1.  It must not have a sign
+   prefixed ('+' or '-').
+
+type:  The data type of the fields to extract and print.
+       Type 'pick ?t' for information on data types.
+
+Offset:  The 'Offset' has the form:
+              dataOffset(+|-)byteOffset
+         where dataOffset is the absolute location
+         of this item in the record in numbers of items
+         of type 'type', and the byteOffset is the
+         the desired offset in bytes from this location.
+         'Offset' is an optional parameter, if not
+         specified, the next item in the record will be
+         selected.  The 'byteOffset' is an optional
+         component of the 'Offset'.  However, if it
+         is used, then the 'dataOffset' must also be
+         specified, even if '0'.  The sign must be
+         included as part of the byteOffset.
+         For example, the field
+                     z60-2
+         selects the 60th single-precision complex item,
+         offset towards the beginning of the record by
+         two bytes.  A common convenient way to specify
+         an absolute byte location within a record is to
+         specify the dataOffset as zero with a positive
+         byte offset.  For example, the request above
+         could also be written:
+                     z0+478
+         which selects the complex number at an offset
+         of 478 bytes from the beginning of the record.
+         The counting for byte and data offsets, as with
+         all other counting in pick, is zero-offset.
+
+bitOffset:  (Not available for data types with more than 4 bytes.)
+            An optional field which specifies the first
+            bit of the data field to use.  'bitOffset'
+            is zero offset.  For example, the field
+                          i:7
+            selects the next integer, and only uses
+            the eighth through 32nd bits (7--31)
+            for printing.  Bit zero is the LSB.
+
+nBits:  (Not available for data types with more than 4 bytes.)
+        If a 'bitOffset' is specified, 'nBits' may
+        be used to to select the number of bits,
+        starting from the 'bitOffset', to be printed.
+        For example, the field
+                        w5:1:7
+        selects the second through eighth bits (1-7)
+        of the fifth unsigned short in the record.
+
+printFormatList:  Zero or more print formats used to
+                  specify the format of the output for
+                  this field request.
+                  Type 'pick ?f' for detailed help.
+

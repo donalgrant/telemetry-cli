@@ -1,0 +1,94 @@
+
+
+  pick Symbol Files:
+
+  As a convenience for dealing with standard file formats,
+  such as the ifproc mocomp file, the AIRSAR mocomp file,
+  SRTM telemetry, AIRSAR headers and subcommutated headers,
+  TOPEX/Poseidon SDR's and GDR's, GeoSAR time-dependent parameter
+  files, etc, one may define a symbol file as a set of
+  (possibly recursive) key = value definitions mapping more
+  easily remembered mnemonics onto admittedly less-obvious pick
+  commands.  For example, to define the ifproc mocomp symbol file,
+  the following file is created:
+
+; This is the symbol table for .moc files, which
+; are the radar motion compensation files for section 334.
+
+length=21d  ; length is 21 double-precision (8 byte) numbers
+
+; these are the components of the file
+
+xRec = d0G
+xrec = d0G
+time = d1G
+utc = d1G
+prf = d2 ; actually 1/prf...
+tprf = d2
+posS = d3
+posC = d4
+posH = d5
+pos = posS posC posH
+velS = d6
+velC = d7
+velH = d8
+vel = velS velC velH
+af1S = d9
+af1C = d10
+af1H = d11
+af1 = 3d9
+af2 = 3d12
+af3 = 3d15
+az = d18
+yaw = d18
+pitch = d19
+roll = d20
+orient = 3d18
+azD = d18D
+yawD = d18D
+pitchd = d19D
+rollD = d20D
+orientD = 3d18D
+all = 21d0
+af = af1 af2 af3
+angles = posS orientD
+velocities = posS vel
+tube = pos
+
+
+  Note that the file is very similar to RDF (though pre-dating
+  it by a couple of years), with comment fields delimited by
+  semi-colons.  However, the values are interpreted recursively:
+  the 'af' key's value, 'af1 af2 af3' is defined elsewhere in the
+  file.
+
+  Note also that the symbols 'length', 'size' and 'head' are reserved
+  for pick; in a symbol file they do not define new symbols
+  but rather serve as parameter definitions.  For example, in
+  this mocomp file, the record length is set at the beginning of
+  the file to be 21 doubles long.
+
+  If this file is in the present-working directory, named 'moc',
+  and a mocomp file named test.moc is available, then one could
+  use commands like:
+
+        pick sym=moc test.moc velocities every=100
+
+  to print out the velocities as a function of along-track position
+  for every hundredth entry in the file.  A nice shortcut is to
+  use an environmental variable, recognized by pick:  PICKPATH,
+  to specify a folder of such symbol files.  If the filename specified
+  by the sym parameter isn't in the present-working directory, then
+  pick will search the folder specified by PICKPATH.  For example,
+  add the lines to the .zshenv file:
+
+        export PICKPATH=/users/imel/.pick
+        alias pickMocomp='pick sym=moc'
+
+  and put a copy of the moc file listed above in that folder.
+  Now, the above command is:
+
+        pickMocomp test.moc velocities skip=100 | xmgr -nxy -source stdin &
+
+  where we've piped the output to xmgr for display.
+

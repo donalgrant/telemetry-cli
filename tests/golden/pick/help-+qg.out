@@ -1,0 +1,23 @@
+
+
+  Groups and group multipliers:
+
+  Any number of fields may be enclosed in brackets
+  to form a group.  For example:
+           [ 4f i ]
+  requests a group of four floats followed by an integer.
+
+  In order to avoid being interpreted by the shell, one
+  may need to escape the '[]'s with a backslash '\' or by
+  enclosing the string within single quotes:
+           '[ 4f i ]'
+  This is a syntax quite like the Unix awk command line.
+
+  A numerical prefix to the group designates a repetition
+  factor for the group.  For example:
+           20[ f +96f i -100f ]
+  requests 20 pairs of floats and integers, where each
+  float is separated from the integer by 400 bytes, but
+  the floats and the integers themselves are sequential.
+  There must be no space between the prefix and the opening
+  bracket.

@@ -1,0 +1,21 @@
+
+
+The options are of the form -opt1opt2... or -opt1 -opt2:
+
+l:  print a line number for every output line.
+n:  print a record number for every output line.
+m:  print the byte location in the file for every output line.
+r:  reverse the order of the bytes.
+u:  all output is in binary format only; ignore print requests
+b:  fast version of 'u' option:  no bit masking or byte reversal
+q:  quiet output; turn off diagnostic messages, which are sent to STDERR
+s:  suppress c/r after printing for each record
+
+For example,
+              'pick file.dat 20f -nlr ...'
+would print each line with the line number, then
+  the record number, followed by whatever data were
+  requested in the command line (represented by '...').
+  These data would be interpreted in reverse byte order
+  before printing.
+
