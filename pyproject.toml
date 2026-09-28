@@ -33,6 +33,7 @@ dev = [
 # Console scripts are added as each tool is ported.
 [project.scripts]
 pick = "telemetry_cli.pick.cli:main"
+recs = "telemetry_cli.recs.cli:main"
 
 [project.urls]
 Repository = "https://github.com/donalgrant/telemetry-cli"
