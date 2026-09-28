@@ -109,6 +109,8 @@ def _run(argv, stdin, stdout, stderr, host) -> int:
     if opts["r"]:
         order = "big" if order == "little" else "little"
     fields = parse_fields(plan.fields_text, plan.size, binary=opts["u"])
+    if plan.size <= 0:  # the Perl printed empty records forever
+        raise UsageError("the record size must be at least 1 byte", "p")
 
     if plan.file == "-":
         if plan.from_stdin_default and not opts["q"]:

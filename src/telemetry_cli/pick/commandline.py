@@ -197,8 +197,6 @@ def resolve(cmd: Command) -> Plan:
         skip = params["every"] - 1 if "every" in params else 0
         if skip < 0:  # the Perl reread the same record forever
             raise UsageError("every must be at least 1", "p")
-    if int(size) <= 0:  # the Perl printed empty records forever
-        raise UsageError("the record size must be at least 1 byte", "p")
     start, stop, nrecs = params.get("start"), params.get("stop"), params.get("nrecs")
     if start is None or stop is None:
         if start is not None:
