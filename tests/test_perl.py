@@ -63,6 +63,16 @@ def test_numify(v, expected):
     assert numify(v) == expected
 
 
+@pytest.mark.parametrize(
+    "fmt,v,expected",
+    [("%d", "1e400", "-1"), ("%d", "-1e400", "-9223372036854775808"),
+     ("%u", "1E400", "18446744073709551615"), ("%x", "-1e400", "8000000000000000"),
+     ("%d", "inf", "Inf"), ("%g", "1e400", "Inf")],
+)  # fmt: skip
+def test_overflowing_strings(fmt, v, expected):
+    assert sprintf(fmt, v) == expected
+
+
 def test_numify_specials():
     assert numify("Inf") == INF
     assert numify("-infinity") == -INF

@@ -121,6 +121,10 @@ def sprintf(fmt: str, *args) -> str:
         v = next(it, None)
         x = numify(v) if c != "s" else v
         text = _special(x) if c != "s" else None
+        if text and c in "duxo" and isinstance(v, str) and not re.search("[a-zA-Z]{3}", v):
+            # Perl's integer conversions read a numeric string that overflows
+            # (like "1e400") as the largest integer, not as Inf
+            text = None
         if text is not None:
             w = int(width or 0)
             return text.ljust(w) if left else text.rjust(w)
