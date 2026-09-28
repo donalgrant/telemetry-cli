@@ -1,0 +1,59 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "telemetry-cli"
+version = "0.0.1"
+description = "Command-line tools for binary telemetry: pick, recs, recl and tgen"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "David A. Imel" }]
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.23"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Utilities",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+    "pytest-cov>=4",
+    "hypothesis>=6",
+    "ruff>=0.5",
+    "tomli>=2; python_version < '3.11'",
+]
+
+# Console scripts are added as each tool is ported:
+# [project.scripts]
+# pick = "telemetry_cli.pick.cli:main"
+
+[project.urls]
+Repository = "https://github.com/donalgrant/telemetry-cli"
+Changelog = "https://github.com/donalgrant/telemetry-cli/blob/main/CHANGELOG.md"
+Issues = "https://github.com/donalgrant/telemetry-cli/issues"
+
+[tool.hatch.build.targets.sdist]
+exclude = [".github", ".gitignore", "legacy", "tools"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/telemetry_cli"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["oracle: compares against the legacy Perl tools live (needs perl)"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-exclude = ["legacy"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM"]
+ignore = ["SIM108"]  # if/else blocks are often clearer than long ternaries

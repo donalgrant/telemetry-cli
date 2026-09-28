@@ -1,0 +1,15 @@
+# Hand-written pick golden cases. See tests/golden_cases.py for the format.
+
+[[case]]
+id = "pod-tgen-counter"
+note = "The counter example from the tgen POD"
+args = ["fixtures/counter.bin", "7", "-q", "3bd", "ud"]
+
+[[case]]
+id = "pod-tgen-counter-stdin"
+args = ["7", "-q", "3bd", "ud"]
+stdin = "fixtures/counter.bin"
+
+[[case]]
+id = "err-no-record-size"
+args = ["fixtures/counter.bin", "-q"]

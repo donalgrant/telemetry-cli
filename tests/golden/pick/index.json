@@ -1,0 +1,16 @@
+{
+ "err-no-record-size": {
+  "exit": 255,
+  "stderr": [
+   "Can't find record size; looking at"
+  ]
+ },
+ "pod-tgen-counter": {
+  "exit": 0,
+  "stderr": []
+ },
+ "pod-tgen-counter-stdin": {
+  "exit": 0,
+  "stderr": []
+ }
+}
