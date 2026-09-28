@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -e '.[dev]'
+      - run: ruff check . && ruff format --check .
+      # ubuntu-latest ships perl, so the oracle tests (-m oracle) run here too.
+      - run: pytest -q
+      - name: Golden files match the legacy Perl tools
+        run: python tools/make_golden.py --check
