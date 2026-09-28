@@ -54,7 +54,7 @@
           by a newline, the integer at byte offset 57 in
           octal followed by three extra spaces, a
           double-precision complex's real and imaginary
-          component, and bits 1-7 of the fifth unsigned
+          component, and bits 1-7 of the sixth unsigned
           char interpreted first as binary, then decimal
           and finally hexadecimal.
 

@@ -136,7 +136,7 @@ Offset:  The 'Offset' has the form:
          included as part of the byteOffset.
          For example, the field
                      z60-2
-         selects the 60th single-precision complex item,
+         selects the 61st single-precision complex item (z0 is the first),
          offset towards the beginning of the record by
          two bytes.  A common convenient way to specify
          an absolute byte location within a record is to
@@ -165,7 +165,7 @@ nBits:  (Not available for data types with more than 4 bytes.)
         For example, the field
                         w5:1:7
         selects the second through eighth bits (1-7)
-        of the fifth unsigned short in the record.
+        of the sixth unsigned short in the record (w0 is the first).
 
 printFormatList:  Zero or more print formats used to
                   specify the format of the output for
@@ -230,7 +230,7 @@ FORMATS = """
           by a newline, the integer at byte offset 57 in
           octal followed by three extra spaces, a
           double-precision complex's real and imaginary
-          component, and bits 1-7 of the fifth unsigned
+          component, and bits 1-7 of the sixth unsigned
           char interpreted first as binary, then decimal
           and finally hexadecimal.
 
@@ -294,9 +294,9 @@ GROUPS = """
 
   A numerical prefix to the group designates a repetition
   factor for the group.  For example:
-           20[ f +96f i -100f ]
+           20[ f +99f i -100f ]
   requests 20 pairs of floats and integers, where each
-  float is separated from the integer by 400 bytes, but
+  integer starts 400 bytes after its float, but
   the floats and the integers themselves are sequential.
   There must be no space between the prefix and the opening
   bracket.
@@ -420,7 +420,7 @@ EXAMPLES = """
 
   Z20 +1280Z ZMP
 
-  Extract the twentieth double-precision complex
+  Extract the twenty-first double-precision complex
   in the record, print in floating point format
   (real <sp> imaginary), move forward 1280 double
   precision complexes (1280*16 bytes) and extract
@@ -436,6 +436,9 @@ EXAMPLES = """
   printing only the 5 most significant bits
   in decimal format, and move back 1091 bytes.
   Repeat this operation 20 times for each record.
+  (Each repetition moves back 74 bytes overall, so from
+  the second one on, reads start before the beginning of
+  the record, and come from the end of the record.)
 
   Note that for moves, the current position in the record
   is the location after the most recent request.  For example,
@@ -453,7 +456,7 @@ EXAMPLES = """
   pick file2.dat 5120f 10f500 head=5i start=500
 
   Prints in floating point format ten consecutive
-  single-precision floats starting at the 500'th
+  single-precision floats starting at the 501st
   float in the record, for every record starting
   with record number 500 (the 501'st 5120*4=20480 byte
   record in file2.dat). The record count begins after a

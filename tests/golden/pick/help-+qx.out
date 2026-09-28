@@ -20,7 +20,7 @@
 
   Z20 +1280Z ZMP
 
-  Extract the twentieth double-precision complex
+  Extract the twenty-first double-precision complex
   in the record, print in floating point format
   (real <sp> imaginary), move forward 1280 double
   precision complexes (1280*16 bytes) and extract
@@ -36,6 +36,9 @@
   printing only the 5 most significant bits
   in decimal format, and move back 1091 bytes.
   Repeat this operation 20 times for each record.
+  (Each repetition moves back 74 bytes overall, so from
+  the second one on, reads start before the beginning of
+  the record, and come from the end of the record.)
 
   Note that for moves, the current position in the record
   is the location after the most recent request.  For example,
@@ -53,7 +56,7 @@
   pick file2.dat 5120f 10f500 head=5i start=500
 
   Prints in floating point format ten consecutive
-  single-precision floats starting at the 500'th
+  single-precision floats starting at the 501st
   float in the record, for every record starting
   with record number 500 (the 501'st 5120*4=20480 byte
   record in file2.dat). The record count begins after a

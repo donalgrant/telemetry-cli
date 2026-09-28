@@ -2,7 +2,7 @@
 
 A print request is ``N type Offset :bitOffset:nBits formats`` (e.g. ``4d0+30``,
 ``w5:1:7bdx``); a move is ``(+|-)N type`` (e.g. ``+5z``); and requests can be
-grouped with brackets and repeated (``20[ f +96f i -100f ]``). See
+grouped with brackets and repeated (``20[ f +99f i -100f ]``). See
 ``pick ?r``, ``pick ?m`` and ``pick ?g``.
 
 This follows the Perl original closely, including how groups are rewritten
