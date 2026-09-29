@@ -24,6 +24,8 @@ The namespace provides:
     pand, por, pxor, pshl, pshr
                  Perl's &, |, ^, << and >> (on unsigned 64-bit integers)
     cat          Perl's . (join values as text; numbers as Perl prints them)
+    bitstring    words as a string of bits for the B pack type:
+                 bitstring([3, 5], 4) is "00110101"
     sprintf      Perl's sprintf
     pi, sin, cos, tan, atan2, sqrt, exp, log, floor, ceil
     stderr       for diagnostics (stdout is the data)
@@ -83,6 +85,25 @@ def pmod(a, b):
     if b == 0:
         raise ZeroDivisionError("Illegal modulus zero")
     return a % b
+
+
+def bitstring(values, width) -> str:
+    """Values as a string of bits, most significant first, for the B pack type.
+
+    width is one number of bits for every value, or a list, one per value.
+    Values are taken modulo 2**width (so negative ones are two's complement).
+    """
+    if isinstance(values, (int, float)):
+        values = [values]
+    values = list(values)
+    widths = list(width) if isinstance(width, (list, tuple)) else [width] * len(values)
+    if len(widths) != len(values):
+        raise ValueError(f"bitstring: {len(values)} values but {len(widths)} widths")
+    out = []
+    for v, w in zip(values, widths, strict=True):
+        w = int(w)
+        out.append(format(int(numify(v)) % (1 << w), f"0{w}b") if w > 0 else "")
+    return "".join(out)
 
 
 def cat(*values) -> str:
@@ -241,6 +262,7 @@ class Generator:
             "pshl": lambda a, b: (to_uv(a) << to_uv(b)) & UV_MAX if to_uv(b) < 64 else 0,
             "pshr": lambda a, b: to_uv(a) >> to_uv(b) if to_uv(b) < 64 else 0,
             "cat": cat,
+            "bitstring": bitstring,
             "sprintf": sprintf,
             "stderr": self.stderr,
             "_read_fill": self.read_fill,

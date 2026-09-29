@@ -97,15 +97,16 @@ RESULT 48
 
 In a raw bit stream, such as PCM telemetry straight off a bit synchronizer,
 frames needn't be a whole number of bytes: 25 words of 10 bits make a 250-bit
-frame. This command file makes such a stream. Each tgen record packs four
-250-bit frames into 125 bytes:
+frame. This [tgen](tgen.md) command file makes such a stream. tgen writes
+whole bytes, so each of its records holds four 250-bit frames, 1000 bits or
+125 bytes, written as a bit string with the `B` pack type:
 
 <!-- file: pcm.tgen -->
 ```text
 # PCM frames of 25 10-bit words: a 3-word sync, a counter, 21 samples
-words = lambda n: [0b1111101011, 0b1100110011, 0b0100000111, n % 1024] + [(n * 7 + 31 * k) % 1024 for k in range(21)]
-bits = lambda I: ''.join(format(w, '010b') for n in range(4 * I, 4 * I + 4) for w in words(n))
-frames # 0 # 1 # 'a125' # int(bits(I), 2).to_bytes(125, 'big')
+words = lambda n: [0b1111101011, 0b1100110011, 0b0100000111, n % 1024] \
+    + [(n * 7 + 31 * k) % 1024 for k in range(21)]
+frames # 0 # 1 # 'B1000' # bitstring([w for n in range(4*I, 4*I + 4) for w in words(n)], 10)
 ```
 
 Comparing bytes finds only the stretch after which frames line up with

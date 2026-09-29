@@ -12,6 +12,15 @@
   is shown in bits and bytes: `RESULT 250 bits (31 bytes + 2 bits)`.
 - **`-lsb`** reads bits least significant first (with `-bits`).
 
+### tgen
+
+- **The `B` and `b` pack types** pack a string of `0`s and `1`s as bits, most
+  or least significant first in each byte, as Perl's `pack` does. The Perl
+  tgen had them through Perl; the Python version's first release didn't.
+- **`bitstring(values, width)`** turns words of any width into such a
+  string, for telemetry words of 10 or 12 bits: `bitstring([3, 5], 4)` is
+  `'00110101'`.
+
 ## 1.0.0 (2026-09-28)
 
 The first release.

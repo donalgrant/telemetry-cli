@@ -93,10 +93,11 @@ semicolons; its value is the last one's.
   `'s'` (16 bits), `'L'`, `'l'` (32 bits), `'n'`, `'N'` (big-endian 16 and 32
   bits), `'v'`, `'V'` (little-endian), `'f'`, `'d'` (floats), `'a10'` (a
   null-padded 10-byte string), `'A10'` (space-padded), `'Z10'`
-  (null-terminated). Integer and float types can take `<` or `>` for the byte
-  order; without one, it is this machine's. A count takes a list:
-  `f"C{n}"` with the value `[1, 2, 3]`. The type isn't evaluated for items
-  with a negative offset.
+  (null-terminated), `'B16'` (16 bits, from a string of `0`s and `1`s,
+  most significant bit first; `'b16'` for least significant first). Integer
+  and float types can take `<` or `>` for the byte order; without one, it is
+  this machine's. A count takes a list: `f"C{n}"` with the value `[1, 2, 3]`.
+  The type isn't evaluated for items with a negative offset.
 - **value** is the value to write.
 
 Frames are as long as their last item. Bytes that no item sets are filled
@@ -115,6 +116,7 @@ with the fill byte.
 | `rand(n)` | a random float in [0, n), 1 by default (Perl's generator, so `-seed` runs repeat) |
 | `pmod`, `pand`, `por`, `pxor`, `pshl`, `pshr` | Perl's `%`, `&`, `\|`, `^`, `<<`, `>>`, on integers |
 | `cat(a, b, ...)` | Perl's `.`: join values as text |
+| `bitstring(values, width)` | values as a string of bits for the `B` type: `bitstring([3, 5], 4)` is `'00110101'`; `width` may be a list, one per value |
 | `sprintf` | Perl's sprintf |
 | `pi`, `sin`, `cos`, `tan`, `atan2`, `sqrt`, `exp`, `log`, `floor`, `ceil` | from Python's `math` |
 | `stderr` | for diagnostics: `print(..., file=stderr)`. Don't print to stdout, which is the data |
@@ -229,6 +231,26 @@ $ tgen -q -seed=9 value.tgen 4 | pick 8 -q f 2wd
 0.470977 1 1
 0.150752 2 1
 ```
+
+### Words that aren't whole bytes
+
+Telemetry words are often 10 or 12 bits. `bitstring` and the `B` type pack
+them: two 12-bit words, then a 16-bit count, in 5 bytes:
+
+<!-- file: words.tgen -->
+```text
+packed # 0 # 1 # 'B40' # bitstring([0xABC, I, 1000 + I], [12, 12, 16])
+```
+
+```console
+$ tgen -q words.tgen 3 | pick 5 -q 5bx
+ab  c0  00  03  e8
+ab  c0  01  03  e9
+ab  c0  02  03  ea
+```
+
+Frames whose length isn't a whole number of bytes go several to a record: see
+[recl's `-bits`](recl.md#records-that-arent-whole-bytes).
 
 ### A caltone sweep
 
