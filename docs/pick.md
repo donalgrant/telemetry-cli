@@ -298,12 +298,21 @@ with pick: `moc`, `airmoc`, `aux`, `corr`, `corrOld`, `hw`, `subcom` and
 `subcom_2002`, formats from JPL radar projects (AIRSAR, the ATI processor
 and others). `pick sym=moc ?` lists a table's symbols.
 
-A shell alias makes a table into a command:
+A shell alias makes a table into a command. Here its output goes to
+[feedgnuplot](https://github.com/dkogan/feedgnuplot), a command-line front end
+to gnuplot, for display (`brew install feedgnuplot` on a Mac):
 
 ```text
 alias pickMocomp='pick sym=moc'
-pickMocomp run.moc velocities skip=100 | xmgr -nxy -source stdin &
+pickMocomp run.moc velocities skip=100 | feedgnuplot --domain --lines
 ```
+
+`velocities` is `posS vel`, the along-track position and three velocities, so
+each line is x followed by three y values. With `--domain`, feedgnuplot takes
+the first column as x and draws each of the others as a curve. (The original
+of this example piped to xmgr, which lives on as
+[Grace](https://plasma-gate.weizmann.ac.il/Grace/): `xmgrace -nxy` reads the
+same columns.)
 
 ## More examples
 
