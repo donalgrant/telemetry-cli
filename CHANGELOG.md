@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+### recl
+
+- **`-bits`** finds record lengths in bits, for frames that aren't a whole
+  number of bytes, such as PCM frames of 10- or 12-bit words in a raw bit
+  stream. It compares 8-bit windows at every bit position, and by default
+  checks the lengths suggested by repeating bit patterns (sync words); with
+  `-min`/`-max` or `-only` it checks the lengths given, in bits. The result
+  is shown in bits and bytes: `RESULT 250 bits (31 bytes + 2 bits)`.
+- **`-lsb`** reads bits least significant first (with `-bits`).
+
 ## 1.0.0 (2026-09-28)
 
 The first release.
