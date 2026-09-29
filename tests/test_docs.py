@@ -20,6 +20,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS = [ROOT / "README.md", *sorted((ROOT / "docs").glob("*.md"))]
+MARK = "@@command-"
 BLOCK = re.compile(
     r"(?:<!-- file: (\S+) -->\n)?^```(console|\w*)\n(.*?)^```", re.MULTILINE | re.DOTALL
 )
@@ -62,10 +63,16 @@ def test_console_example(files, block, workdir):
         (workdir / name).write_text(text)
     env = {**os.environ, "PATH": f"{Path(sys.executable).parent}{os.pathsep}{os.environ['PATH']}"}
     env.pop("PICKPATH", None)
-    for command, expected in steps(block):
-        p = subprocess.run(
-            ["bash", "-c", command], cwd=workdir, env=env, capture_output=True, text=True,
-            check=False,
-        )  # fmt: skip
-        got = [line.rstrip() for line in p.stdout.splitlines()]
+    # Run the block's commands in one shell, as a reader would type them, so
+    # variables carry over; a marker line before each command splits the output.
+    commands = steps(block)
+    script = "".join(f"echo '{MARK}{i}'\n{command}\n" for i, (command, _) in enumerate(commands))
+    p = subprocess.run(
+        ["bash", "-c", script], cwd=workdir, env=env, capture_output=True, text=True,
+        check=False,
+    )  # fmt: skip
+    outputs = re.split(rf"^{MARK}\d+\n", p.stdout, flags=re.MULTILINE)[1:]
+    assert len(outputs) == len(commands), p.stderr
+    for (command, expected), out in zip(commands, outputs, strict=True):
+        got = [line.rstrip() for line in out.splitlines()]
         assert got == expected, f"$ {command}\n{p.stderr}"

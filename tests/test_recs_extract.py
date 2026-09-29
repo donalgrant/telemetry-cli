@@ -178,7 +178,7 @@ def test_the_perl_suite_passes_on_the_perl():
 
     from conftest import LEGACY, perl
 
-    if not shutil.which("perl"):
-        pytest.skip("perl not available")
+    if not shutil.which("perl") or not LEGACY.is_dir():
+        pytest.skip("needs perl and the legacy/ Perl sources")
     p = perl([str(LEGACY / "recs" / "recs"), "-test"])
     assert b"not ok" not in p.stdout

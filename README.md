@@ -1,20 +1,16 @@
 # telemetry-cli
 
-Command-line tools for binary telemetry, from the command line and in Unix
-pipelines:
+Command-line tools for binary telemetry, built for Unix pipelines:
 
-- **pick** extracts fields from fixed-length binary records and prints them
-  ([manual](docs/pick.md)).
-- **recs** extracts records from a byte stream by their start and end markers
-  ([manual](docs/recs.md)).
+- **pick** decodes fields from fixed-length binary records: integers, floats,
+  complex numbers, characters and bit fields, in any byte order
+  ([manual](https://github.com/donalgrant/telemetry-cli/blob/main/docs/pick.md)).
+- **recs** extracts records from a byte stream by their start (and end)
+  markers ([manual](https://github.com/donalgrant/telemetry-cli/blob/main/docs/recs.md)).
 - **recl** estimates the record length of a binary file
-  ([manual](docs/recl.md)).
-- **tgen** generates synthetic telemetry from a command file
-  ([manual](docs/tgen.md)).
-
-They are Python ports of Perl tools written at JPL. The command lines are
-unchanged, and so is the output, apart from the fixes listed in the
-[CHANGELOG](CHANGELOG.md). The Perl originals are in [legacy/](legacy/).
+  ([manual](https://github.com/donalgrant/telemetry-cli/blob/main/docs/recl.md)).
+- **tgen** generates synthetic telemetry from a command file describing each
+  record ([manual](https://github.com/donalgrant/telemetry-cli/blob/main/docs/tgen.md)).
 
 ```console
 $ printf '\x00\x00\x00\x01\xff\xfeHi\x00\x00\x00\x02\x00\x07ok' > demo.bin
@@ -26,31 +22,47 @@ $ pick demo.bin 8 -q order=big -n u0x w2b
 1 00 00 00 02  0000 0000 0000 0111
 ```
 
+Together: tgen makes a stream, recs pulls the frames out of it, recl finds
+their length, and pick decodes them. See
+[Using the tools together](https://github.com/donalgrant/telemetry-cli/blob/main/docs/pipelines.md).
+
 ## Install
 
-Requires Python 3.10 or later. Not yet on PyPI; to install from GitHub:
+Requires Python 3.10 or later. The package is `telemetry-cli` on PyPI, and is
+best installed as an isolated command-line tool:
 
 ```text
-pipx install git+https://github.com/donalgrant/telemetry-cli.git
+pipx install telemetry-cli
+# or
+uv tool install telemetry-cli
 ```
 
-For development, from a checkout:
+Either installs the commands `pick`, `recs`, `recl` and `tgen`. You can also
+`pip install telemetry-cli` in a virtual environment.
+
+## History
+
+These are Python ports of tools written at JPL: pick (first in C++, and in
+Perl by 2000), tgen (2003), and recs and recl. The command lines are the
+same, and so is the output, apart from fixes listed in the
+[CHANGELOG](https://github.com/donalgrant/telemetry-cli/blob/main/CHANGELOG.md):
+chiefly pick's byte-order handling on little-endian machines, and recl's
+measurement. tgen's command files are now Python; `tgen --convert` translates
+the old Perl ones. The Perl originals, with their history, are in
+[legacy/](https://github.com/donalgrant/telemetry-cli/tree/main/legacy).
+
+## Development
 
 ```text
 python -m venv .venv && .venv/bin/pip install -e '.[dev]'
 .venv/bin/pytest
 ```
 
-## Tests
-
 The tests compare each tool with its Perl original. `tests/golden/` holds the
-Perl's output for a large table of command lines (about 2,200 for pick), and
-the tests check that the Python version reproduces it byte for byte. Where
-the Python version deliberately differs, the case says which CHANGELOG entry
-explains why.
-
-With perl installed, further tests run random command lines through both
-versions and compare them (`HYPOTHESIS_PROFILE=deep pytest` for a longer
-search). `python tools/make_golden.py --check` confirms the saved output is
-current. See [tests/golden_cases.py](tests/golden_cases.py) for how the cases
-work.
+Perl's output for large tables of command lines (about 2,200 for pick, 700
+for recs), and the tests check that the Python version reproduces it byte for
+byte. Where it deliberately differs, the case names the CHANGELOG entry that
+explains why. With perl installed, further tests run random command lines
+through both versions and compare them (`HYPOTHESIS_PROFILE=deep pytest` for
+a longer search), and `python tools/make_golden.py --check` confirms the saved
+output is current. The examples in the documentation run as tests too.
