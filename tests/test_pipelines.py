@@ -175,3 +175,56 @@ def test_subcommutated_header(tmp_path, slice_, first):
     assert [line.rstrip() for line in got] == [want] * complete
     notes = sh(f"{pieces} | pick 240 -q +112 128A rec=0", tmp_path).rstrip()
     assert notes == ("clear skies, no wind; " * 5).rstrip()
+
+
+# --- 3. bit-level frames: tgen -> recl -bits (-> pick) -------------------------------------
+
+PCM = """\
+# PCM frames of {words} {width}-bit words: a 3-word sync, a counter, and channels,
+# after {lead} bits of junk. The stream is built once, then written {record_bytes}
+# bytes per tgen record, with the B (bit string) pack type.
+W = {width}
+sync = [0b1111101011, 0b1100110011, 0b0100000111]
+words = lambda n: [s % 2**W for s in sync] + [n % 2**W] \\
+    + [(97 * k + n // 4) % 2**W for k in range({words} - 4)]
+stream = bitstring([1, 0, 1] * {lead}, 1)[:{lead}] \\
+    + ''.join(bitstring(words(n), W) for n in range({nframes}))
+chunk # 0 # 1 # '{letter}{record_bits}' # stream[{record_bits} * I : {record_bits} * (I + 1)]
+"""
+
+
+@pytest.mark.parametrize(
+    "words,width,lead,lsb",
+    [(25, 10, 0, False), (25, 10, 3, False), (111, 7, 5, False), (64, 12, 0, False),
+     (21, 11, 0, False), (25, 10, 6, True)],
+)  # fmt: skip
+def test_bit_level_frames(tmp_path, words, width, lead, lsb):
+    import math
+
+    frame_bits = words * width
+    record_bytes = math.lcm(frame_bits, 8) // 8  # the byte-aligned period
+    frames_per_record = 8 * record_bytes // frame_bits
+    nframes = 60 * frames_per_record
+    (tmp_path / "pcm.tgen").write_text(
+        PCM.format(words=words, width=width, lead=lead, nframes=nframes,
+                   record_bytes=record_bytes, record_bits=8 * record_bytes,
+                   letter="b" if lsb else "B")
+    )  # fmt: skip
+    nrecords = (lead + nframes * frame_bits) // (8 * record_bytes)
+    sh(f"tgen -q pcm.tgen {nrecords} > pcm.dat", tmp_path)
+
+    order = "-lsb" if lsb else "-bits"
+    assert f"RESULT {frame_bits} bits" in sh(f"recl pcm.dat {order} -q", tmp_path)
+    if lsb:
+        return
+    # comparing bytes finds only the byte-aligned period
+    assert f"RESULT {record_bytes}\n" in sh(f"recl pcm.dat -q -max={2 * record_bytes}", tmp_path)
+    if lead:
+        return
+    # each record starts with a frame: pick reads its counter (word 3) as a bit field
+    first_byte = 3 * width // 8
+    shift = 8 * first_byte + 32 - 4 * width
+    got = sh(f"pick pcm.dat {record_bytes} -q order=big u0+{first_byte}:{shift}:{width}d", tmp_path)
+    counters = [int(x) for x in got.split()]
+    want = [(r * frames_per_record) % 2**width for r in range(nrecords)]
+    assert counters == want

@@ -225,3 +225,17 @@ def test_closing_the_pipe_early_is_quiet(tool, tmp_path):
     assert p.wait(timeout=60) == 0
     writer.join()
     assert p.stderr.read() == b""
+
+
+def test_bitstring_and_the_B_type():
+    from telemetry_cli.tgen.runtime import bitstring
+
+    assert bitstring([3, 5], 4) == "00110101"
+    assert bitstring(1023, 10) == "1" * 10
+    assert bitstring([-1, 2], [3, 5]) == "11100010"  # two's complement, mixed widths
+    assert bitstring([], 8) == ""
+    with pytest.raises(ValueError, match="2 values but 3 widths"):
+        bitstring([1, 2], [1, 2, 3])
+    text = "w # 0 # 1 # 'B20' # bitstring([0xABC, I], [12, 8])\n"
+    text += "l # 3 # 1 # 'b8' # '10000000'\n"
+    assert frames(text, 2) == bytes([0xAB, 0xC0, 0x00, 0x01]) + bytes([0xAB, 0xC0, 0x10, 0x01])

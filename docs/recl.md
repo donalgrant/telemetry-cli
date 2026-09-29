@@ -73,6 +73,8 @@ argument.
 | `-limit=n` | use only the first n bytes of data |
 | `-reduce=f` | use only the first 1/f of the data (f ≥ 1) |
 | `-full` | compare the data as one piece, not buffer by buffer |
+| `-bits` | record lengths in bits (see below); all lengths are then in bits |
+| `-lsb` | with `-bits`: bits are least significant first in each byte |
 | `-verbose` | show every length's score in every buffer, and a sorted table |
 | `-quiet` | show only the result |
 | `-help` | show help |
@@ -90,6 +92,55 @@ $ head -c 23000 frames.dat | recl - -partial -min=40 -max=60 -q
 NOTE Checking Record Lengths 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60 bytes
 RESULT 48
 ```
+
+## Records that aren't whole bytes
+
+In a raw bit stream, such as PCM telemetry straight off a bit synchronizer,
+frames needn't be a whole number of bytes: 25 words of 10 bits make a 250-bit
+frame. This [tgen](tgen.md) command file makes such a stream. tgen writes
+whole bytes, so each of its records holds four 250-bit frames, 1000 bits or
+125 bytes, written as a bit string with the `B` pack type:
+
+<!-- file: pcm.tgen -->
+```text
+# PCM frames of 25 10-bit words: a 3-word sync, a counter, 21 samples
+words = lambda n: [0b1111101011, 0b1100110011, 0b0100000111, n % 1024] \
+    + [(n * 7 + 31 * k) % 1024 for k in range(21)]
+frames # 0 # 1 # 'B1000' # bitstring([w for n in range(4*I, 4*I + 4) for w in words(n)], 10)
+```
+
+Comparing bytes finds only the stretch after which frames line up with
+bytes again, four frames at a time:
+
+```console
+$ tgen -q pcm.tgen 100 > pcm.dat
+$ recl pcm.dat -q -max=200
+NOTE Checking Record Lengths 1, 2, 4, 5, 10, 20, 25, 50, 100, 125 bytes
+RESULT 125
+```
+
+With `-bits`, recl compares the data with itself shifted by a number of
+*bits*: for a length of L bits, the fraction of bit positions at which the
+8 bits starting there equal the 8 bits L bits on. It finds the frames:
+
+```console
+$ recl pcm.dat -bits
+NOTE Checking Record Lengths 1, 2, 4, 5, 8, 10, 20, 25, 40, 50, 100, 125, 200, 250, 500, 1000 bits
+RESULT 250 bits (31 bytes + 2 bits)
+CORR 12.4070100860219
+NOTE Based on 99992 bit positions (most significant bit first)
+```
+
+Checking every length at every bit position would be slow, so unless you
+give `-min` and `-max` (a range to check, in bits) or `-only`, recl checks
+the lengths the data suggest: a sync word makes the same 24-bit pattern
+appear once per frame, so the gaps between repeats of the most common 24-bit
+patterns are the likely lengths. It checks those and their divisors. With
+no pattern that repeats, give a range.
+
+Bits are read most significant first in each byte, as a serial stream is
+usually packed; `-lsb` reads them least significant first. The frames may
+start anywhere, not just at the start of a byte.
 
 ## How much data recl needs
 
@@ -110,6 +161,13 @@ bytes of values that change slowly still do, but more records are needed.
 `-verbose` shows how clearly the best length stands out. Knowing something
 about the format helps too: `-fact`, `-min` and `-max` rule out lengths, and
 `-only` checks just a few.
+
+One kind of record is hard for recl: one signal sampled continuously, record
+after record, with only a sync word marking where records start. There, the
+data are more alike one sample apart than one record apart. (Waveform records
+that each start afresh, like radar echoes, pulse after pulse, are fine: there
+the data repeat record to record.) `-bits` looks for repeating patterns such
+as sync words, and may find the length where comparing bytes doesn't.
 
 ## Differences from the Perl version
 

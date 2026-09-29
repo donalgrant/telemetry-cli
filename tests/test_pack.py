@@ -16,7 +16,7 @@ def test_parse_counts_and_orders():
     assert parse("V") == [("V", "<", None)]
 
 
-@pytest.mark.parametrize("bad", ["L2q!", "y", "a>4", "n<", "x<", "C>"])
+@pytest.mark.parametrize("bad", ["L2q!", "y", "a>4", "n<", "x<", "C>", "B>8"])
 def test_parse_rejects_unsupported(bad):
     with pytest.raises(PackError):
         parse(bad)
@@ -53,6 +53,32 @@ def test_parse_rejects_unsupported(bad):
 )
 def test_pack(template, values, expected):
     assert pack(template, *values) == expected
+
+
+@pytest.mark.parametrize(
+    "template,value,expected",
+    [
+        ("B", "1", b"\x80"),
+        ("B*", "10110", b"\xb0"),
+        ("B8", "1111111111", b"\xff"),
+        ("B10", "1111111111", b"\xff\xc0"),
+        ("B16", "1", b"\x80\x00"),
+        ("B3", "", b"\x00"),
+        ("B*", "1a0x3", b"\xc8"),  # each character's lowest bit
+        ("b*", "10110", b"\x0d"),
+        ("b10", "1111111111", b"\xff\x03"),
+        ("B*", "", b""),
+    ],
+)
+def test_pack_bits(template, value, expected):
+    assert pack(template, value) == expected
+
+
+def test_unpack_bits():
+    assert unpack("B*", b"\xa5\x0f") == ("1010010100001111",)
+    assert unpack("B5 b*", b"\xa5\x0f") == ("10100", "11110000")
+    assert unpack("b12", b"\xa5\x0f") == ("101001011111",)
+    assert unpack("B20", b"\xa5") == ("10100101",)  # stops at the end of the data
 
 
 def test_unpack_strings_and_numbers():
@@ -124,6 +150,34 @@ def test_float_pack_matches_perl(letter, order, values):
 def test_string_pack_matches_perl(letter, count, text):
     template = letter + count
     assert pack(template, text) == perl(["-e", PERL_PACK, template, text]).stdout
+
+
+@pytest.mark.oracle
+@settings(max_examples=150, deadline=None)
+@given(
+    letter=st.sampled_from("Bb"),
+    count=st.sampled_from(["", "1", "3", "8", "10", "17", "*"]),
+    text=st.text(alphabet="0123abxyz", max_size=24),
+)
+def test_bit_pack_matches_perl(letter, count, text):
+    template = letter + count
+    assert pack(template, text) == perl(["-e", PERL_PACK, template, text]).stdout
+
+
+@pytest.mark.oracle
+@settings(max_examples=100, deadline=None)
+@given(
+    letter=st.sampled_from("Bb"),
+    count=st.sampled_from(["", "1", "5", "8", "13", "*"]),
+    data=st.binary(max_size=6),
+)
+def test_bit_unpack_matches_perl(letter, count, data):
+    template = letter + count
+    expected = perl(["-e", PERL_UNPACK_TEXT, template], stdin=data).stdout.decode()
+    assert "".join(unpack(template, data)) == expected
+
+
+PERL_UNPACK_TEXT = "binmode STDIN; local $/; my $d=<STDIN>; print unpack(shift, $d)"
 
 
 @pytest.mark.oracle

@@ -17,11 +17,12 @@ from .._cli import broken_pipe
 from .._getopt import OptionError, getoptions
 from .._msg import Messenger
 from .._perl import perl_str
+from . import bits as bitlen
 from .corr import agreement, choose, compared
 
 SPECS = ["v|verbose", "h|help", "f|full", "q|quiet", "part|partial", "skip|header=i", "min=i",
          "max=i", "minrecs=i", "maxbufs=i", "fact|factor|mult=i", "only=s", "limit=i",
-         "reduce=f"]  # fmt: skip
+         "reduce=f", "bits", "lsb"]  # fmt: skip
 
 HELP = """\
 recl - estimate the record length of a binary file
@@ -73,6 +74,14 @@ OPTIONS
     -full
         Compare the data (or the part -limit or -reduce keep) as one piece,
         rather than buffer by buffer.
+    -bits
+        Record lengths in bits, for frames that aren't a whole number of
+        bytes (a raw bit stream). All lengths, including -min, -max, -fact
+        and -only, are then in bits. Without -min, -max or -only, recl
+        checks the lengths suggested by bit patterns that repeat.
+    -lsb
+        With -bits: bits are least significant first in each byte (the
+        default is most significant first). Implies -bits.
     -verbose
         Show the score of every length in every buffer, and a sorted table.
     -quiet
@@ -156,14 +165,11 @@ def _run(file: str, o: dict, stdin: BinaryIO, stdout: BinaryIO) -> int:
     if databytes < 2:
         raise ReclError(f"too little data: {max(databytes, 0)} bytes after the header")
     hi = o["max"] if "max" in o else databytes // o.get("minrecs", 2)
+    if o.get("bits") or o.get("lsb"):
+        return _run_bits(data, o, msg, lines, stdout)
 
     if "only" in o:
-        try:
-            lengths = [int(x) for x in o["only"].split(",") if x.strip()]
-        except ValueError:
-            raise ReclError(
-                f"-only needs a comma-separated list of lengths: {o['only']!r}"
-            ) from None
+        lengths = _only(o)
     else:
         lengths = candidate_lengths(databytes, o.get("min", 1), hi, fact, bool(o.get("part")))
     msg("Checking Record Lengths " + ", ".join(map(str, lengths)) + " bytes")
@@ -204,6 +210,58 @@ def _run(file: str, o: dict, stdin: BinaryIO, stdout: BinaryIO) -> int:
     if not o.get("q"):
         msg(perl_str(100.0 * mean[chosen]), "CORR")
         msg(f"Based on {buffers.shape[0]} buffers, each of length {buffers.shape[1]}")
+    _flush(lines, stdout)
+    stdout.flush()
+    return 0
+
+
+def _only(o: dict) -> list[int]:
+    try:
+        return [int(x) for x in o["only"].split(",") if x.strip()]
+    except ValueError:
+        raise ReclError(f"-only needs a comma-separated list of lengths: {o['only']!r}") from None
+
+
+def _run_bits(data: bytes, o: dict, msg: Messenger, lines: list[str], stdout: BinaryIO) -> int:
+    """recl -bits: lengths, and all the options' lengths, are in bits."""
+    use = data[o.get("skip", 0) :]
+    if "limit" in o:
+        use = use[: max(o["limit"], 0)]
+    use = use[: int(len(use) / o.get("reduce", 1.0))]
+    lsb = bool(o.get("lsb"))
+    w = bitlen.windows(use, bitlen.SCORE_WIDTH, lsb=lsb)
+    databits = 8 * len(use)
+    fact = o.get("fact", 1)
+    lo = max(o.get("min", 1), 1)
+    hi = o["max"] if "max" in o else databits // o.get("minrecs", 2)
+    if "only" in o:
+        lengths = _only(o)
+    elif "min" in o or "max" in o:
+        lengths = [r for r in range(lo, hi + 1) if r % fact == 0]  # every length in range
+    else:
+        lengths = bitlen.propose(bitlen.windows(use, bitlen.PROPOSAL_WIDTH, lsb=lsb), lo, hi, fact)
+        if not lengths:
+            raise ReclError(
+                "no bit pattern repeats in these data, so recl -bits can't suggest lengths; "
+                "give -min and -max (in bits) to check a range, or -only"
+            )
+    msg("Checking Record Lengths " + ", ".join(map(str, lengths)) + " bits")
+    _flush(lines, stdout)
+    if not lengths:
+        raise ReclError("no record lengths to check; see the -min, -max and -fact options")
+    if min(lengths) < 1:
+        raise ReclError("record lengths must be at least 1 bit")
+    mean, counts = bitlen.scores(w, lengths)
+    chosen = choose(lengths, mean, counts)
+    if o.get("v"):
+        msg("Table of Sorted Correlations")
+        for j in sorted(range(len(lengths)), key=lambda j: (-mean[j], lengths[j])):
+            msg(f"{100 * mean[j]:5.2f}% for reclen {lengths[j]} bits")
+    msg(bitlen.describe(lengths[chosen]), "RESULT")
+    if not o.get("q"):
+        msg(perl_str(100.0 * mean[chosen]), "CORR")
+        order = "least" if lsb else "most"
+        msg(f"Based on {len(w)} bit positions ({order} significant bit first)")
     _flush(lines, stdout)
     stdout.flush()
     return 0

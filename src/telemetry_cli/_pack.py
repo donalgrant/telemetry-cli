@@ -12,6 +12,8 @@ reproduces Perl's behavior for the letters those tools use:
     v V       16 / 32-bit unsigned, little-endian
     f d       single / double float
     a A Z     byte strings: null-padded, space-padded, null-terminated
+    B b       bit strings ("1011..."), most / least significant bit first in
+              each byte; the count is in bits
     x         a null byte
 
 Each letter can take a repeat count (``C4``) or ``*``, and the integer and
@@ -53,7 +55,8 @@ _FIXED_ORDER = {"n": ">", "N": ">", "v": "<", "V": "<"}
 _FLOATS = {"f": "f", "d": "d"}
 _STRINGS = "aAZ"
 
-_ITEM = re.compile(r"\s*([cCsSlLiIqQnNvVfdaAZx])([<>])?(\*|\d+)?\s*")
+_ITEM = re.compile(r"\s*([cCsSlLiIqQnNvVfdaAZxBb])([<>])?(\*|\d+)?\s*")
+_BITS = "Bb"
 NATIVE = "<" if sys.byteorder == "little" else ">"
 
 
@@ -75,7 +78,7 @@ def parse(template: str) -> list[tuple[str, str, int | None]]:
                 break
             raise PackError(f"unsupported pack template {template!r} at {template[pos:]!r}")
         letter, order, count = m.groups()
-        if order and (letter in _STRINGS or letter in _FIXED_ORDER or letter in "cCx"):
+        if order and (letter in _STRINGS or letter in _FIXED_ORDER or letter in "cCxBb"):
             raise PackError(f"'{order}' is not allowed after '{letter}' in {template!r}")
         order = _FIXED_ORDER.get(letter, order or NATIVE)
         n = None if count is None else (-1 if count == "*" else int(count))
@@ -120,6 +123,8 @@ def pack(template: str, *values) -> bytes:
     for letter, order, count in parse(template):
         if letter == "x":
             out += b"\0" * (1 if count is None else max(count, 0))
+        elif letter in _BITS:
+            out += _pack_bits(letter, _to_bytes(take()), count)
         elif letter in _STRINGS:
             s = _to_bytes(take())
             if count == -1:
@@ -154,6 +159,13 @@ def unpack(template: str, data: bytes) -> tuple:
     for letter, order, count in parse(template):
         if letter == "x":
             pos += 1 if count is None else max(count, 0)
+        elif letter in _BITS:
+            avail = 8 * (len(data) - pos)
+            n = avail if count == -1 else min(1 if count is None else count, avail)
+            chunk = data[pos : pos + (n + 7) // 8]
+            pos += len(chunk)
+            bits = _bit_string(chunk, letter)[:n]
+            out.append(bits)
         elif letter in _STRINGS:
             n = len(data) - pos if count == -1 else (1 if count is None else count)
             s = data[pos : pos + n]
@@ -176,6 +188,25 @@ def unpack(template: str, data: bytes) -> tuple:
                 out.append(struct.unpack_from(fmt, data, pos)[0])
                 pos += size
     return tuple(out)
+
+
+def _pack_bits(letter: str, s: bytes, count: int | None) -> bytes:
+    """Perl's B/b: each character's lowest bit, padded or cut to count bits."""
+    n = len(s) if count == -1 else (1 if count is None else count)
+    bits = [c & 1 for c in s[:n]] + [0] * max(n - len(s), 0)
+    out = bytearray()
+    for i in range(0, n, 8):
+        chunk = bits[i : i + 8] + [0] * (8 - len(bits[i : i + 8]))
+        if letter == "b":
+            chunk.reverse()
+        out.append(int("".join(map(str, chunk)), 2))
+    return bytes(out)
+
+
+def _bit_string(data: bytes, letter: str) -> str:
+    """The bits of data as a string of 0s and 1s (B: most significant first)."""
+    order = slice(None) if letter == "B" else slice(None, None, -1)
+    return "".join(format(byte, "08b")[order] for byte in data)
 
 
 def calcsize(template: str) -> int:
