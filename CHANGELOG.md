@@ -1,6 +1,10 @@
 # Changelog
 
-## Unreleased
+## 1.1.0 (2026-09-28)
+
+Bit-level telemetry: recl finds frame lengths in bits and where frames start,
+a new command, realign, puts frames that start at any bit on byte boundaries
+for pick, and tgen can write bit strings.
 
 ### recl
 
