@@ -27,7 +27,7 @@
   pick can decode them. With `-sync`, it finds frames by their sync pattern
   (optionally with bit errors) instead, which survives bit slips.
   `recl -bits -sync` reports the frame length and offset, and suggests the
-  realign command.
+  realign command. Without a file name, realign reads stdin.
 
 ### tgen
 

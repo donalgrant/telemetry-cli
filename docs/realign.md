@@ -4,8 +4,12 @@ Put frames that start at any bit on byte boundaries.
 
 ```text
 realign [options] file length_bits [offset_bits] > frames.dat
-cat file | realign - [options] length_bits [offset_bits]
+cat file | realign [options] length_bits [offset_bits] > frames.dat
 ```
+
+Without a file name (or with `-`), realign reads stdin. It reads all of its
+input before writing, so it suits files and finite pipes rather than a live
+feed.
 
 In a raw bit stream, such as PCM telemetry straight off a bit synchronizer,
 frames needn't start at the start of a byte, nor be a whole number of bytes
@@ -51,6 +55,13 @@ $ pick frames.dat 32 -q order=big -n u0+3:16:10d | head -3
 0 0
 1 1
 2 2
+```
+
+Or all in one pipeline:
+
+```console
+$ tgen -q pcm.tgen 100 | realign -q 250 3 | pick 32 -q order=big -n u0+3:16:10d | tail -1
+398 398
 ```
 
 ## Bit slips

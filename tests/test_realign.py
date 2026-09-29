@@ -129,10 +129,23 @@ def test_a_bit_slip():
     assert "249 bits (1x)" in err  # the short frame
 
 
+def test_the_file_is_optional(tmp_path, monkeypatch):
+    data = to_bytes(pcm_bits(20))
+    out = io.BytesIO()
+    assert main(["250", "3", "-q"], stdin=io.BytesIO(data), stdout=out, stderr=io.StringIO()) == 0
+    assert counters(out.getvalue()) == list(range(20))
+    # a file whose name is a number is still a file
+    monkeypatch.chdir(tmp_path)
+    (tmp_path / "250").write_bytes(data)
+    out = io.BytesIO()
+    assert main(["250", "250", "3", "-q"], stdin=io.BytesIO(b""), stdout=out) == 0
+    assert counters(out.getvalue()) == list(range(20))
+
+
 @pytest.mark.parametrize(
     "args,message",
     [
-        ([], "give a file"),
+        ([], "give a frame length"),
         (["-", "x"], "must be numbers"),
         (["-", "250", "-fill=2"], "-fill must be"),
         (["-", "0"], "at least 1 bit"),

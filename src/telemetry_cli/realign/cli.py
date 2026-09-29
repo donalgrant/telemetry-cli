@@ -1,13 +1,14 @@
 """The realign command: put bit-offset frames on byte boundaries.
 
     realign [options] file length_bits [offset_bits] > frames.dat
-    cat file | realign - [options] length_bits [offset_bits]
+    cat file | realign [options] length_bits [offset_bits] > frames.dat
 
 Run ``realign -help`` for help.
 """
 
 from __future__ import annotations
 
+import os
 import sys
 from typing import BinaryIO, TextIO
 
@@ -23,7 +24,9 @@ realign - put frames that start at any bit on byte boundaries
 
 SYNOPSIS
     realign [options] file length_bits [offset_bits] > frames.dat
-    cat file | realign - [options] length_bits [offset_bits]
+    cat file | realign [options] length_bits [offset_bits] > frames.dat
+
+    Without a file (or with -), realign reads stdin.
 
 DESCRIPTION
     In a raw bit stream, frames needn't start at the start of a byte, nor be
@@ -90,8 +93,12 @@ def main(
     if o.get("h"):
         stdout.write(HELP.encode())
         return 0
+    # The file is optional: a first argument that's a number, and not the name
+    # of a file, is the frame length, and the input is stdin (as with pick).
+    if args and args[0] != "-" and args[0].isdigit() and not os.path.exists(args[0]):
+        args = ["-", *args]
     if len(args) < 2:
-        return error("give a file (or -) and a frame length in bits; see 'realign -help'", 2)
+        return error("give a frame length in bits; see 'realign -help'", 2)
     try:
         length = int(args[1])
         offset = int(args[2]) if len(args) > 2 else o.get("offset", 0)
