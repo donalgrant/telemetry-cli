@@ -11,6 +11,9 @@ Command-line tools for binary telemetry, built for Unix pipelines:
   ([manual](https://github.com/donalgrant/telemetry-cli/blob/main/docs/recl.md)).
 - **tgen** generates synthetic telemetry from a command file describing each
   record ([manual](https://github.com/donalgrant/telemetry-cli/blob/main/docs/tgen.md)).
+- **realign** puts frames that start at any bit (in a raw bit stream) on byte
+  boundaries, so pick can read them
+  ([manual](https://github.com/donalgrant/telemetry-cli/blob/main/docs/realign.md)).
 
 ```console
 $ printf '\x00\x00\x00\x01\xff\xfeHi\x00\x00\x00\x02\x00\x07ok' > demo.bin
@@ -37,7 +40,7 @@ pipx install telemetry-cli
 uv tool install telemetry-cli
 ```
 
-Either installs the commands `pick`, `recs`, `recl` and `tgen`. You can also
+Either installs the commands `pick`, `recs`, `recl`, `tgen` and `realign`. You can also
 `pip install telemetry-cli` in a virtual environment.
 
 ## History

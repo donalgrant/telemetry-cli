@@ -51,7 +51,7 @@ def windows(data: bytes | np.ndarray, width: int, *, lsb: bool = False) -> np.nd
     mask = np.uint64((1 << width) - 1)
     for s in range(8):
         out[s::8] = (acc >> np.uint64(8 * k - width - s)) & mask
-    return out.astype(np.uint32)
+    return out.astype(np.uint32) if width <= 32 else out
 
 
 def propose(w: np.ndarray, lo: int, hi: int, fact: int) -> list[int]:

@@ -328,11 +328,26 @@ def _report_sync(
     msg(f"Bits {found.offset}-{found.offset + n - 1} of each record ({found.hex()}) are the "
         f"same in {100 * found.near:.1f}% of {found.records} records "
         f"({100 * found.exact:.1f}% exactly): {kind}")  # fmt: skip
+    lead = len(found.bits) - len(found.bits.lstrip(found.bits[0]))
+    trail = len(found.bits) - len(found.bits.rstrip(found.bits[-1]))
+    if lead >= 16:
+        msg(f"The pattern starts with {lead} {found.bits[0]}s, which may be padding at the end "
+            "of the record before: the sync word may start later")  # fmt: skip
+    if trail >= 16:
+        msg(f"The pattern ends with {trail} {found.bits[-1]}s, which may be padding or unused "
+            "bits after the sync word")  # fmt: skip
+    if found.irregular:
+        msg(f"The pattern's repeats are not one record apart {found.irregular} times: "
+            "bits lost or added (bit slips), or records missing")  # fmt: skip
     name = file if file != "-" else "FILE"
     start, extra = divmod(found.offset, 8)
     if extra or (not byte_mode and length_bits % 8):
         msg(f"Records start at bit {found.offset} (byte {start} + {extra} bits), "
             "if they start with the pattern")  # fmt: skip
+        order = " -lsb" if o.get("lsb") else ""
+        msg(f"To put each record on byte boundaries: realign {name}{order} {length_bits} "
+            f"{found.offset}; or, following the pattern: realign {name}{order} {length_bits} "
+            f"-sync={found.bits[:56]}")  # fmt: skip
         return
     reclen = length_bits // 8
     msg(f"Records start at byte {start}, if they start with the pattern: "

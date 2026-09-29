@@ -118,8 +118,12 @@ here are the 32-bit sync word `03915ed3` and the top 7 bits of the counter
 after it, which are 0 in all 500 records: from the data alone, recl can't
 tell fixed bits beside a sync word from the sync word itself. It prefers a
 pattern with both 0s and 1s to one of all 0s (unused bits, padding), and
-allows some bit errors: a bit position counts as fixed if 85% of the records
-agree.
+says so when a pattern starts or ends with a long run of 0s or 1s, which may
+be padding next to the sync word. It allows some bit errors: a bit position
+counts as fixed if 85% of the records agree. Records are lined up on the
+repeats of the most common pattern that recurs exactly once per record, so a
+bit slip (a bit lost or added, moving every later record) doesn't hide the
+sync word; recl reports the slips.
 
 The suggestions assume that records start with the pattern. They work:
 
@@ -183,7 +187,8 @@ no pattern that repeats, give a range.
 
 Bits are read most significant first in each byte, as a serial stream is
 usually packed; `-lsb` reads them least significant first. The frames may
-start anywhere, not just at the start of a byte.
+start anywhere, not just at the start of a byte: `-bits -sync` says where,
+and [realign](realign.md) puts each frame on byte boundaries for pick.
 
 ## How much data recl needs
 
