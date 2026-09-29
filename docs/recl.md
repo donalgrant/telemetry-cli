@@ -113,9 +113,14 @@ about the format helps too: `-fact`, `-min` and `-max` rule out lengths, and
 
 ## Differences from the Perl version
 
-recl was written in Perl; its history in `legacy/recl` starts in 2012. The
-command line and output lines are the same, but the results differ, because
-the Perl version's measurement was broken (see the
+recl began as a C++ tool at JPL, written with the first, C++ version of pick
+for a project whose telemetry arrived with no documentation of its
+structure: recl found the record length, and pick took the records apart. It
+was later rewritten in Perl; that version's history, in `legacy/recl`,
+starts in 2012.
+
+The command line and output lines are the same, but the results differ,
+because the Perl version's measurement was broken (see the
 [CHANGELOG](../CHANGELOG.md)):
 
 - It counted agreeing bits, and only in the first eighth of each buffer, so

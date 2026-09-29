@@ -42,10 +42,15 @@ Either installs the commands `pick`, `recs`, `recl` and `tgen`. You can also
 
 ## History
 
-These are Python ports of tools written at JPL: pick (first in C++, and in
-Perl by 2000), tgen (2003), and recs and recl. The command lines are the
-same, and so is the output, apart from fixes listed in the
-[CHANGELOG](https://github.com/donalgrant/telemetry-cli/blob/main/CHANGELOG.md):
+These are Python ports of tools written at JPL. pick and recl began together
+as C++ tools, for a project whose telemetry arrived with no documentation of
+its structure: recl to find the length of the records, and pick to take them
+apart and work out what was in them. (A bit reminiscent of the film
+*Contact*.) Both were later rewritten in Perl (pick by 2000), and tgen (2003)
+and recs joined them.
+
+The command lines are the same, and so is the output, apart from fixes listed
+in the [CHANGELOG](https://github.com/donalgrant/telemetry-cli/blob/main/CHANGELOG.md):
 chiefly pick's byte-order handling on little-endian machines, and recl's
 measurement. tgen's command files are now Python; `tgen --convert` translates
 the old Perl ones. The Perl originals, with their history, are in
