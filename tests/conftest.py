@@ -35,9 +35,10 @@ def perl(args, stdin=b"", cwd=None):
 
 
 def pytest_collection_modifyitems(config, items):
-    if PERL:
+    """Tests that run the Perl originals need perl and legacy/ (not in the sdist)."""
+    if PERL and LEGACY.is_dir():
         return
-    skip = pytest.mark.skip(reason="perl not available")
+    skip = pytest.mark.skip(reason="needs perl and the legacy/ Perl sources")
     for item in items:
         if "oracle" in item.keywords:
             item.add_marker(skip)

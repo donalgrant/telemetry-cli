@@ -9,6 +9,7 @@ from conftest import FIXTURES, LEGACY
 
 from telemetry_cli.tgen.convert import convert, expr, statement
 
+needs_legacy = pytest.mark.skipif(not LEGACY.is_dir(), reason="needs legacy/ (not in the sdist)")
 PERL_FIXTURES = sorted((FIXTURES / "tgen" / "perl").glob("*.tgen"))
 EXAMPLES = Path(__file__).parent.parent / "src" / "telemetry_cli" / "tgen" / "examples"
 
@@ -88,6 +89,7 @@ def test_comments_and_continuations():
     assert out.splitlines() == ["# c1", "! c2", "; c3", "a # 0   # 1 # 'C' # 7"]
 
 
+@needs_legacy
 def test_the_perl_scratch_files(tmp_path, monkeypatch):
     """tgen's own scratch test files: one uses a Perl closure (marked), the other a
     function it never defines (converted, and fails loudly when run)."""

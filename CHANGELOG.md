@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased
+## 1.0.0 (2026-09-28)
+
+The first release.
 
 `telemetry-cli` brings four Perl tools into one Python package: `pick`, `recs`,
 `recl` and `tgen`. The originals, with their git history, are in `legacy/`.

@@ -4,19 +4,25 @@ build-backend = "hatchling.build"
 
 [project]
 name = "telemetry-cli"
-version = "0.0.1"
-description = "Command-line tools for binary telemetry: pick, recs, recl and tgen"
+version = "1.0.0"
+description = "Command-line tools for binary telemetry: decode, extract, measure and generate records"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [{ name = "David A. Imel" }]
 requires-python = ">=3.10"
 dependencies = ["numpy>=1.23"]
+keywords = ["telemetry", "binary", "records", "decoding", "pcm", "cli"]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 5 - Production/Stable",
     "Environment :: Console",
     "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Scientific/Engineering",
     "Topic :: Utilities",
 ]
@@ -30,7 +36,6 @@ dev = [
     "tomli>=2; python_version < '3.11'",
 ]
 
-# Console scripts are added as each tool is ported.
 [project.scripts]
 pick = "telemetry_cli.pick.cli:main"
 recs = "telemetry_cli.recs.cli:main"
@@ -39,11 +44,12 @@ tgen = "telemetry_cli.tgen.cli:main"
 
 [project.urls]
 Repository = "https://github.com/donalgrant/telemetry-cli"
+Documentation = "https://github.com/donalgrant/telemetry-cli/tree/main/docs"
 Changelog = "https://github.com/donalgrant/telemetry-cli/blob/main/CHANGELOG.md"
 Issues = "https://github.com/donalgrant/telemetry-cli/issues"
 
 [tool.hatch.build.targets.sdist]
-exclude = [".github", ".gitignore", "legacy", "tools"]
+exclude = [".github", "/.gitignore", "legacy", "build"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/telemetry_cli"]

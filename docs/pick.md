@@ -358,8 +358,10 @@ pick reports errors on stderr and exits with a nonzero status.
 
 ## Differences from the Perl version
 
-pick was first written in C++ at JPL, then rewritten in Perl. The Perl
-version's history, in `legacy/pick`, runs from 2000 to 2012. It was ported
-to Python in 2026. The command line is the same. The output is the same, except for the
-fixes listed in the [CHANGELOG](../CHANGELOG.md), chiefly about byte order on
-little-endian machines.
+pick was first written in C++ at JPL, together with the first recl, to
+decode telemetry that arrived with no documentation of its structure. It was
+then rewritten in Perl; that version's history, in `legacy/pick`, runs from
+2000 to 2012. It was ported to Python in 2026. The command line is the same.
+The output is the same, except for the fixes listed in the
+[CHANGELOG](../CHANGELOG.md), chiefly about byte order on little-endian
+machines.
