@@ -4,6 +4,10 @@
 
 ### Documentation
 
+- A new tutorial, [a spacecraft housekeeping stream](docs/tutorial-housekeeping.md),
+  walks line by line through a tgen command file with a thermostat, correlated
+  channels, a spinning quaternion and a subcommutated channel, then decodes it
+  with pick and turns it into a CSV to plot. Its examples run in the test suite.
 - pick's help (`pick ?q`) and manual pipe the symbol-table example to
   feedgnuplot, a command-line front end to gnuplot, instead of xmgr, and say
   that xmgr lives on as Grace (`xmgrace -nxy`).
