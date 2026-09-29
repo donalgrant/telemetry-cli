@@ -119,8 +119,36 @@ compare the two versions' output.
 - The file helpers open each file once, rather than once per frame.
 - A bad option is an error; the Perl warned and carried on.
 
-### recl (not yet ported)
+### recl
 
-- The autocorrelation counted only the first eighth of the bits in each
-  buffer, so it usually guessed wrong. `-full`, `-limit` and `-reduce` were
-  accepted but ignored.
+recl is ported, and its measurement is fixed, so its results differ from the
+Perl version's (which were usually wrong). The command line and output lines
+are the same; about 100 golden cases compare everything but the scores with
+the Perl. Whether recl finds the right length is tested on files of known
+record length made with tgen, including random lengths up to 700 bytes,
+headers, partial last records and `-fact`.
+
+**Fixes**
+
+- **The measurement** counted agreeing bits in only the first eighth of each
+  buffer. On a file of 48-byte records, the Perl answered 3. recl now counts
+  the bytes equal to the byte one record length on, over the whole buffer,
+  and reports the smallest of a length and its multiples when they score
+  alike (they always nearly do). Counting bytes rather than bits needs much
+  less data, and isn't pulled toward multiples of the length by counters. So
+  `CORR` is now a percentage of equal bytes (about 0.4 for random data),
+  not of agreeing bits (about 50).
+- **`-full`, `-limit` and `-reduce`** (`recl options`) were accepted but
+  ignored. They now work.
+- **`-only`** sized buffers from the last length listed rather than the
+  longest, so longer lengths were never scored.
+- **The `-verbose` table** showed fractions labeled as percentages.
+- **stdin** (`recl stdin`) required `-max`, which was then taken as the file
+  size. stdin now works like a file.
+- **Short data** (`recl short data`): data shorter than one buffer made the
+  Perl divide by zero; it is now compared as one piece.
+- **No lengths to check** (`recl endless loops`), e.g. `-min=90 -max=80`,
+  made the Perl loop forever; it is now an error. So are a bad option and an
+  unreadable `-only` list.
+
+It is also much faster.

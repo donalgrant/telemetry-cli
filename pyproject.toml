@@ -34,6 +34,7 @@ dev = [
 [project.scripts]
 pick = "telemetry_cli.pick.cli:main"
 recs = "telemetry_cli.recs.cli:main"
+recl = "telemetry_cli.recl.cli:main"
 tgen = "telemetry_cli.tgen.cli:main"
 
 [project.urls]

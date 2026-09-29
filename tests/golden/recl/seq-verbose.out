@@ -1,0 +1,83 @@
+NOTE Checking Record Lengths 4, 8, 16 bytes
+NOTE buf 1 reclen 4 corr 0.78125 accum-corr 0.78125
+NOTE buf 1 reclen 8 corr 0.71875 accum-corr 0.71875
+NOTE buf 1 reclen 16 corr 0.46875 accum-corr 0.46875
+NOTE buf 2 reclen 4 corr 0.75 accum-corr 1.53125
+NOTE buf 2 reclen 8 corr 0.71875 accum-corr 1.4375
+NOTE buf 2 reclen 16 corr 0.46875 accum-corr 0.9375
+NOTE buf 3 reclen 4 corr 0.75 accum-corr 2.28125
+NOTE buf 3 reclen 8 corr 0.71875 accum-corr 2.15625
+NOTE buf 3 reclen 16 corr 0.46875 accum-corr 1.40625
+NOTE buf 4 reclen 4 corr 0.71875 accum-corr 3
+NOTE buf 4 reclen 8 corr 0.71875 accum-corr 2.875
+NOTE buf 4 reclen 16 corr 0.46875 accum-corr 1.875
+NOTE buf 5 reclen 4 corr 0.75 accum-corr 3.75
+NOTE buf 5 reclen 8 corr 0.71875 accum-corr 3.59375
+NOTE buf 5 reclen 16 corr 0.46875 accum-corr 2.34375
+NOTE buf 6 reclen 4 corr 0.71875 accum-corr 4.46875
+NOTE buf 6 reclen 8 corr 0.71875 accum-corr 4.3125
+NOTE buf 6 reclen 16 corr 0.46875 accum-corr 2.8125
+NOTE buf 7 reclen 4 corr 0.71875 accum-corr 5.1875
+NOTE buf 7 reclen 8 corr 0.71875 accum-corr 5.03125
+NOTE buf 7 reclen 16 corr 0.46875 accum-corr 3.28125
+NOTE buf 8 reclen 4 corr 0.71875 accum-corr 5.90625
+NOTE buf 8 reclen 8 corr 0.71875 accum-corr 5.75
+NOTE buf 8 reclen 16 corr 0.46875 accum-corr 3.75
+NOTE buf 9 reclen 4 corr 0.75 accum-corr 6.65625
+NOTE buf 9 reclen 8 corr 0.71875 accum-corr 6.46875
+NOTE buf 9 reclen 16 corr 0.46875 accum-corr 4.21875
+NOTE buf 10 reclen 4 corr 0.71875 accum-corr 7.375
+NOTE buf 10 reclen 8 corr 0.71875 accum-corr 7.1875
+NOTE buf 10 reclen 16 corr 0.46875 accum-corr 4.6875
+NOTE buf 11 reclen 4 corr 0.71875 accum-corr 8.09375
+NOTE buf 11 reclen 8 corr 0.71875 accum-corr 7.90625
+NOTE buf 11 reclen 16 corr 0.46875 accum-corr 5.15625
+NOTE buf 12 reclen 4 corr 0.6875 accum-corr 8.78125
+NOTE buf 12 reclen 8 corr 0.71875 accum-corr 8.625
+NOTE buf 12 reclen 16 corr 0.46875 accum-corr 5.625
+NOTE buf 13 reclen 4 corr 0.71875 accum-corr 9.5
+NOTE buf 13 reclen 8 corr 0.71875 accum-corr 9.34375
+NOTE buf 13 reclen 16 corr 0.46875 accum-corr 6.09375
+NOTE buf 14 reclen 4 corr 0.6875 accum-corr 10.1875
+NOTE buf 14 reclen 8 corr 0.71875 accum-corr 10.0625
+NOTE buf 14 reclen 16 corr 0.46875 accum-corr 6.5625
+NOTE buf 15 reclen 4 corr 0.71875 accum-corr 10.90625
+NOTE buf 15 reclen 8 corr 0.71875 accum-corr 10.78125
+NOTE buf 15 reclen 16 corr 0.46875 accum-corr 7.03125
+NOTE buf 16 reclen 4 corr 0.71875 accum-corr 11.625
+NOTE buf 16 reclen 8 corr 0.71875 accum-corr 11.5
+NOTE buf 16 reclen 16 corr 0.46875 accum-corr 7.5
+NOTE buf 17 reclen 4 corr 0.75 accum-corr 12.375
+NOTE buf 17 reclen 8 corr 0.71875 accum-corr 12.21875
+NOTE buf 17 reclen 16 corr 0.46875 accum-corr 7.96875
+NOTE buf 18 reclen 4 corr 0.71875 accum-corr 13.09375
+NOTE buf 18 reclen 8 corr 0.71875 accum-corr 12.9375
+NOTE buf 18 reclen 16 corr 0.46875 accum-corr 8.4375
+NOTE buf 19 reclen 4 corr 0.71875 accum-corr 13.8125
+NOTE buf 19 reclen 8 corr 0.71875 accum-corr 13.65625
+NOTE buf 19 reclen 16 corr 0.46875 accum-corr 8.90625
+NOTE buf 20 reclen 4 corr 0.6875 accum-corr 14.5
+NOTE buf 20 reclen 8 corr 0.71875 accum-corr 14.375
+NOTE buf 20 reclen 16 corr 0.46875 accum-corr 9.375
+NOTE buf 21 reclen 4 corr 0.71875 accum-corr 15.21875
+NOTE buf 21 reclen 8 corr 0.71875 accum-corr 15.09375
+NOTE buf 21 reclen 16 corr 0.46875 accum-corr 9.84375
+NOTE buf 22 reclen 4 corr 0.6875 accum-corr 15.90625
+NOTE buf 22 reclen 8 corr 0.71875 accum-corr 15.8125
+NOTE buf 22 reclen 16 corr 0.46875 accum-corr 10.3125
+NOTE buf 23 reclen 4 corr 0.6875 accum-corr 16.59375
+NOTE buf 23 reclen 8 corr 0.71875 accum-corr 16.53125
+NOTE buf 23 reclen 16 corr 0.46875 accum-corr 10.78125
+NOTE buf 24 reclen 4 corr 0.6875 accum-corr 17.28125
+NOTE buf 24 reclen 8 corr 0.71875 accum-corr 17.25
+NOTE buf 24 reclen 16 corr 0.46875 accum-corr 11.25
+NOTE buf 25 reclen 4 corr 0.71875 accum-corr 18
+NOTE buf 25 reclen 8 corr 0.71875 accum-corr 17.96875
+NOTE buf 25 reclen 16 corr 0.46875 accum-corr 11.71875
+NOTE Table of Sorted Correlations
+NOTE  0.72% for reclen 4
+NOTE  0.72% for reclen 8
+NOTE  0.47% for reclen 16
+RESULT 4
+CORR 72
+NOTE Based on 25 buffers, each of length 32

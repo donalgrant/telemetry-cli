@@ -7,7 +7,8 @@ pipelines:
   ([manual](docs/pick.md)).
 - **recs** extracts records from a byte stream by their start and end markers
   ([manual](docs/recs.md)).
-- **recl** estimates the record length of a binary file (not yet ported).
+- **recl** estimates the record length of a binary file
+  ([manual](docs/recl.md)).
 - **tgen** generates synthetic telemetry from a command file
   ([manual](docs/tgen.md)).
 

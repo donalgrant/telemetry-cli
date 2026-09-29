@@ -1,0 +1,44 @@
+NOTE Checking Record Lengths 4, 8, 16 bytes
+NOTE buf 1 reclen 4 corr 0.46875 accum-corr 0.46875
+NOTE buf 1 reclen 8 corr 0.4375 accum-corr 0.4375
+NOTE buf 1 reclen 16 corr 0.28125 accum-corr 0.28125
+NOTE buf 2 reclen 4 corr 0.875 accum-corr 1.34375
+NOTE buf 2 reclen 8 corr 0.75 accum-corr 1.1875
+NOTE buf 2 reclen 16 corr 0.5 accum-corr 0.78125
+NOTE buf 3 reclen 4 corr 0.875 accum-corr 2.21875
+NOTE buf 3 reclen 8 corr 0.75 accum-corr 1.9375
+NOTE buf 3 reclen 16 corr 0.5 accum-corr 1.28125
+NOTE buf 4 reclen 4 corr 0.6875 accum-corr 2.90625
+NOTE buf 4 reclen 8 corr 0.625 accum-corr 2.5625
+NOTE buf 4 reclen 16 corr 0.4375 accum-corr 1.71875
+NOTE buf 5 reclen 4 corr 0.46875 accum-corr 3.375
+NOTE buf 5 reclen 8 corr 0.46875 accum-corr 3.03125
+NOTE buf 5 reclen 16 corr 0.28125 accum-corr 2
+NOTE buf 6 reclen 4 corr 0.875 accum-corr 4.25
+NOTE buf 6 reclen 8 corr 0.75 accum-corr 3.78125
+NOTE buf 6 reclen 16 corr 0.5 accum-corr 2.5
+NOTE buf 7 reclen 4 corr 0.875 accum-corr 5.125
+NOTE buf 7 reclen 8 corr 0.75 accum-corr 4.53125
+NOTE buf 7 reclen 16 corr 0.5 accum-corr 3
+NOTE buf 8 reclen 4 corr 0.71875 accum-corr 5.84375
+NOTE buf 8 reclen 8 corr 0.59375 accum-corr 5.125
+NOTE buf 8 reclen 16 corr 0.4375 accum-corr 3.4375
+NOTE buf 9 reclen 4 corr 0.46875 accum-corr 6.3125
+NOTE buf 9 reclen 8 corr 0.46875 accum-corr 5.59375
+NOTE buf 9 reclen 16 corr 0.28125 accum-corr 3.71875
+NOTE buf 10 reclen 4 corr 0.875 accum-corr 7.1875
+NOTE buf 10 reclen 8 corr 0.75 accum-corr 6.34375
+NOTE buf 10 reclen 16 corr 0.5 accum-corr 4.21875
+NOTE buf 11 reclen 4 corr 0.875 accum-corr 8.0625
+NOTE buf 11 reclen 8 corr 0.75 accum-corr 7.09375
+NOTE buf 11 reclen 16 corr 0.5 accum-corr 4.71875
+NOTE buf 12 reclen 4 corr 0.75 accum-corr 8.8125
+NOTE buf 12 reclen 8 corr 0.5625 accum-corr 7.65625
+NOTE buf 12 reclen 16 corr 0.4375 accum-corr 5.15625
+NOTE Table of Sorted Correlations
+NOTE  0.73% for reclen 4
+NOTE  0.64% for reclen 8
+NOTE  0.43% for reclen 16
+RESULT 4
+CORR 73.4375
+NOTE Based on 12 buffers, each of length 32

@@ -1,0 +1,402 @@
+{
+ "aux-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "aux-fact": {
+  "exit": 0,
+  "stderr": []
+ },
+ "aux-factor-alias": {
+  "exit": 0,
+  "stderr": []
+ },
+ "aux-header-alias": {
+  "exit": 0,
+  "stderr": []
+ },
+ "aux-max": {
+  "exit": 0,
+  "stderr": []
+ },
+ "aux-maxbufs": {
+  "exit": 0,
+  "stderr": []
+ },
+ "aux-min-max": {
+  "exit": 0,
+  "stderr": []
+ },
+ "aux-minrecs": {
+  "exit": 0,
+  "stderr": []
+ },
+ "aux-only": {
+  "exit": 0,
+  "stderr": []
+ },
+ "aux-part-alias": {
+  "exit": 0,
+  "stderr": []
+ },
+ "aux-partial": {
+  "exit": 0,
+  "stderr": []
+ },
+ "aux-quiet": {
+  "exit": 0,
+  "stderr": []
+ },
+ "aux-skip": {
+  "exit": 0,
+  "stderr": []
+ },
+ "aux-verbose": {
+  "exit": 0,
+  "stderr": []
+ },
+ "aux-verbose-q": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-fact": {
+  "exit": -1,
+  "stderr": [
+   "(timed out)"
+  ]
+ },
+ "counter-factor-alias": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-header-alias": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-max": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-maxbufs": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-min-max": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-minrecs": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-only": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-part-alias": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-partial": {
+  "exit": 255,
+  "stderr": [
+   "Illegal division by zero"
+  ]
+ },
+ "counter-quiet": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-skip": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-verbose": {
+  "exit": 0,
+  "stderr": []
+ },
+ "counter-verbose-q": {
+  "exit": 0,
+  "stderr": []
+ },
+ "err-missing-file": {
+  "exit": 2,
+  "stderr": [
+   "Must specify -max option when streaming from STDIN.  ../legacy/recl/recl -help for help."
+  ]
+ },
+ "full": {
+  "exit": 0,
+  "stderr": []
+ },
+ "int32-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "int32-fact": {
+  "exit": 0,
+  "stderr": []
+ },
+ "int32-factor-alias": {
+  "exit": 0,
+  "stderr": []
+ },
+ "int32-header-alias": {
+  "exit": 0,
+  "stderr": []
+ },
+ "int32-max": {
+  "exit": 0,
+  "stderr": []
+ },
+ "int32-maxbufs": {
+  "exit": 0,
+  "stderr": []
+ },
+ "int32-min-max": {
+  "exit": 0,
+  "stderr": []
+ },
+ "int32-minrecs": {
+  "exit": 0,
+  "stderr": []
+ },
+ "int32-only": {
+  "exit": 0,
+  "stderr": []
+ },
+ "int32-part-alias": {
+  "exit": 0,
+  "stderr": []
+ },
+ "int32-partial": {
+  "exit": 0,
+  "stderr": []
+ },
+ "int32-quiet": {
+  "exit": 0,
+  "stderr": []
+ },
+ "int32-skip": {
+  "exit": 0,
+  "stderr": []
+ },
+ "int32-verbose": {
+  "exit": 0,
+  "stderr": []
+ },
+ "int32-verbose-q": {
+  "exit": 0,
+  "stderr": []
+ },
+ "limit": {
+  "exit": 0,
+  "stderr": []
+ },
+ "moc-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "moc-fact": {
+  "exit": 0,
+  "stderr": []
+ },
+ "moc-factor-alias": {
+  "exit": 0,
+  "stderr": []
+ },
+ "moc-header-alias": {
+  "exit": 0,
+  "stderr": []
+ },
+ "moc-max": {
+  "exit": 0,
+  "stderr": []
+ },
+ "moc-maxbufs": {
+  "exit": 0,
+  "stderr": []
+ },
+ "moc-min-max": {
+  "exit": 0,
+  "stderr": []
+ },
+ "moc-minrecs": {
+  "exit": 0,
+  "stderr": []
+ },
+ "moc-only": {
+  "exit": 0,
+  "stderr": []
+ },
+ "moc-part-alias": {
+  "exit": 0,
+  "stderr": []
+ },
+ "moc-partial": {
+  "exit": 0,
+  "stderr": []
+ },
+ "moc-quiet": {
+  "exit": 0,
+  "stderr": []
+ },
+ "moc-skip": {
+  "exit": 0,
+  "stderr": []
+ },
+ "moc-verbose": {
+  "exit": 0,
+  "stderr": []
+ },
+ "moc-verbose-q": {
+  "exit": 0,
+  "stderr": []
+ },
+ "only-unsorted": {
+  "exit": 0,
+  "stderr": []
+ },
+ "reduce": {
+  "exit": 0,
+  "stderr": []
+ },
+ "seq-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "seq-fact": {
+  "exit": 0,
+  "stderr": []
+ },
+ "seq-factor-alias": {
+  "exit": 0,
+  "stderr": []
+ },
+ "seq-header-alias": {
+  "exit": 0,
+  "stderr": []
+ },
+ "seq-max": {
+  "exit": 0,
+  "stderr": []
+ },
+ "seq-maxbufs": {
+  "exit": 0,
+  "stderr": []
+ },
+ "seq-min-max": {
+  "exit": 0,
+  "stderr": []
+ },
+ "seq-minrecs": {
+  "exit": 0,
+  "stderr": []
+ },
+ "seq-only": {
+  "exit": 0,
+  "stderr": []
+ },
+ "seq-part-alias": {
+  "exit": 0,
+  "stderr": []
+ },
+ "seq-partial": {
+  "exit": 0,
+  "stderr": []
+ },
+ "seq-quiet": {
+  "exit": 0,
+  "stderr": []
+ },
+ "seq-skip": {
+  "exit": 0,
+  "stderr": []
+ },
+ "seq-verbose": {
+  "exit": 0,
+  "stderr": []
+ },
+ "seq-verbose-q": {
+  "exit": 0,
+  "stderr": []
+ },
+ "short-data": {
+  "exit": 0,
+  "stderr": []
+ },
+ "stdin": {
+  "exit": 0,
+  "stderr": []
+ },
+ "testfile-default": {
+  "exit": 0,
+  "stderr": []
+ },
+ "testfile-fact": {
+  "exit": -1,
+  "stderr": [
+   "(timed out)"
+  ]
+ },
+ "testfile-factor-alias": {
+  "exit": -1,
+  "stderr": [
+   "(timed out)"
+  ]
+ },
+ "testfile-header-alias": {
+  "exit": 0,
+  "stderr": []
+ },
+ "testfile-max": {
+  "exit": 0,
+  "stderr": []
+ },
+ "testfile-maxbufs": {
+  "exit": 0,
+  "stderr": []
+ },
+ "testfile-min-max": {
+  "exit": -1,
+  "stderr": [
+   "(timed out)"
+  ]
+ },
+ "testfile-minrecs": {
+  "exit": 0,
+  "stderr": []
+ },
+ "testfile-only": {
+  "exit": 0,
+  "stderr": []
+ },
+ "testfile-part-alias": {
+  "exit": 0,
+  "stderr": []
+ },
+ "testfile-partial": {
+  "exit": 0,
+  "stderr": []
+ },
+ "testfile-quiet": {
+  "exit": 0,
+  "stderr": []
+ },
+ "testfile-skip": {
+  "exit": 0,
+  "stderr": []
+ },
+ "testfile-verbose": {
+  "exit": 0,
+  "stderr": []
+ },
+ "testfile-verbose-q": {
+  "exit": 0,
+  "stderr": []
+ }
+}

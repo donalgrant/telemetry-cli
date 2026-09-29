@@ -137,15 +137,18 @@ def run_perl(tool: str, case: Case) -> tuple[bytes, int, list[str]]:
     if tool == "tgen" and argv[0] == "-e":
         # -e scripts see $0 as "-e"; the wrapper runs the script named by $0
         argv = ["-e", f"$0 = '{script}'; " + argv[1], *argv[2:]]
-    p = subprocess.run(
-        [perl, "-I", "../legacy", *argv],
-        input=case.stdin_bytes(),
-        capture_output=True,
-        cwd=TESTS,
-        env=env,
-        timeout=20,
-        check=False,
-    )
+    try:
+        p = subprocess.run(
+            [perl, "-I", "../legacy", *argv],
+            input=case.stdin_bytes(),
+            capture_output=True,
+            cwd=TESTS,
+            env=env,
+            timeout=20,
+            check=False,
+        )
+    except subprocess.TimeoutExpired as e:  # the Perl looped forever
+        return e.stdout or b"", -1, ["(timed out)"]
     out, err = p.stdout, normalize_stderr(p.stderr.decode("latin-1"))
     if tool == "recs":
         # recs printed its warnings (via Util::Msg, with caller info) into
