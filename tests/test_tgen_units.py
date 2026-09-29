@@ -195,7 +195,7 @@ def test_runs_as_a_program(tmp_path):
     assert p.returncode == 0 and p.stdout == b"\x00\x01\x02"
 
 
-@pytest.mark.parametrize("tool", ["tgen", "pick", "recs"])
+@pytest.mark.parametrize("tool", ["tgen", "pick", "recs", "realign"])
 def test_closing_the_pipe_early_is_quiet(tool, tmp_path):
     """`tool ... | head -c 10`: no error report when the reader stops."""
     f = tmp_path / "c.tgen"
@@ -204,6 +204,7 @@ def test_closing_the_pipe_early_is_quiet(tool, tmp_path):
         "tgen": ["-q", str(f), "5000"],
         "pick": ["1", "-q", "b"],
         "recs": ["-", "-x", "a", "1"],
+        "realign": ["-", "-q", "8"],
     }[tool]
     p = subprocess.Popen(
         [sys.executable, "-m", f"telemetry_cli.{tool}", *args],

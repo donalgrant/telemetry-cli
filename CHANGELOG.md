@@ -17,7 +17,17 @@
   arguments. The record length then comes from the repeats of the pattern
   when there are any, which works for records of one continuously sampled
   signal, where comparing bytes doesn't. If the pattern repeats at varying
-  intervals, recl says the records may vary in length.
+  intervals, recl says the records may vary in length. Records are lined up
+  on the pattern's repeats, so bit slips don't hide it; recl reports them.
+
+### realign (new)
+
+- **realign** cuts a bit stream into frames of any number of bits, starting
+  at any bit, and writes each on byte boundaries, padded to whole bytes, so
+  pick can decode them. With `-sync`, it finds frames by their sync pattern
+  (optionally with bit errors) instead, which survives bit slips.
+  `recl -bits -sync` reports the frame length and offset, and suggests the
+  realign command. Without a file name, realign reads stdin.
 
 ### tgen
 

@@ -138,3 +138,33 @@ def test_pieces():
     s = find(frames(100), 192)
     assert s.bits == SYNC32 and s.hex() == "0x1acffc1d" and s.exact == 1.0
     assert find(frames(1), 192) is None  # one record: nothing to compare
+
+
+def test_a_short_constant_field_is_found_by_folding():
+    """No 24-bit pattern repeats (the constant field is only 12 bits wide),
+    so the data are folded into records to find it."""
+    rng = np.random.default_rng(8)
+    recs = rng.integers(0, 256, (300, 16), dtype=np.uint8)
+    recs[:, 5] = 0xA5  # 8 constant bits...
+    recs[:, 6] = (recs[:, 6] & 0x0F) | 0x30  # ...and 4 more
+    s = find(recs.tobytes(), 128)
+    assert (s.offset, s.bits) == (40, "101001010011") and s.irregular == 0
+
+
+def test_zero_padding_before_a_sync_word():
+    """Zero padding at the end of each record is as constant as the next
+    record's sync word, so the pattern includes it; recl says so."""
+    rng = np.random.default_rng(9)
+    recs = np.zeros((200, 24), dtype=np.uint8)
+    recs[:, 0:4] = np.frombuffer(bytes.fromhex("1ACFFC1D"), np.uint8)
+    recs[:, 4:12] = rng.integers(0, 256, (200, 8), dtype=np.uint8)  # then zeros: padding
+    s = find(recs.tobytes(), 192)
+    assert s.bits.endswith(SYNC32) and s.offset + len(s.bits) - 32 == 192  # sync at 0 (192)
+    assert s.irregular == 0
+    code, text = recl(recs.tobytes(), "-sync")
+    assert "RESULT 24\n" in text and "may be padding at the end of the record before" in text
+
+
+def test_too_few_records():
+    assert find(frames(1), 192) is None
+    assert find(b"\x00" * 30, 192) is None
