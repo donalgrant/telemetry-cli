@@ -7,6 +7,7 @@
   infinities and NaN ("Inf", "-Inf", "NaN")
 - substr: Perl's substr, which counts negative offsets from the end
 - truthy: Perl's idea of a true string ("" and "0" are false)
+- perl_str: a value as Perl prints it (floats with 15 significant digits)
 """
 
 from __future__ import annotations
@@ -165,3 +166,18 @@ def truthy(s) -> bool:
     if isinstance(s, str):
         return s not in ("", "0")
     return bool(s)
+
+
+def perl_str(v) -> str:
+    """A value as Perl turns it into text: floats with 15 significant digits."""
+    if v is None:
+        return ""
+    if isinstance(v, bool):
+        return "1" if v else ""
+    if isinstance(v, float):
+        if v.is_integer() and abs(v) < 1e15:
+            return str(int(v))
+        return sprintf("%.15g", v)
+    if isinstance(v, bytes):
+        return v.decode("latin-1")
+    return str(v)

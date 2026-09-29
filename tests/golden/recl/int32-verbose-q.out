@@ -1,0 +1,29 @@
+NOTE Checking Record Lengths 4, 8 bytes
+NOTE buf 1 reclen 4 corr 0.6875 accum-corr 0.6875
+NOTE buf 1 reclen 8 corr 0 accum-corr 0
+NOTE buf 2 reclen 4 corr 0 accum-corr 0.6875
+NOTE buf 2 reclen 8 corr 0.3125 accum-corr 0.3125
+NOTE buf 3 reclen 4 corr 0.25 accum-corr 0.9375
+NOTE buf 3 reclen 8 corr 0.25 accum-corr 0.5625
+NOTE buf 4 reclen 4 corr 0.625 accum-corr 1.5625
+NOTE buf 4 reclen 8 corr 0.375 accum-corr 0.9375
+NOTE buf 5 reclen 4 corr 0.625 accum-corr 2.1875
+NOTE buf 5 reclen 8 corr 0.375 accum-corr 1.3125
+NOTE buf 6 reclen 4 corr 0.625 accum-corr 2.8125
+NOTE buf 6 reclen 8 corr 0.5 accum-corr 1.8125
+NOTE buf 7 reclen 4 corr 0.75 accum-corr 3.5625
+NOTE buf 7 reclen 8 corr 0.5 accum-corr 2.3125
+NOTE buf 8 reclen 4 corr 0.75 accum-corr 4.3125
+NOTE buf 8 reclen 8 corr 0.5 accum-corr 2.8125
+NOTE buf 9 reclen 4 corr 0.75 accum-corr 5.0625
+NOTE buf 9 reclen 8 corr 0.5 accum-corr 3.3125
+NOTE buf 10 reclen 4 corr 0.75 accum-corr 5.8125
+NOTE buf 10 reclen 8 corr 0.5 accum-corr 3.8125
+NOTE buf 11 reclen 4 corr 0.75 accum-corr 6.5625
+NOTE buf 11 reclen 8 corr 0.5 accum-corr 4.3125
+NOTE buf 12 reclen 4 corr 0.375 accum-corr 6.9375
+NOTE buf 12 reclen 8 corr 0.25 accum-corr 4.5625
+NOTE Table of Sorted Correlations
+NOTE  0.58% for reclen 4
+NOTE  0.38% for reclen 8
+RESULT 4

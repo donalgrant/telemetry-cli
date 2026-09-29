@@ -38,7 +38,7 @@ from collections.abc import Callable
 from typing import BinaryIO, TextIO
 
 from .. import _pack
-from .._perl import UV_MAX, numify, sprintf, to_uv
+from .._perl import UV_MAX, numify, perl_str, sprintf, to_uv
 from .cmdfile import Item, Statement
 
 
@@ -83,21 +83,6 @@ def pmod(a, b):
     if b == 0:
         raise ZeroDivisionError("Illegal modulus zero")
     return a % b
-
-
-def perl_str(v) -> str:
-    """A value as Perl turns it into text: floats with 15 significant digits."""
-    if v is None:
-        return ""
-    if isinstance(v, bool):
-        return "1" if v else ""
-    if isinstance(v, float):
-        if v.is_integer() and abs(v) < 1e15:
-            return str(int(v))
-        return sprintf("%.15g", v)
-    if isinstance(v, bytes):
-        return v.decode("latin-1")
-    return str(v)
 
 
 def cat(*values) -> str:

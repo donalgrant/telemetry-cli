@@ -1,0 +1,4 @@
+NOTE Checking Record Lengths 1, 2, 4, 5, 8, 10, 16, 20, 25, 32, 40 bytes
+RESULT 8
+CORR 74.8737373737374
+NOTE Based on 1 buffers, each of length 800
