@@ -271,9 +271,7 @@ data    # 0  # 1 # f"C{ns}" # [128 + int(128.0*cos(a*k*f[P.calfreq.value])) for 
 ```
 
 This simulates the caltone sweep of an AIRSAR calibration sequence: 256
-8-bit samples per frame, stepping through ten frequencies. View it as an
-image, for example with ImageMagick:
-`convert -depth 8 -size 256x500 gray:calsweep.dat calsweep.png`.
+8-bit samples per frame, stepping through ten frequencies.
 
 ```console
 $ tgen -q calsweep.tgen 500 > calsweep.dat
@@ -284,6 +282,18 @@ $ pick calsweep.dat 256 -q every=100 8bd
 14  204  106  92  215  8  255  22
 191  64  0  65  192  0  191  64
 ```
+
+It is best seen as an image, one row per frame. With
+[ImageMagick](https://imagemagick.org) (`brew install imagemagick` on a Mac):
+
+```text
+magick -depth 8 -size 256x500 gray:calsweep.dat calsweep.png
+```
+
+The image shows bands of 32 rows, one per caltone. The spacing of the fringes
+changes from band to band as the frequency steps, and the pattern repeats
+after the ten caltones, 320 rows down. (ImageMagick 6 and earlier call the
+command `convert`, with the same arguments.)
 
 ## Converting Perl command files
 
