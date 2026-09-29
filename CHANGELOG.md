@@ -11,6 +11,13 @@
   `-min`/`-max` or `-only` it checks the lengths given, in bits. The result
   is shown in bits and bytes: `RESULT 250 bits (31 bytes + 2 bits)`.
 - **`-lsb`** reads bits least significant first (with `-bits`).
+- **`-sync`** finds the bits that are the same in every record (usually a
+  sync word, with any fixed bits beside it) and reports where they are
+  (`SYNC offset length bits`), with suggested `pick head=` and `recs`
+  arguments. The record length then comes from the repeats of the pattern
+  when there are any, which works for records of one continuously sampled
+  signal, where comparing bytes doesn't. If the pattern repeats at varying
+  intervals, recl says the records may vary in length.
 
 ### tgen
 

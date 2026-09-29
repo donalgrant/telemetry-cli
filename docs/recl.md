@@ -73,6 +73,7 @@ argument.
 | `-limit=n` | use only the first n bytes of data |
 | `-reduce=f` | use only the first 1/f of the data (f ≥ 1) |
 | `-full` | compare the data as one piece, not buffer by buffer |
+| `-sync` | find the pattern that starts each record, and where records start (see below) |
 | `-bits` | record lengths in bits (see below); all lengths are then in bits |
 | `-lsb` | with `-bits`: bits are least significant first in each byte |
 | `-verbose` | show every length's score in every buffer, and a sorted table |
@@ -92,6 +93,48 @@ $ head -c 23000 frames.dat | recl - -partial -min=40 -max=60 -q
 NOTE Checking Record Lengths 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60 bytes
 RESULT 48
 ```
+
+## Finding the sync word, and where records start
+
+A recording may start partway through a record, or after some junk. With
+`-sync`, recl also finds the bits that are the same in every record, usually
+a sync word, and says where they are. Here the example's records follow 5
+bytes of junk:
+
+```console
+$ (printf 'JUNK!'; cat frames.dat) > capture.dat
+$ recl capture.dat -sync
+NOTE Record length from repeats of a bit pattern: every 48 bytes (7984 of 7984 repeats, 100%)
+RESULT 48
+SYNC 40 39 000000111001000101011110110100110000000
+NOTE Bits 40-78 of each record (0x01c8af6980) are the same in 100.0% of 500 records (100.0% exactly): a sync word, perhaps with fixed bits beside it
+NOTE Records start at byte 5, if they start with the pattern: pick capture.dat 48 head=5 ...
+NOTE To extract records by the pattern: recs capture.dat "$(printf '\x03\x91\x5e\xd3')" 48
+```
+
+`SYNC` gives the pattern's position in bits from the start of the data
+(modulo the record length), its length in bits, and its bits. The 39 bits
+here are the 32-bit sync word `03915ed3` and the top 7 bits of the counter
+after it, which are 0 in all 500 records: from the data alone, recl can't
+tell fixed bits beside a sync word from the sync word itself. It prefers a
+pattern with both 0s and 1s to one of all 0s (unused bits, padding), and
+allows some bit errors: a bit position counts as fixed if 85% of the records
+agree.
+
+The suggestions assume that records start with the pattern. They work:
+
+```console
+$ recs capture.dat "$(printf '\x03\x91\x5e\xd3')" 48 | pick 48 -q order=big -n ux wd | sed -n '1p;500p'
+0 03 91 5e d3  0
+499 03 91 5e d3  499
+```
+
+With `-sync`, the record length comes from the pattern's repeats when there
+are any: the gap between repeats of a sync word is the record length. That
+works even where comparing bytes doesn't, as for records of one continuously
+sampled signal. If the pattern repeats at varying intervals, recl says so:
+the records may vary in length, which is a job for [recs](recs.md).
+`-sync` works with `-bits` too, giving the position in bits.
 
 ## Records that aren't whole bytes
 
@@ -166,8 +209,8 @@ One kind of record is hard for recl: one signal sampled continuously, record
 after record, with only a sync word marking where records start. There, the
 data are more alike one sample apart than one record apart. (Waveform records
 that each start afresh, like radar echoes, pulse after pulse, are fine: there
-the data repeat record to record.) `-bits` looks for repeating patterns such
-as sync words, and may find the length where comparing bytes doesn't.
+the data repeat record to record.) `-sync` takes the length from the
+repeats of a sync word, and finds it there.
 
 ## Differences from the Perl version
 

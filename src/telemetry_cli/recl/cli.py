@@ -18,11 +18,12 @@ from .._getopt import OptionError, getoptions
 from .._msg import Messenger
 from .._perl import perl_str
 from . import bits as bitlen
+from . import sync as syncword
 from .corr import agreement, choose, compared
 
 SPECS = ["v|verbose", "h|help", "f|full", "q|quiet", "part|partial", "skip|header=i", "min=i",
          "max=i", "minrecs=i", "maxbufs=i", "fact|factor|mult=i", "only=s", "limit=i",
-         "reduce=f", "bits", "lsb"]  # fmt: skip
+         "reduce=f", "bits", "lsb", "sync"]  # fmt: skip
 
 HELP = """\
 recl - estimate the record length of a binary file
@@ -82,6 +83,10 @@ OPTIONS
     -lsb
         With -bits: bits are least significant first in each byte (the
         default is most significant first). Implies -bits.
+    -sync
+        Find the pattern that starts each record (a sync word), and say
+        where it is. If the data hold a bit pattern that repeats, the
+        record length is taken from its repeats.
     -verbose
         Show the score of every length in every buffer, and a sorted table.
     -quiet
@@ -131,7 +136,7 @@ def main(
     if not args:
         return error("no input file given (use - for stdin); see 'recl -help'", 2)
     try:
-        return _run(args[0], o, stdin, stdout)
+        return _run(args[0], o, stdin, stdout, stderr)
     except ReclError as e:
         return error(str(e))
     except OSError as e:
@@ -140,7 +145,7 @@ def main(
         return broken_pipe(stdout)
 
 
-def _run(file: str, o: dict, stdin: BinaryIO, stdout: BinaryIO) -> int:
+def _run(file: str, o: dict, stdin: BinaryIO, stdout: BinaryIO, stderr: TextIO) -> int:
     lines: list[str] = []
 
     class _Out:
@@ -166,7 +171,24 @@ def _run(file: str, o: dict, stdin: BinaryIO, stdout: BinaryIO) -> int:
         raise ReclError(f"too little data: {max(databytes, 0)} bytes after the header")
     hi = o["max"] if "max" in o else databytes // o.get("minrecs", 2)
     if o.get("bits") or o.get("lsb"):
-        return _run_bits(data, o, msg, lines, stdout)
+        return _run_bits(file, data, o, msg, lines, stdout)
+
+    use = np.frombuffer(data, dtype=np.uint8)[skip:]
+    if "limit" in o:
+        use = use[: max(o["limit"], 0)]
+    use = use[: int(len(use) / reduce)]
+
+    if o.get("sync") and "only" not in o:
+        found = syncword.length_from_repeats(use.tobytes(), unit=8)
+        _note_varying(found, "bytes", 8, msg)
+        if found and found.fixed and o.get("min", 1) <= found.gap // 8 <= hi:
+            length = found.gap // 8
+            msg(f"Record length from repeats of a bit pattern: every {length} bytes "
+                f"({_repeat_share(found)})")  # fmt: skip
+            msg(length, "RESULT")
+            _report_sync(file, use.tobytes(), 8 * length, o, msg, byte_mode=True)
+            _flush(lines, stdout)
+            return 0
 
     if "only" in o:
         lengths = _only(o)
@@ -178,11 +200,6 @@ def _run(file: str, o: dict, stdin: BinaryIO, stdout: BinaryIO) -> int:
         raise ReclError("no record lengths to check; see the -min, -max and -fact options")
     if min(lengths) < 1:
         raise ReclError("record lengths must be at least 1 byte")
-
-    use = np.frombuffer(data, dtype=np.uint8)[skip:]
-    if "limit" in o:
-        use = use[: max(o["limit"], 0)]
-    use = use[: int(len(use) / reduce)]
 
     bufsiz = 2 * max(lengths)
     if o.get("f") or len(use) < bufsiz:
@@ -210,6 +227,8 @@ def _run(file: str, o: dict, stdin: BinaryIO, stdout: BinaryIO) -> int:
     if not o.get("q"):
         msg(perl_str(100.0 * mean[chosen]), "CORR")
         msg(f"Based on {buffers.shape[0]} buffers, each of length {buffers.shape[1]}")
+    if o.get("sync"):
+        _report_sync(file, use.tobytes(), 8 * lengths[chosen], o, msg, byte_mode=True)
     _flush(lines, stdout)
     stdout.flush()
     return 0
@@ -222,7 +241,9 @@ def _only(o: dict) -> list[int]:
         raise ReclError(f"-only needs a comma-separated list of lengths: {o['only']!r}") from None
 
 
-def _run_bits(data: bytes, o: dict, msg: Messenger, lines: list[str], stdout: BinaryIO) -> int:
+def _run_bits(
+    file: str, data: bytes, o: dict, msg: Messenger, lines: list[str], stdout: BinaryIO
+) -> int:
     """recl -bits: lengths, and all the options' lengths, are in bits."""
     use = data[o.get("skip", 0) :]
     if "limit" in o:
@@ -234,6 +255,16 @@ def _run_bits(data: bytes, o: dict, msg: Messenger, lines: list[str], stdout: Bi
     fact = o.get("fact", 1)
     lo = max(o.get("min", 1), 1)
     hi = o["max"] if "max" in o else databits // o.get("minrecs", 2)
+    if o.get("sync") and "only" not in o:
+        found = syncword.length_from_repeats(use, lsb=lsb)
+        _note_varying(found, "bits", 1, msg)
+        if found and found.fixed and lo <= found.gap <= hi and found.gap % fact == 0:
+            msg(f"Record length from repeats of a bit pattern: every {found.gap} bits "
+                f"({_repeat_share(found)})")  # fmt: skip
+            msg(bitlen.describe(found.gap), "RESULT")
+            _report_sync(file, use, found.gap, o, msg, byte_mode=False)
+            _flush(lines, stdout)
+            return 0
     if "only" in o:
         lengths = _only(o)
     elif "min" in o or "max" in o:
@@ -262,9 +293,54 @@ def _run_bits(data: bytes, o: dict, msg: Messenger, lines: list[str], stdout: Bi
         msg(perl_str(100.0 * mean[chosen]), "CORR")
         order = "least" if lsb else "most"
         msg(f"Based on {len(w)} bit positions ({order} significant bit first)")
+    if o.get("sync"):
+        _report_sync(file, use, lengths[chosen], o, msg, byte_mode=False)
     _flush(lines, stdout)
     stdout.flush()
     return 0
+
+
+def _repeat_share(found) -> str:
+    total = round(found.count / found.share)
+    return f"{found.count} of {total} repeats, {100 * found.share:.0f}%"
+
+
+def _note_varying(found, unit: str, per: int, msg: Messenger) -> None:
+    if found and not found.fixed:
+        msg(f"A bit pattern repeats, but at varying intervals (the most common, "
+            f"{found.gap // per} {unit}, is {100 * found.share:.0f}% of them): the records "
+            "may vary in length, which recs can handle")  # fmt: skip
+
+
+def _report_sync(
+    file: str, data: bytes, length_bits: int, o: dict, msg: Messenger, *, byte_mode: bool
+) -> None:
+    """The SYNC line, and notes on where records start."""
+    found = syncword.find(data, length_bits, lsb=bool(o.get("lsb")))
+    if found is None:
+        msg("no bit positions are the same from record to record: no sync pattern found")
+        return
+    n = len(found.bits)
+    msg(f"{found.offset} {n} {found.bits}", "SYNC")
+    if o.get("q"):
+        return
+    kind = "a sync word, perhaps with fixed bits beside it" if found.mixed else "all the same bit"
+    msg(f"Bits {found.offset}-{found.offset + n - 1} of each record ({found.hex()}) are the "
+        f"same in {100 * found.near:.1f}% of {found.records} records "
+        f"({100 * found.exact:.1f}% exactly): {kind}")  # fmt: skip
+    name = file if file != "-" else "FILE"
+    start, extra = divmod(found.offset, 8)
+    if extra or (not byte_mode and length_bits % 8):
+        msg(f"Records start at bit {found.offset} (byte {start} + {extra} bits), "
+            "if they start with the pattern")  # fmt: skip
+        return
+    reclen = length_bits // 8
+    msg(f"Records start at byte {start}, if they start with the pattern: "
+        f"pick {name} {reclen} head={start} ...")  # fmt: skip
+    whole = found.bits[: 8 * min(n // 8, 4)]
+    if whole:
+        marker = "".join(f"\\x{int(whole[i : i + 8], 2):02x}" for i in range(0, len(whole), 8))
+        msg(f"To extract records by the pattern: recs {name} \"$(printf '{marker}')\" {reclen}")
 
 
 def _flush(lines: list[str], stdout: BinaryIO) -> None:

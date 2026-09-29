@@ -66,7 +66,7 @@ def propose(w: np.ndarray, lo: int, hi: int, fact: int) -> list[int]:
     gaps: Counter[int] = Counter()
     for v in common:
         pos = np.flatnonzero(w == v)
-        gaps.update(int(g) for g in np.diff(pos))
+        gaps.update(int(g) for g in np.diff(pos) if g >= PROPOSAL_WIDTH)  # not runs sliding along
     ok = [g for g, _ in gaps.most_common() if lo <= g <= hi and g % fact == 0]
     proposals = ok[:TOP_GAPS]
     lengths = set()
