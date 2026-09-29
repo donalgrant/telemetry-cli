@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+### Documentation
+
+- pick's help (`pick ?q`) and manual pipe the symbol-table example to
+  feedgnuplot, a command-line front end to gnuplot, instead of xmgr, and say
+  that xmgr lives on as Grace (`xmgrace -nxy`).
+- The tgen manual views the caltone sweep with `magick` (ImageMagick 7), which
+  replaced `convert`.
+
 ## 1.1.0 (2026-09-28)
 
 Bit-level telemetry: recl finds frame lengths in bits and where frames start,

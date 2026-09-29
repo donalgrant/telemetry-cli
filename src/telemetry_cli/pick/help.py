@@ -392,9 +392,13 @@ tube = pos
   and put a copy of the moc file listed above in that folder.
   Now, the above command is:
 
-        pickMocomp test.moc velocities skip=100 | xmgr -nxy -source stdin &
+        pickMocomp test.moc velocities skip=100 | feedgnuplot --domain --lines
 
-  where we've piped the output to xmgr for display.
+  where we've piped the output to feedgnuplot, a command-line front
+  end to gnuplot, for display: the first column is x, and each of the
+  others is a curve.  (xmgr, which this example used to use, lives on
+  as Grace, whose xmgrace reads the same columns with -nxy; see its
+  -pipe option for reading stdin.)
 
 """
 
