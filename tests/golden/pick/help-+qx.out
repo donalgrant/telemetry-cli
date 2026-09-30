@@ -27,23 +27,21 @@
   another double precision complex, printing the
   magnitude followed by the phase in radians.
 
-  20[ f 3[ wx cb ] +1000 i:27d -1091 ]
+  3[ bd 3[ w bd ] bn +1 ]
 
-  Extract a 4-byte float (print in floating point),
-  3 unsigned short-signed char pairs, printing the
-  short in hex and the char in binary, move forward
-  1000 bytes, extract a four-byte signed integer,
-  printing only the 5 most significant bits
-  in decimal format, and move back 1091 bytes.
-  Repeat this operation 20 times for each record.
-  (Each repetition moves back 74 bytes overall, so from
-  the second one on, reads start before the beginning of
-  the record, and come from the end of the record.)
+  For records (major frames) of three 12-byte minor
+  frames: for each minor frame, print a counter byte
+  in decimal, then three channels, each an unsigned
+  short and a status byte in decimal, then read the
+  first spare byte, printing only a newline, and skip
+  the second.  Each minor frame is 1 + 3*3 + 1 + 1 = 12
+  bytes, so each repetition of the outer group starts
+  where the next minor frame does.
 
   Note that for moves, the current position in the record
   is the location after the most recent request.  For example,
-  in the above, the +1000 byte move is referenced from the
-  position after the third short/byte pair.
+  in the above, the +1 byte move is referenced from the
+  position after the first spare byte.
 
   Complete Examples
 

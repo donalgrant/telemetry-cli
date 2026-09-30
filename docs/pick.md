@@ -178,6 +178,40 @@ $ pick demo.bin 8 -q order=big '2[ w ]' +2 2S
 Groups can be nested. There must be no space between the repeat count and
 the bracket.
 
+Nested groups suit telemetry made of major and minor frames. Here each
+36-byte record is a major frame of three 12-byte minor frames. Each minor
+frame holds a counter byte, then three channels, each a 16-bit reading and
+a status byte, then two spare bytes:
+
+<!-- file: minor.tgen -->
+```text
+# counter, then (reading, status) for three channels, for minor frame k
+frame = lambda k: [3 * I + k] + [v for j in range(3) for v in (1000 * (j + 1) + 10 * I + k, pmod(I + j + k, 2))]
+minor0 # 0  # 1 # 'CnCnCnC' # frame(0)
+minor1 # 12 # 1 # 'CnCnCnC' # frame(1)
+minor2 # 24 # 1 # 'CnCnCnC' # frame(2)
+spare  # 34 # 1 # 'n'       # 0
+```
+
+```console
+$ tgen -q minor.tgen 2 | pick 36 -q order=big '3[ bd 3[ w bd ] bn +1 ]'
+0  1000 0  2000 1  3000 0
+1  1001 1  2001 0  3001 1
+2  1002 0  2002 1  3002 0
+
+3  1010 1  2010 0  3010 1
+4  1011 0  2011 1  3011 0
+5  1012 1  2012 0  3012 1
+
+```
+
+The inner group reads the three channels, and the outer one repeats that for
+each minor frame. The minor frame adds up to 12 bytes: `bd` (1), then
+`3[ w bd ]` (3 × 3), then `bn` (1) and `+1` (1). `bn` reads the first spare
+byte but prints only a newline, since a request with only `n` prints no
+value (see [Quirks](#quirks)), so each minor frame gets its own line. The
+blank lines come from the end of each record.
+
 A group's moves are relative to where its last request left off, which makes
 the arithmetic easy to get wrong. Take records of 100 floats followed by 100
 ints (here made with [tgen](tgen.md)), and read each float with the int 400
