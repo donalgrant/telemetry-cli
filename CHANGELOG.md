@@ -32,6 +32,12 @@
 
   The help (`pick ?t`, `?f`) no longer says that the format decides the sign,
   or that `x`, `o`, `b`, `c`, `S` and `A` work on complex types.
+- The nested-group example in pick's help (`pick ?x`),
+  `20[ f 3[ wx cb ] +1000 i:27d -1091 ]`, moved back 74 bytes more than it
+  moved forward. From the second repetition on, it read from before the
+  start of the record. It is replaced by `3[ bd 3[ w bd ] bn +1 ]`, which
+  reads major frames of three minor frames, and the manual has the same
+  example, run on data made with tgen (#7).
 
 ## 1.1.0 (2026-09-28)
 
