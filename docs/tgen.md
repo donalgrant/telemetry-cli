@@ -42,6 +42,9 @@ $ tgen -q counter.tgen 10 250 | pick 7 -q 3bd ud
 3  129  4  259
 ```
 
+For a longer example, built up line by line, see the
+[housekeeping tutorial](tutorial-housekeeping.md).
+
 ## Options
 
 Options can be abbreviated (`-q`, `-qu`, `--quiet`) and given as `-f 255` or
