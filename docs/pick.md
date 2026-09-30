@@ -129,14 +129,27 @@ written without spaces, for example `4d0+30`, `i:7`, `w5:1:7bdx` or `zMP`.
 - **bitOffset** and **nBits** select bits, for types of 4 bytes or less. Bit 0
   is the least significant. `i:7` uses bits 7 to 31 of an int, and `w5:1:7`
   bits 1 to 7 of the sixth unsigned short (`w0` being the first).
-- **printFormats** are zero or more print formats, below. Each is printed in
-  turn: `bdx` prints the value in binary, then decimal, then hex.
+- **printFormats** are zero or more print formats, below. There is no limit
+  on how many, and a format may be repeated. Each is printed in turn: `bdx`
+  prints the value in binary, then decimal, then hex; `s2dxob` prints the
+  third short as a decimal, in hex, in octal and in binary; `s2xdx` prints it
+  in hex, as a decimal and in hex again. With a count N, each item is
+  printed in all the formats before the next item: `2b6dx` prints the
+  byte at 6 as a decimal and in hex, then the byte at 7 the same way.
 
 ```console
 $ pick demo.bin 8 -q order=big w2:4:4d w2:0:4d w2b
 15 14 1111 1111 1111 1110
 0 7 0000 0000 0000 0111
 0 0 1000 0000 0000 0000
+$ pick demo.bin 8 -q order=big nrecs=1 s2dxob
+-2 ff fe  377 376  1111 1111 1111 1110
+$ pick demo.bin 8 -q order=big nrecs=1 s2xdx
+ff fe  -2 ff fe
+$ pick demo.bin 8 -q order=big 2b6dx
+72  48  105  69
+111  6f  107  6b
+33  21  63  3f
 ```
 
 ### Moves

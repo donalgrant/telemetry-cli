@@ -30,8 +30,12 @@
           'n' insert CR/LF      's' insert <sp>
 
           A 'printFormatList' is composed of zero or more
-          printing formats.  If none is specified, the
-          defaults will be used:
+          printing formats, as many as desired, in any order,
+          repeats allowed.  Each is printed in turn: 'uxox'
+          prints an unsigned int in hex, then octal, then hex
+          again.  With a count, each item is printed in all
+          the formats before the next item.
+          If none is specified, the defaults will be used:
              Data Type       Default Printformat
                 A                    A
                 S                    S

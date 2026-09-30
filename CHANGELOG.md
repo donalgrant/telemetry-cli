@@ -13,6 +13,9 @@
   that xmgr lives on as Grace (`xmgrace -nxy`).
 - The tgen manual views the caltone sweep with `magick` (ImageMagick 7), which
   replaced `convert`.
+- pick's manual and help (`pick ?f`) say that a field request can take any
+  number of print formats, repeats included (`s2xdx`), and that with a count
+  each item is printed in all of them before the next.
 
 ## 1.1.0 (2026-09-28)
 
