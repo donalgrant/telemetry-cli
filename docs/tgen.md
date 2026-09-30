@@ -69,7 +69,8 @@ A command file has three kinds of lines:
 - **Item specifications**, with at least four field separators: a `#` with
   white space on both sides. Fields after the fifth are ignored, so a
   trailing ` # comment` is fine.
-- **Statements**: any other line is Python, run once before the first frame.
+- **Statements**: any other line is Python, run once before the first frame,
+  wherever it is in the file (see [Order and state](#order-and-state)).
   Use them to set constants: `PN = 0x03915ed3`.
 
 A line ending in a backslash continues on the next line.
@@ -105,6 +106,37 @@ semicolons; its value is the last one's.
 
 Frames are as long as their last item. Bytes that no item sets are filled
 with the fill byte.
+
+### Order and state
+
+All the statements run first, once, in the order they appear, even when
+they are mixed in among the items. Then, for each frame, the items are
+evaluated in file order. Statements and item fields share one namespace,
+and nothing is reset between frames: a variable an item changes keeps its
+new value in later items of the same frame, and in the frames that follow.
+
+<!-- file: state.tgen -->
+```text
+n = 100
+a # 0 # 1 # 'C' # n
+n = 7
+b # 1 # 1 # 'C' # n = n + 1
+c # 2 # 1 # 'C' # n
+```
+
+```console
+$ tgen -q state.tgen 3 | pick 3 -q 3bd
+7  8  8
+8  9  9
+9  10  10
+```
+
+Both statements run before frame 0, so `a` sees 7, though `n = 7` comes
+after it in the file. In each frame `b` adds 1 to `n` and `c`, later in the
+file, sees the new value. In the next frame `a` sees it too. So for state
+that changes from frame to frame (a counter, a heater that switches on and
+off), assign to it in an item's field, using a negative offset if the item
+is only bookkeeping; statements are for setting things up.
 
 ### Names in the code
 
@@ -341,4 +373,7 @@ converted command file generates the same data. The differences:
 - Files read by `subcom_file`, `file_lookup` and `seek_file` are opened once,
   not once per frame (a to-do item in the original).
 - A bad option is an error; the Perl warned and carried on.
+- Statements run after the whole file has been read. The Perl ran each one
+  as it read it, so a statement could only use `$P{x}{...}` for items
+  defined above it.
 - `-seed` is new.

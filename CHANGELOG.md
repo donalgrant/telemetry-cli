@@ -13,6 +13,9 @@
   that xmgr lives on as Grace (`xmgrace -nxy`).
 - The tgen manual views the caltone sweep with `magick` (ImageMagick 7), which
   replaced `convert`.
+- The tgen manual explains the order of evaluation: statements run once
+  before the first frame, wherever they are in the file, and state carries
+  over from one frame to the next.
 
 ## 1.1.0 (2026-09-28)
 
