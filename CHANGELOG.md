@@ -16,6 +16,22 @@
 - The tgen manual explains the order of evaluation: statements run once
   before the first frame, wherever they are in the file, and state carries
   over from one frame to the next.
+- pick's manual and help (`pick ?f`) say that a field request can take any
+  number of print formats, repeats included (`s2xdx`), and that with a count
+  each item is printed in all of them before the next.
+- pick's manual has a new section, Quirks, on behavior kept from the Perl
+  that often surprises:
+  - the type, not the format, decides the sign (`c` is read as unsigned, and
+    `u` on a negative value prints a 64-bit number);
+  - bit fields are unsigned, and are ignored on types larger than 4 bytes;
+  - `d`, `u`, `g`, `G` and `D` work outside their types, and `x`, `o` and
+    `b` show bytes, not numbers;
+  - the `c`, `S` and `A` character formats differ;
+  - `G` pads to 25 characters;
+  - a request with only `n` or `s` prints no value.
+
+  The help (`pick ?t`, `?f`) no longer says that the format decides the sign,
+  or that `x`, `o`, `b`, `c`, `S` and `A` work on complex types.
 
 ## 1.1.0 (2026-09-28)
 

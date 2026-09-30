@@ -129,14 +129,27 @@ written without spaces, for example `4d0+30`, `i:7`, `w5:1:7bdx` or `zMP`.
 - **bitOffset** and **nBits** select bits, for types of 4 bytes or less. Bit 0
   is the least significant. `i:7` uses bits 7 to 31 of an int, and `w5:1:7`
   bits 1 to 7 of the sixth unsigned short (`w0` being the first).
-- **printFormats** are zero or more print formats, below. Each is printed in
-  turn: `bdx` prints the value in binary, then decimal, then hex.
+- **printFormats** are zero or more print formats, below. There is no limit
+  on how many, and a format may be repeated. Each is printed in turn: `bdx`
+  prints the value in binary, then decimal, then hex; `s2dxob` prints the
+  third short as a decimal, in hex, in octal and in binary; `s2xdx` prints it
+  in hex, as a decimal and in hex again. With a count N, each item is
+  printed in all the formats before the next item: `2b6dx` prints the
+  byte at 6 as a decimal and in hex, then the byte at 7 the same way.
 
 ```console
 $ pick demo.bin 8 -q order=big w2:4:4d w2:0:4d w2b
 15 14 1111 1111 1111 1110
 0 7 0000 0000 0000 0111
 0 0 1000 0000 0000 0000
+$ pick demo.bin 8 -q order=big nrecs=1 s2dxob
+-2 ff fe  377 376  1111 1111 1111 1110
+$ pick demo.bin 8 -q order=big nrecs=1 s2xdx
+ff fe  -2 ff fe
+$ pick demo.bin 8 -q order=big 2b6dx
+72  48  105  69
+111  6f  107  6b
+33  21  63  3f
 ```
 
 ### Moves
@@ -203,25 +216,26 @@ next float starts. (The original documentation gave this example as
 | `z` | 8 | single-precision complex | `RI` |
 | `Z` | 16 | double-precision complex | `RI` |
 
-Whether an integer type is signed matters only for its default format; the
-format decides how the value is shown.
+The type decides whether an integer is signed, and the format only decides
+how it's shown; see [Quirks](#quirks). Only `s` and `i` are read as signed:
+`c` is read as unsigned, like `b`, despite its name.
 
 ## Print formats
 
 | Format | Meaning | For |
 |---|---|---|
-| `x` | hexadecimal, a byte at a time | all types |
-| `o` | octal, a byte at a time | all types |
-| `b` | binary, in groups of four bits | all types |
-| `c` | characters; non-printing ones by name (`nul`, `esc`) or in octal | all types |
-| `S` | characters, with no space between items; non-printing ones in parentheses | all types |
-| `A` | characters, leaving out non-printing ones | all types |
+| `x` | hexadecimal, a byte at a time | all but complex |
+| `o` | octal, a byte at a time | all but complex |
+| `b` | binary, in groups of four bits | all but complex |
+| `c` | characters; non-printing ones by name (`nul`, `esc`) or in octal | all but complex |
+| `S` | characters, with no space between items; non-printing ones in parentheses | all but complex |
+| `A` | characters, leaving out non-printing ones | all but complex |
 | `U` | the value's bytes, unformatted, in this machine's byte order | all types |
-| `d` | decimal | integers |
-| `u` | unsigned decimal | integers |
-| `g` | floating point (for complex types, the same as `RI`) | floats |
-| `G` | floating point with 18 significant digits | floats |
-| `D` | degrees: the value is in radians (for complex types, the phase) | floats |
+| `d` | decimal | integers (and floats, truncated) |
+| `u` | unsigned decimal | integers (and floats, truncated) |
+| `g` | floating point (for complex types, the same as `RI`) | floats (and integers) |
+| `G` | floating point with 18 significant digits, 25 characters wide | floats (and integers) |
+| `D` | degrees: the value is in radians (for complex types, the phase) | floats (and integers) |
 | `R` `I` | real and imaginary part | complex |
 | `M` `P` | magnitude, and phase in radians | complex |
 | `n` | a newline | all types |
@@ -229,6 +243,97 @@ format decides how the value is shown.
 
 Most formats are followed by a space, and `x`, `o`, `d` and `u` on byte types
 print a space after each byte, so output lines end with spaces.
+
+## Quirks
+
+pick has kept some surprising behavior from the original, so that old
+scripts keep working. These examples read a 12-byte record: the byte `ff`,
+the letter `A`, the short -2, the int -2 and the float -1.5.
+
+```console
+$ printf '\xffA\xff\xfe\xff\xff\xff\xfe\xbf\xc0\x00\x00' > quirks.bin
+```
+
+**The type decides the sign, not the format.** Only `s` and `i` are read as
+signed; `c`, `b`, `w` and `u` are read as unsigned. `d` prints the value as
+it was read, so it doesn't make an unsigned type signed, and `c` ("signed
+char") prints 255, not -1. `u` on a negative value prints it as a 64-bit
+unsigned number. No format shows an unsigned type as signed.
+
+```console
+$ pick quirks.bin 12 -q order=big c0d b0d w1d u1d
+255  255  65534 4294967294
+$ pick quirks.bin 12 -q order=big s1d s1u i1u
+-2 18446744073709551614 18446744073709551614
+```
+
+**Bit fields are unsigned**, even on signed types: bits 4 to 15 of the short
+-2 are 4095, and bits 1 to 31 of the int -2 are 2147483647.
+
+```console
+$ pick quirks.bin 12 -q order=big s1:4 i1:1
+4095 2147483647
+```
+
+On the 4-byte float `f`, a bit field shifts and masks the float's bits, then
+reads the result as a float again, which rarely means anything. On the larger
+types (`d`, `z`, `Z`), a bit field is silently ignored: `d0:4` prints the same
+as `d0`.
+
+**Formats work outside their types.**
+- `d` and `u` on a float truncate it toward zero, so `u` on -1.5 prints -1
+  as a 64-bit unsigned number.
+- `g`, `G` and `D` work on integers, and `D` takes the integer to be radians.
+- `x`, `o` and `b` always show the stored bytes, one at a time. `s1o` is
+  `377 376`, not the octal number `177776`, and `x` on a float shows its
+  IEEE bytes.
+
+```console
+$ pick quirks.bin 12 -q order=big f2d f2u f2x
+-1 18446744073709551615 bf c0 00 00
+$ pick quirks.bin 12 -q order=big i1g i1D s1o s1x
+-2 -114.592 377 376  ff fe
+```
+
+Complex types are the exception. They take only `g`, `R`, `I`, `M`, `P`, `D`
+and `U`, and any other format, even `G`, is an error.
+
+**Characters.**
+- `c` shows a non-printing byte by name (`nul`, `ht`, `nl`, `del`) or in
+  octal (`377`), with no brackets, so it can look like ordinary text.
+- On a multi-byte type, `c` runs the bytes together: the float -1.5 is
+  `277300nulnul`.
+- `S` puts brackets around non-printing bytes, so they can't be mistaken
+  for text.
+- `A` leaves them out, so its output can be shorter than the data.
+
+```console
+$ pick quirks.bin 12 -q order=big b0c f2c f2S 2A0
+377 277300nulnul (277)(300)(nul)(nul)A
+```
+
+`2A0` reads two bytes, `ff` and `A`, but prints only the `A`. It runs into
+the `S` output because, as with `S`, there's no space after `A`.
+
+**`G` pads to 25 characters** (it's the C format `%25.18g`), which lines
+numbers up in columns but can be surprising on its own:
+
+```console
+$ pick quirks.bin 12 -q order=big f2G
+                     -1.5
+```
+
+**A request with only `n` or `s` prints no value.** The default format is
+used only when a request has no formats at all. So `b0s` prints just a space,
+which is how the idiom `-1 bs` prints a space without moving:
+
+```console
+$ pick quirks.bin 12 -q order=big b0s b0d
+ 255
+```
+
+These all behave as they did in the Perl version. What pick changed is
+listed under [Differences from the Perl version](#differences-from-the-perl-version).
 
 ## Byte order
 
