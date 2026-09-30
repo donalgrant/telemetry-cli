@@ -2,19 +2,23 @@
 
   printFormatList:  The printing formats available are:
 
-          Available to all Data Types:
+          Available to all but Complex Data Types:
           'x' hex               'o' octal
           'b' binary            'c' ascii
+          ('x', 'o' and 'b' print the stored bytes, one
+          at a time, not the value as a number.)
 
           'S' ascii, with no space between items.
           'A' ascii, won't print non-printing characters.
 
+          Available to all Data Types:
           'U' unformatted (binary bytes) output
 
-          Available to Integral Data Types Only:
+          Available to Integral Data Types (on floats,
+          they truncate toward zero):
           'd' decimal           'u' unsigned decimal
 
-          Available to Floating Data Types Only:
+          Available to Floating Data Types (and integers):
           'g' floating  (For complex types, equivalent to RI format.)
           'G' same as 'g', but with lots of digits.
           'D' degrees; assumes the data value is in

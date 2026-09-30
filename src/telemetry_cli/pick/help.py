@@ -178,19 +178,23 @@ FORMATS = """
 
   printFormatList:  The printing formats available are:
 
-          Available to all Data Types:
+          Available to all but Complex Data Types:
           'x' hex               'o' octal
           'b' binary            'c' ascii
+          ('x', 'o' and 'b' print the stored bytes, one
+          at a time, not the value as a number.)
 
           'S' ascii, with no space between items.
           'A' ascii, won't print non-printing characters.
 
+          Available to all Data Types:
           'U' unformatted (binary bytes) output
 
-          Available to Integral Data Types Only:
+          Available to Integral Data Types (on floats,
+          they truncate toward zero):
           'd' decimal           'u' unsigned decimal
 
-          Available to Floating Data Types Only:
+          Available to Floating Data Types (and integers):
           'g' floating  (For complex types, equivalent to RI format.)
           'G' same as 'g', but with lots of digits.
           'D' degrees; assumes the data value is in
@@ -265,10 +269,13 @@ TYPES = """
           's' [2] signed short;    'w' [2] unsigned short
           'i' [4] signed int;      'u' [4] unsigned int
 
-         whether or not an integral data type is signed only
-         really matters to the default output printformat.
-         The printformat used determines whether the data are
-         interpreted as signed or unsigned.
+         Only 's' and 'i' are read as signed; 'c', 'b', 'w'
+         and 'u' are read as unsigned ('cd' prints 255 for
+         the byte ff).  The printformat doesn't change that:
+         'd' prints the value as read, and 'u' prints a
+         negative value as a 64-bit unsigned number.  Bit
+         fields are always unsigned.  See "Quirks" in the
+         manual.
 
           'S' [1] is a synonym for 'c', but uses
                   the 'S' printFormat as default.
