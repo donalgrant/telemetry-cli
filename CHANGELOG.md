@@ -1,6 +1,9 @@
 # Changelog
 
-## Unreleased
+## 1.1.1 (2026-09-30)
+
+Corrections to pick's built-in help (`pick ?t`, `?f`, `?q`, `?x`), and new
+documentation. The tools behave exactly as in 1.1.0.
 
 ### Documentation
 
