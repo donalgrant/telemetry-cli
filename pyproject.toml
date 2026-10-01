@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "telemetry-cli"
-version = "1.1.0"
+version = "1.1.1"
 description = "Command-line tools for binary telemetry: decode, extract, measure, realign and generate records"
 readme = "README.md"
 license = "MIT"
