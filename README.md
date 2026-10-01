@@ -74,3 +74,7 @@ explains why. With perl installed, further tests run random command lines
 through both versions and compare them (`HYPOTHESIS_PROFILE=deep pytest` for
 a longer search), and `python tools/make_golden.py --check` confirms the saved
 output is current. The examples in the documentation run as tests too.
+
+[How telemetry-cli is built](https://github.com/donalgrant/telemetry-cli/blob/main/docs/DESIGN.md)
+describes the design for developers: how each tool works, the rules the port
+follows, the tests, and every change from the Perl, with the reasons.

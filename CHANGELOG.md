@@ -38,6 +38,12 @@
   start of the record. It is replaced by `3[ bd 3[ w bd ] bn +1 ]`, which
   reads major frames of three minor frames, and the manual has the same
   example, run on data made with tgen (#7).
+- A design guide for developers, [How telemetry-cli is built](docs/DESIGN.md),
+  explains how each tool works and why: the rules the port follows (byte-for-byte
+  output, with each deliberate difference named), the Perl as test oracle,
+  pick's command-line parsing and byte order, recl's new measurement, tgen's
+  Python fields and converter, and the tests. It lists every change from the
+  Perl with its reason, and ends with exercises.
 
 ## 1.1.0 (2026-09-28)
 
